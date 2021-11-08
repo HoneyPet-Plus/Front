@@ -1,0 +1,38 @@
+
+.menu-p{
+    opacity: 85%;
+    box-shadow: none;
+}
+
+.bg-foto-mapa{
+    /*background-image: '@/assets/mapa-bg.png';*/
+    background-image: url("../../assets/mapa-bg.png");
+    background-position: center;
+    background-size: cover;
+    block-size: 325px;
+}
+.title-p{
+    padding-top: 35px;
+    padding-bottom: 10px;
+}
+
+.bg-para-mapa{
+    background-color:#00303F;
+    opacity: 85%;
+    block-size: 325px;
+}
+
+.seccion2{
+    background-color: #CAE4DB;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.seccion3{
+    margin: 15px;
+    padding: 15px;
+}
+
+
+
