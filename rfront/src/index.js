@@ -1,17 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Pusuario from './Components/PerfilUsuario/Pusuario'
 import { Ppp } from './Components/PerfilUsuario/pruebasmui';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Ppp/>
-    {/* <Pusuario/> */}
-    {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
