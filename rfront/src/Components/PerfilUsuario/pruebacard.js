@@ -25,7 +25,7 @@ export default function ImgMediaCard({nombre,descripcion,imagen}) {
           <p>{descripcion}</p>
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions className="descripcion">
         <SimpleBottomNavigation/>
       </CardActions>
     </Card>
