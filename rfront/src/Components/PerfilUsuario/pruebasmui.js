@@ -1,4 +1,4 @@
-
+import './vistafn.css';
 import ImgMediaCard from "./pruebacard";
 import Grid from '@mui/material/Grid';
 
