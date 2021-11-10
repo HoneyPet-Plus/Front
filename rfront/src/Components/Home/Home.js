@@ -78,7 +78,7 @@ export default function Home(){
             variant="h2"
             align="center"
             color="#F7CC31"
-            fontSize="93px"
+            fontSize="96px"
           >
             HoneyPet +
           </Typography>
