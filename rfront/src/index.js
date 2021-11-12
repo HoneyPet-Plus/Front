@@ -11,7 +11,7 @@ import Nav from './Components/Menu/Nav';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Nav />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );
