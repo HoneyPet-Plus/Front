@@ -4,9 +4,10 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+// import IconButton from '@mui/material/IconButton';
+// import MenuIcon from '@mui/icons-material/Menu';
 import "./Nav.css"
+import { Link } from 'react-router-dom';
 
 export default function ButtonAppBar() {
   return (
@@ -16,13 +17,14 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             HoneyPet+
           </Typography>
-          <Button className="btnNav" color="inherit"><a className="btnin" href="">Inicio</a></Button>
+          <Link to='/'>Inicio</Link>
           |
-          <Button className="btnNav" color="inherit"><a className="btnin" href="">Mapa</a></Button>
+          <Link to='/'>Mapa</Link>
           |
-          <Button className="btnNav" color="inherit"><a className="btnin" href="../ListaProveedores/Proveedores.js">Proveedores</a></Button>
+          <Link to='/Provs'>Proveedores</Link>
           |
-          <Button className="btnNav" color="inherit"><a className="btnin" href="">Ingresar</a></Button>
+          <Link to='/'>Ingresar</Link>
+          
         </Toolbar>
       </AppBar>
     </Box>

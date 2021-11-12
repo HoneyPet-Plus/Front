@@ -1,17 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Proveedores from './Components/ListaProveedores/Proveedores';
-import ButtonAppBar from './Components/Menu/Nav';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import ButtonAppBar from './Components/Menu/Nav'
+import Proveeee from './Components/ListaProveedores/Proveedores';
 
+function App(){
 
-function App() {
-  return (
+  return(
     <Router>
-    <ButtonAppBar/>
-    <Route path='/Proveedores' exact component={Proveedores} />
-    </Router>
-  );
+      <ButtonAppBar/>
+    <Routes>
+      <Route path="/Provs" element={<Proveeee/>}/>
+    </Routes>
+    </Router>);
 }
 
 export default App;
