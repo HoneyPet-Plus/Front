@@ -17,13 +17,13 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             HoneyPet+
           </Typography>
-          <Link to='/'>Inicio</Link>
+          <Button color="inherit" className="btnNav"><Link to='/' className="btnin">Inicio</Link></Button>
           |
-          <Link to='/'>Mapa</Link>
+          <Button color="inherit" className="btnNav"><Link to='/' className="btnin">Mapa</Link></Button>
           |
-          <Link to='/Provs'>Proveedores</Link>
+          <Button color="inherit" className="btnNav"><Link to='/Provs' className="btnin">Proveedores</Link></Button>
           |
-          <Link to='/'>Ingresar</Link>
+          <Button color="inherit" className="btnNav"><Link to='/' className="btnin">Ingresar</Link></Button>
           
         </Toolbar>
       </AppBar>
