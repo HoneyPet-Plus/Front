@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+/*
 import Proveedores from './Components/ListaProveedores/Proveedores';
 import Home from './Components/Home/Home';
+*/
+import Nav from './Components/Menu/Nav';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <Nav />
   </React.StrictMode>,
   document.getElementById('root')
 );
