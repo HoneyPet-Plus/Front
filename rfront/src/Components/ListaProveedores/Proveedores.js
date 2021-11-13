@@ -36,23 +36,7 @@ export default function Proveeee() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ background: '#00303F' }}>
-        <Toolbar>
-          
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            HoneyPet +
-          </Typography>
-          <Button color="inherit">Home</Button>
-          <p> | </p>
-          <Button color="inherit">Mapa</Button>
-          <p> | </p>
-          <Button color="inherit">Proveedores</Button>
-          <p> | </p>
-          <Button color="inherit">Mi cuenta</Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+
       <main>
         {/* Hero unit */}
         <Box 
