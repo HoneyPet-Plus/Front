@@ -15,7 +15,7 @@ export default function ButtonAppBar() {
       <AppBar  position="static">
         <Toolbar className="pNav">
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            HoneyPet+
+            HoneyPet +
           </Typography>
           <Button color="inherit" className="btnNav"><Link to='/' className="btnin">Inicio</Link></Button>
           |
