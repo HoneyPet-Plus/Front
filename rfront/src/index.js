@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+/*
 import Proveedores from './Components/ListaProveedores/Proveedores';
 import Home from './Components/Home/Home';
+*/
+// import Nav from './Components/Menu/Nav';
+// import ButtonAppBar from './Components/Menu/Nav';
+// import Proveedores from './Components/ListaProveedores/Proveedores';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <App/>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
