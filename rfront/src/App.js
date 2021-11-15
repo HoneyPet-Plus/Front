@@ -13,7 +13,7 @@ function App(){
     </Routes> */}
       <Route path='/Proveedores' exact component={Proveedores}/>
       <Route path='/Inicio' exact component={Home}/>
-
+s
     </Router>);
 }
 
