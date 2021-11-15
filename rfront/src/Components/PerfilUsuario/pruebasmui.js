@@ -4,10 +4,10 @@ import Grid from '@mui/material/Grid';
 import CCCP from './cardperf';
 import './ppp.css';
 
-export function VistaPerfil (){
+export default function VistaPerfil (){
     return(
         <div>
-            <header>header</header>
+            
             <div className="divnavperf">
             <CCCP correo='honey@demo.com'/>
             </div>
@@ -36,7 +36,7 @@ export function VistaPerfil (){
                 <ImgMediaCard nombre="Fluffydog" descripcion="Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe maiores dignissimos aperiam sed harum, sit amet quisquam quasi ratione, consectetur culpa nisi velit quibusdam accusamus ea numquam deserunt doloribus debitis!" imagen="https://loremflickr.com/389/183/pet"/>
                 </Grid>
             </Grid>
-            <footer>footer</footer>              
+                        
         </div>
         
     )
