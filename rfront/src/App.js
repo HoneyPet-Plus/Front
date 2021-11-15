@@ -1,15 +1,19 @@
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import ButtonAppBar from './Components/Menu/Nav'
-import Proveeee from './Components/ListaProveedores/Proveedores';
+import Proveedores from './Components/ListaProveedores/Proveedores'
+import Home from './Components/Home/Home'
 
 function App(){
 
   return(
     <Router>
       <ButtonAppBar/>
-    <Routes>
+    {/* <Routes>
       <Route path="/Provs" element={<Proveeee/>}/>
-    </Routes>
+    </Routes> */}
+      <Route path='/Proveedores' exact component={Proveedores}/>
+      <Route path='/Inicio' exact component={Home}/>
+
     </Router>);
 }
 
