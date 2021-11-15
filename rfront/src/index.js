@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Ppp } from './Components/PerfilUsuario/pruebasmui';
+import { VistaPerfil } from './Components/PerfilUsuario/pruebasmui';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Ppp/>
+    <VistaPerfil/>
   </React.StrictMode>,
   document.getElementById('root')
 );

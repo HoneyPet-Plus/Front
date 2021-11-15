@@ -22,7 +22,7 @@ export default function ImgMediaCard({nombre,descripcion,imagen}) {
           <h3>{nombre}</h3>
         </Typography>
         <Typography  variant="body2" color="text.secondary">
-          <p>{descripcion}</p>
+          <p className='txtdes'>{descripcion}</p>
         </Typography>
       </CardContent>
       <CardActions className="descripcion">
