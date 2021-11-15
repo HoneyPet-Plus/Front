@@ -9,7 +9,7 @@ function PagProveedor() {
   return (
     <div className="container">
       <header>
-          <ProvBar email="dummy@email.com"/>
+          <ProvBar email="dummy2@email.com"/>
           <ProvImg src="https://loremflickr.com/1440/600/pets"/>
       </header>
       <aside>
