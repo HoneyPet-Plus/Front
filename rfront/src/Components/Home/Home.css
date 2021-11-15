@@ -6,7 +6,7 @@
 
 .bg-foto-mapa{
     /*background-image: '@/assets/mapa-bg.png';*/
-    background-image: url("../../assets/mapa-bg.png");
+    background-image: url("../../assets/Home/mapa-bg.png");
     background-position: center;
     background-size: cover;
     block-size: 325px;
@@ -22,8 +22,14 @@
     block-size: 325px;
 }
 
+.seccion-lideres{
+    background-color:#CAE4DB ;
+    padding: 40px;
+}
+
+
 .seccion2{
-    background-color: #CAE4DB;
+    background-color: #080a0a;
     margin: 15px;
     padding: 15px;
     border-radius: 10px;
@@ -34,5 +40,22 @@
     padding: 15px;
 }
 
+.logo-principal{
+    padding-top: 50px;
+}
+
+.contenido-header{
+    padding-top: 70px;
+}
+
+.seccion-empresas{
+    background-color:#00303F ;
+    padding: 40px;
+}
+
+.seccion-about-as{
+    background-color:#ffffff ;
+    padding: 40px;
+}
 
 
