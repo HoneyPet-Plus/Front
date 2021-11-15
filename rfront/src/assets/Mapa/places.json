@@ -1,0 +1,135 @@
+{
+    "lugares" : [
+        {
+            "popup":
+            {
+                "id": 123,
+                "nombre" : "PetShop" ,
+                "geometry" : [
+                    6.2441988 ,
+                    -75.6512522
+                ],
+                "descripción" : "Tienda de productos alimenticios para animales"
+            }
+            
+        },
+        {
+            "popup":
+                {
+                    "id": 1234,
+                    "nombre" : "ShopPet" ,
+                    "geometry" : [
+                        3.3950619,
+                        -76.5957046
+                    ],
+                    "descripción" : "Tienda de productos alimenticios para animales"
+                }
+            
+            
+        },
+        {
+            "popup":
+                {
+                    "id": 12345,
+                    "nombre" : "ImperioPet" ,
+                    "geometry" : [
+                        1.2135252 ,
+                        -77.312242
+                    ],
+                    "descripción" : "Tienda de productos alimenticios para animales"
+                }
+            
+        },
+        {
+            "popup":
+                {
+                    "id": 123456,
+                    "nombre" : "PetComercy" ,
+                    "geometry" : [
+                        4.6482837,
+                        -74.247894
+                    ],
+                    "descripción" : "Tienda de productos alimenticios para animales"
+                }
+            
+        },
+        {
+            "popup":
+                {
+                    "id": 1234567,
+                    "nombre" : "PetsAndPets" ,
+                    "geometry" : [
+                        5.539293,
+                        -73.3912606
+                    ],
+                    "descripción" : "Tienda de productos alimenticios para animales"
+                }
+            
+        },
+        {
+            "popup":
+                {
+                    "id": 12345678,
+                    "nombre" : "PetCity" ,
+                    "geometry" : [
+                        7.1192047,
+                        -73.1679976
+                    ],
+                    "descripción" : "Tienda de productos alimenticios para animales"
+                }
+            
+        },
+        {
+            "popup":
+                {
+                    "id": 123456789,
+                    "nombre" : "CityPet" ,
+                    "geometry" : [
+                        9.2921896,
+                        -75.429849
+                    ],
+                    "descripción" : "Tienda de productos alimenticios para animales"
+                }
+            
+        },
+        {
+            "popup":
+                {
+                    "id": 1234567891,
+                    "nombre" : "PetSmile" ,
+                    "geometry" : [
+                        10.4645041,
+                        -73.2932691
+                    ],
+                    "descripción" : "Tienda de productos alimenticios para animales"
+                }
+            
+        },
+        {
+            "popup":
+                {
+                    "id": 12345678912,
+                    "nombre" : "PetFunny" ,
+                    "geometry" : [
+                        2.4499897,
+                        -72.2821058
+                    ],
+                    "descripción" : "Tienda de productos alimenticios para animales"
+                }
+            
+        },
+        {
+            "popup":
+                {
+                    "id": 123456789123,
+                    "nombre" : "PetsObjects" ,
+                    "geometry" : [
+                        5.4907525,
+                        -70.4174654
+                    ],
+                    "descripción" : "Tienda de productos alimenticios para animales"
+                }
+            
+        }
+    ]
+}

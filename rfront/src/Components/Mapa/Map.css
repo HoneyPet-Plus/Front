@@ -1,0 +1,50 @@
+.leaflet-container{
+    width: 100vw;
+    height: 100vh;
+}
+
+.btn-map{
+    align-items: center;
+    background-color: yellow;
+}
+
+.text{
+    text-align: center;
+
+}
+
+.box-imagen{
+    width: auto;
+    height: 400px;
+}
+
+.box-nombreshop{
+    width: auto;
+    height: 50px;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.box-descripcion{
+    width: auto;
+    height: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+.box-btn{
+    width: auto;
+    height: 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+.btn-style{
+    background-color: rgb(160, 161, 153);
+    color: #004F67;
+    width: 200px;
+    height: 50px;
+    border-color: #004F67;
+    text-size-adjust: 100px;
+}
