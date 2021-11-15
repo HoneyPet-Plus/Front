@@ -6,7 +6,7 @@ import "leaflet/dist/leaflet.css"
 import './Map.css';
 import 'leaflet';
 
-import {lugares} from '../../assets/places.json'
+import {lugares} from '../../assets/Mapa/places.json'
 
 
 function MapView(props){
