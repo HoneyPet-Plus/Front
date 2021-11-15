@@ -1,5 +1,5 @@
 import L from 'leaflet'
-import icon from '../../assets/pinhplus.svg'
+import icon from '../../assets/Mapa/pinhplus.svg'
 
 export const IconShop = L.icon({
     

@@ -1,5 +1,5 @@
 import L from 'leaflet'
-import icon from '../../assets/pinu.svg'
+import icon from '../../assets/Mapa/pinu.svg'
 
 export const IconLocation = L.icon({
     

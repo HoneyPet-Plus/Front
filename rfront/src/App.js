@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import ButtonAppBar from './Components/Menu/Nav'
 import Proveedores from './Components/ListaProveedores/Proveedores'
 import Home from './Components/Home/Home'
+import Mapa from './Components/Mapa/Mapa'
+import VistaPerfil from './Components/PerfilUsuario/pruebasmui'
 
 function App(){
 
@@ -13,7 +15,9 @@ function App(){
     </Routes> */}
       <Route path='/Proveedores' exact component={Proveedores}/>
       <Route path='/Inicio' exact component={Home}/>
-s
+      <Route path='/Mapa' exact component={Mapa}/>
+      <Route path='/Perfil' exact component={VistaPerfil}/>
+
     </Router>);
 }
 
