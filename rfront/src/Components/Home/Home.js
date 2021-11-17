@@ -22,110 +22,122 @@ import pets from '../../assets/Home/pets.svg';
 import empresas from '../../assets/Home/empresas.svg';
 import peopleandpet from '../../assets/Home/peopleandpet.svg';
 import seccioempresas from '../../assets/Home/seccioempresas.svg';
+import { useTheme } from '@mui/material/styles';
+import MobileStepper from '@mui/material/MobileStepper';
+import Paper from '@mui/material/Paper';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
+
+import AboutAs from './AboutAs';
+
+import francis from '../../assets/Home/francis.png'
 
 
 
 function Copyright() {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://mui.com/">
-          Your Website
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
-  
-  const cards = [1, 2, 3];
-  
-  const theme = createTheme();
-  const mapa = '../../assets/mapa-bg.png';
-  const descripHeader = "Ayudamos a nuestros usuarios a encontrar los mejores proveedores de servicios para mascotas desde cualquier parte del país."
-  const card_cont = (imagen, titulo, descripcion, btn)=>{
-    return( 
-      <div>
-        <Card
-          style={{ backgroundColor: "#ffffff" }}
-          sx={{ alignItems:'center', height: '100%', borderRadius: '20px', display: 'flex', flexDirection: 'column', minWidth: 225, maxWidth: 400, minHeight: 220, maxHeight: 350, paddingTop:'20px' }}
-        >
-          <CardMedia
 
-            component="img"
-            sx={{
-              height:120,
-              width:120,
-            }}
-            image={imagen}
-            alt="random"
-          />
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Typography align='center' gutterBottom variant="h5" component="h2">
-              {titulo}
-            </Typography>
-            <Typography align='center'>
-              {descripcion}
-            </Typography>
-          </CardContent>
-        </Card>
-      </div>
-    )
-  };
+  return (
+    <Typography variant="body2" color="text.secondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
-  const ColorButton = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText('#00303F'),
+const cards = [1, 2, 3];
+
+const theme = createTheme();
+const mapa = '../../assets/mapa-bg.png';
+const descripHeader = "Ayudamos a nuestros usuarios a encontrar los mejores proveedores de servicios para mascotas desde cualquier parte del país."
+const card_cont = (imagen, titulo, descripcion, btn) => {
+  return (
+    <div>
+      <Card
+        style={{ backgroundColor: "#ffffff" }}
+        sx={{ alignItems: 'center', height: '100%', borderRadius: '20px', display: 'flex', flexDirection: 'column', minWidth: 225, maxWidth: 400, minHeight: 220, maxHeight: 350, paddingTop: '20px' }}
+      >
+        <CardMedia
+
+          component="img"
+          sx={{
+            height: 120,
+            width: 120,
+          }}
+          image={imagen}
+          alt="random"
+        />
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography align='center' gutterBottom variant="h5" component="h2">
+            {titulo}
+          </Typography>
+          <Typography align='center'>
+            {descripcion}
+          </Typography>
+        </CardContent>
+      </Card>
+    </div>
+  )
+};
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText('#00303F'),
+  backgroundColor: '#00303F',
+  '&:hover': {
     backgroundColor: '#00303F',
-    '&:hover': {
-      backgroundColor: '#00303F',
-    },
-  }));
+  },
+}));
 
-  
-export default function Home(){
-    return(
-        <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className="bg-foto-mapa">
 
-          <div className= "bg-para-mapa">
-            <div className='contenido-header'>
-              <Stack className="logo-principal" alignItems='center'>
-                <div>
-                  <img src={Logo} alt="HoneyPet +" />
-                </div>
-              </Stack>
+export default function Home() {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="bg-foto-mapa">
 
-              <Typography
-                component="div"
-                variant="body1"
-                align="center"
-                color="#CAE4DB"
-                fontSize="12px"
-                marginLeft="10%"
-                marginRight="10%"
-                gutterBottom
-              >
-                {descripHeader}
-              </Typography>
+        <div className="bg-para-mapa">
+          <div className='contenido-header'>
+            <Stack className="logo-principal" alignItems='center'>
+              <div>
+                <img src={Logo} alt="HoneyPet +" />
+              </div>
+            </Stack>
 
-              {/* <Stack alignItems="center" mt >
+            <Typography
+              component="div"
+              variant="body1"
+              align="center"
+              color="#CAE4DB"
+              fontSize="12px"
+              marginLeft="10%"
+              marginRight="10%"
+              gutterBottom
+            >
+              {descripHeader}
+            </Typography>
+
+            {/* <Stack alignItems="center" mt >
                 <Button id="button-empezar" variant="outlined" href="https://www.google.com">
                   Empezar
                 </Button>
               </Stack> */}
-            </div>    
-
           </div>
+
         </div>
+      </div>
 
       <main>
         {/* Hero unit */}
         <Stack className='seccion-lideres' justifyContent='center'>
 
           <Stack direction='row' justifyContent='center' spacing={4}>
-          {card_cont(pets,'Mascotas', ' En este sitio web encontraras una lista de negocios cercanos a tu ubicación, y los mejores productos y servicios para tus mascotas.' )}
-          {card_cont(empresas,'Empresas', 'Somos un directorio especializado en productos y servicios para mascotas. Publíca tu negocio y capta nuevos clientes en tu localidad.' )} 
+            {card_cont(pets, 'Mascotas', ' En este sitio web encontraras una lista de negocios cercanos a tu ubicación, y los mejores productos y servicios para tus mascotas.')}
+            {card_cont(empresas, 'Empresas', 'Somos un directorio especializado en productos y servicios para mascotas. Publíca tu negocio y capta nuevos clientes en tu localidad.')}
           </Stack>
 
           <div>
@@ -147,13 +159,13 @@ export default function Home(){
                 </Typography>
 
                 <Typography fontSize='18' align="left" component="div" mb='0px'>
-                  Es necesario conceder los  permisos de ubicación que solicita el navegador, para mejorar tu experiencia usando la aplicación y ver los negocios cercanos que ofrecen los mejores productos y servicios para tus mascotas. 
+                  Es necesario conceder los  permisos de ubicación que solicita el navegador, para mejorar tu experiencia usando la aplicación y ver los negocios cercanos que ofrecen los mejores productos y servicios para tus mascotas.
                 </Typography>
 
                 <Typography fontSize='18' align="left" component="div" mb='0px'>
                   Puesdes ver un listado de proveedores cercanos desde la página de “Proveedores” o los puedes geo-referenciar desde la página de “Mapa”, cuando un negocio te llame la atención puedes ampliar la información y ver su página con productos, servicios, datos de contacto, etc.
                 </Typography>
-                
+
                 <Stack direction='row' spacing={1} mt>
                   <Button id="button-empezar" variant="outlined" href="https://www.google.com">
                     VER MAPA
@@ -173,10 +185,10 @@ export default function Home(){
 
                 <div>
                   <Button id="button-empezar" size='medium' variant="outlined" href="https://www.google.com">
-                      CREAR CUENTA
+                    CREAR CUENTA
                   </Button>
                 </div>
-                
+
               </Stack>
 
               <Stack>
@@ -185,7 +197,7 @@ export default function Home(){
 
             </Stack>
 
-          </div> 
+          </div>
 
         </Stack>
 
@@ -231,7 +243,7 @@ export default function Home(){
 
               <Stack direction='row' spacing={1} mt>
                 <Button id="button-empezar" variant="outlined" href="https://www.google.com">
-                  VER UNA DEMO  
+                  VER UNA DEMO
                 </Button>
                 <Button id="button-empezar" variant="outlined" href="https://www.google.com">
                   CREAR CUENTA
@@ -263,9 +275,9 @@ export default function Home(){
             Equipo de Trabajo
           </Typography>
 
-          <Stack className='nosotros' direction='row-reverse' justifyContent='center' spacing={4} marginX='100px'>
+          <Stack className='nosotros' justifyContent='center' alignItems='center' marginX='100px'>
 
-            
+            <AboutAs/>
 
           </Stack>
 
@@ -296,5 +308,5 @@ export default function Home(){
       {/* End footer */}
     </ThemeProvider>
 
-    );
+  );
 }
