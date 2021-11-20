@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +11,39 @@ import "./Nav.css"
 import { Link } from 'react-router-dom';
 import logoheader from '../../assets/Home/logoheader.svg'
 
+
 export default function ButtonAppBar() {
+
+  const [state, setstate] = useState({
+    longitud:4.627354,
+    latitud:-74.082807,
+    zoom: 13,
+    minZoom: 5  
+  })
+
+
+  useEffect(()=>{
+    navigator.geolocation.getCurrentPosition(
+        function(position){
+            setstate({
+                longitud:position.coords.longitude,
+                latitud: position.coords.latitude,
+                zoom: 18,
+                minZoom: 5 
+            })
+            
+
+        },
+        function(error){
+            console.log(error)
+        },
+        {
+            enableHighAccuracy: true
+        }
+    );
+  })
+
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar  position='fixed'>
@@ -22,7 +54,7 @@ export default function ButtonAppBar() {
           
           <Button color="inherit" className="btnNav"><Link to='/Inicio' className="btnin">Inicio</Link></Button>
           |
-          <Button color="inherit" className="btnNav"><Link to='/Mapa' className="btnin">Mapa</Link></Button>
+          <Button color="inherit" className="btnNav"><Link to={{pathname:'/Mapa',state}} className="btnin">Mapa</Link></Button>
           |
           <Button color="inherit" className="btnNav"><Link to='/Proveedores' className="btnin">Proveedores</Link></Button>
           |

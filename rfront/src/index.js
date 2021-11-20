@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 import PagProveedor from './Components/PaginaProveedor/PagProveedor';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Home from './Components/Home/Home'
+
 /*
 import Proveedores from './Components/ListaProveedores/Proveedores';
 import Home from './Components/Home/Home';
@@ -16,8 +17,8 @@ import Home from './Components/Home/Home';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <PagProveedor />
+    <App></App>
+   
   </React.StrictMode>,
   document.getElementById('root')
 );
