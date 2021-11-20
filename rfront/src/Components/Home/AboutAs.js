@@ -24,29 +24,34 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
     {
-        label: 'Pucho-Lagartija',
+        label: 'Pucho- La Lagartija',
         imgPath:
             migue,
+        descrip: 'luchare, fracasare, pero rendirme es un privilegió que no tengo.',
     },
     {
-        label: 'Pipe-Hamster',
+        label: 'Pipe- El Hamster',
         imgPath:
             pipe,
+        descrip: 'Por las rudezas del camino, hacia las estrellas',
     },
     {
-        label: 'Nelsi-Gatu',
+        label: 'Nelsi- La Gatu',
         imgPath:
             nelsi,
+        descrip: 'El que no muestra no vende',
     },
     {
-        label: 'Ivan-Firulais',
+        label: 'Ivan- El Pejelagarto',
         imgPath:
             ivan,
+        descrip: 'Emprendedor en constante busqueda de libertad y progreso.',
     },
     {
-        label: 'Francis-Pejelagarto',
+        label: 'Francis- El Firulais',
         imgPath:
             francis,
+            descrip: 'La perseverancia hace el éxito',
     },
 ];
 
@@ -63,29 +68,12 @@ export default function  AboutAs() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleStepChange = (step) => {
-    setActiveStep(step);
-  };
 
   return (
     <Box sx={{ maxWidth: 400, flexGrow: 1, alignItems:'center' }}>
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          height: 50,
-          pl: 2,
-          bgcolor: 'background.default',
-        }}
-      >
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
-        onChangeIndex={handleStepChange}
         enableMouseEvents
       > 
         {images.map((step, index) => (
@@ -117,6 +105,27 @@ export default function  AboutAs() {
       
         
       </AutoPlaySwipeableViews>
+      <Stack alignItems='center'>
+
+        <Paper
+          square
+          elevation={0}
+          sx={{
+            display:'block',
+            alignItems: 'center',
+            height: 50,
+            paddingBlock:3,
+            bgcolor: 'background.default',
+            marginBottom: 7,
+          }}
+        >
+          <Typography component="div" align='center' >{images[activeStep].label}</Typography>
+  
+          <Typography component="div" align='center'  >{images[activeStep].descrip}</Typography>
+        </Paper>
+
+      </Stack>
+  
       <MobileStepper
         steps={maxSteps}
         position="static"
