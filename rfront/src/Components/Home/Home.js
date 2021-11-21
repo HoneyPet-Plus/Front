@@ -35,21 +35,6 @@ import AboutAs from './AboutAs';
 import francis from '../../assets/Home/francis.png'
 
 
-
-function Copyright() {
-
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const cards = [1, 2, 3];
 
 const theme = createTheme();
@@ -290,22 +275,7 @@ export default function Home() {
 
 
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: '#00303F', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom color="#7A9D96">
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="#7A9D96"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
+      
     </ThemeProvider>
 
   );
