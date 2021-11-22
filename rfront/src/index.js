@@ -6,7 +6,7 @@ import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './Components/Home/Home'
-import App from './App';
+
 /*
 import Proveedores from './Components/ListaProveedores/Proveedores';
 import Home from './Components/Home/Home';
