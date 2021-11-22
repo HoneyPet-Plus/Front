@@ -58,7 +58,7 @@ export default function ButtonAppBar() {
           |
           <Button color="inherit" className="btnNav"><Link to='/Proveedores' className="btnin">Proveedores</Link></Button>
           |
-          <Button color="inherit" className="btnNav"><Link to='/' className="btnin">Ingresar</Link></Button>
+          <Button color="inherit" className="btnNav"><Link to='/Perfil' className="btnin">Ingresar</Link></Button>
           
         </Toolbar>
       </AppBar>

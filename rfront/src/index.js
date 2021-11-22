@@ -5,7 +5,8 @@ import PagProveedor from './Components/PaginaProveedor/PagProveedor';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import Home from './Components/Home/Home'
+import App from './App';
 /*
 import Proveedores from './Components/ListaProveedores/Proveedores';
 import Home from './Components/Home/Home';
@@ -17,8 +18,8 @@ import Home from './Components/Home/Home';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App></App>
-   
+  <App/>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
