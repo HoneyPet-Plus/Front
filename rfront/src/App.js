@@ -10,7 +10,7 @@ import Footer from './Components/Menu/Footer'
 function App(){
 
   return(
-    <Router>
+    <Router >
       <ButtonAppBar/>
     {/* <Routes>
       <Route path="/Provs" element={<Proveeee/>}/>
