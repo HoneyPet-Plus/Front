@@ -1,4 +1,9 @@
 import * as React from 'react';
+import Icon from '@mui/material/Icon';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import BadgeIcon from '@mui/icons-material/Badge';
+import Link from '@mui/material/Link';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
@@ -24,34 +29,53 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
     {
-        label: 'Pucho- La Lagartija',
-        imgPath:
-            migue,
-        descrip: 'luchare, fracasare, pero rendirme es un privilegió que no tengo.',
+      label: 'Andrés Felipe García Viña',
+      imgPath:
+        pipe,
+      descrip: 'Destacado Estudiante de Matemáticas y Estadística, Apasionado por las Ciencias Exactas y con Gran Motivación en Adquirir Habilidades en las Nuevas Tecnologías.',
+      urlGithub: 'https://github.com/Asap4u',
+      urlLin: 'https://www.linkedin.com/in/andres-garcia-405697194/',
+      urlInterp: 'https://interacpedia.com/user/andres-felipe-garcia-vina?tab=profile',
+
     },
     {
-        label: 'Pipe- El Hamster',
-        imgPath:
-            pipe,
-        descrip: 'Por las rudezas del camino, hacia las estrellas',
+      label: 'Nelsi Miramag Díaz',
+      imgPath:
+        nelsi,
+      descrip: 'Estudiante de Geología y Programación, con Gran Interés en las Nuevas Tecnologías y Apasionada por la Ciencia.',
+      urlGithub: 'https://github.com/danimidi',
+      urlLin: 'https://www.linkedin.com/in/nelsi-miramag-734144220/',
+      urlInterp: 'https://interacpedia.com/user/nelsi-miramag?tab=profile',
     },
     {
-        label: 'Nelsi- La Gatu',
-        imgPath:
-            nelsi,
-        descrip: 'El que no muestra no vende',
+      label: 'Miguel Alexis Cáceres',
+      imgPath:
+        migue,
+      descrip: 'Estudiante de Ingeniería en Sistemas y Computación, Joven Programador con Ganas de Aprender y Trabajar en el Mundo de la Tecnología.',
+      urlGithub: 'https://github.com/MiguelNietox',
+      urlLin: 'https://www.linkedin.com/in/miguel-alexis-caceres-294b12221/',
+      urlInterp: 'https://interacpedia.com/user/miguel-alexis-caceres%7D',
     },
     {
-        label: 'Ivan- El Pejelagarto',
-        imgPath:
-            ivan,
-        descrip: 'Emprendedor en constante busqueda de libertad y progreso.',
+      label: 'Iván M. Campos',
+      imgPath:
+        ivan,
+      descrip: 'Emprendedor, Diseñador Gráfico y Dearrollador Web Apasionado por la Tecnología, la Educación y las Artes.',
+      urlGithub: 'https://github.com/imcamposdev',
+      urlLin: 'https://www.linkedin.com/in/ivan-m-campos-422a78221',
+      urlInterp: 'https://interacpedia.com/user/ivan-m-campos',
     },
     {
-        label: 'Francis- El Firulais',
-        imgPath:
-            francis,
-            descrip: 'La perseverancia hace el éxito',
+      label: 'Francisco Sánchez Toro',
+      imgPath:
+        francis,
+      descrip: 'Estudiante de cuarto semestre en Ingeniería de sistemas, con gran motivación para seguir obteniendo conocimientos y habilidades, para así crecer profesionalmente.',
+      urlGithub: 'https://github.com/franciscoww',
+      urlLin: 'https://www.linkedin.com/in/francisco-javier-sanchez-toro-b8564a221/',
+      urlInterp: 'https://interacpedia.com/user/francisco-javier-sanchez-toro',
+      urlGithub: 'https://github.com/danimidi',
+      urlLin: 'https://www.linkedin.com/in/nelsi-miramag-734144220/',
+      urlInterp: 'https://interacpedia.com/user/nelsi-miramag?tab=profile',
     },
 ];
 
@@ -70,7 +94,7 @@ export default function  AboutAs() {
 
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1, alignItems:'center' }}>
+    <Box sx={{ maxWidth:400, flexGrow: 1, alignItems:'center'}}>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -116,12 +140,24 @@ export default function  AboutAs() {
             height: 50,
             paddingBlock:3,
             bgcolor: 'background.default',
-            marginBottom: 7,
+            marginBottom: 14,
           }}
         >
-          <Typography component="div" align='center' >{images[activeStep].label}</Typography>
+          <Typography component="div" color="#004F67" align='center' mb >{images[activeStep].label}</Typography>
   
-          <Typography component="div" align='center'  >{images[activeStep].descrip}</Typography>
+          <Typography component="div" color="#00303F" fontSize='14px' align='center'  >{images[activeStep].descrip}</Typography>
+          <Stack alignItems='center' direction='row' justifyContent='center' mt spacing={1}>
+            <LinkedInIcon/>
+            <GitHubIcon/>
+            <BadgeIcon/>
+          </Stack>
+          
+          <Icon baseClassName="fas" className="fa-plus-circle" color="primary" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
+
         </Paper>
 
       </Stack>
@@ -136,7 +172,7 @@ export default function  AboutAs() {
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}
           >
-            Next
+            Siguiente
             {theme.direction === 'rtl' ? (
               <KeyboardArrowLeft />
             ) : (
@@ -151,7 +187,7 @@ export default function  AboutAs() {
             ) : (
               <KeyboardArrowLeft />
             )}
-            Back
+            Anterior
           </Button>
         }
       />
