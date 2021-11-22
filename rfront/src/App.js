@@ -8,7 +8,7 @@ import VistaPerfil from './Components/PerfilUsuario/pruebasmui'
 function App(){
 
   return(
-    <Router>
+    <Router >
       <ButtonAppBar/>
     {/* <Routes>
       <Route path="/Provs" element={<Proveeee/>}/>
