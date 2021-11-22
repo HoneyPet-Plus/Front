@@ -4,6 +4,8 @@ import Proveedores from './Components/ListaProveedores/Proveedores'
 import Home from './Components/Home/Home'
 import Mapa from './Components/Mapa/Mapa'
 import VistaPerfil from './Components/PerfilUsuario/pruebasmui'
+import Footer from './Components/Menu/Footer'
+
 
 function App(){
 
@@ -17,6 +19,7 @@ function App(){
       <Route path='/Inicio' exact component={Home}/>
       <Route path='/Mapa' exact component={Mapa}/>
       <Route path='/Perfil' exact component={VistaPerfil}/>
+      <Footer/>
 
     </Router>);
 }
