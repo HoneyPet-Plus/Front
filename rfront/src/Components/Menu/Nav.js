@@ -29,7 +29,7 @@ export default function ButtonAppBar() {
                 longitud:position.coords.longitude,
                 latitud: position.coords.latitude,
                 zoom: 18,
-                minZoom: 5 
+                minZoom: 8 
             })
             
 

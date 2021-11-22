@@ -5,7 +5,7 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
-
+import img from '../../assets/Mapa/tienda.jpg'
 
 import {Marker, Popup} from 'react-leaflet'
 import {IconShop} from "./IconShop";
@@ -49,7 +49,7 @@ const MarkerShop = (place) => {
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <div className='box-imagen'>
-            <img  className='box-imagen' src={place.place.popup.imagen} alt="Imagen " />
+            <img  className='box-imagen' src={img} alt="Imagen " />
           </div> 
           <div className='box-nombreshop'>
             <h1 className='h1'>{place.place.popup.nombre}</h1>

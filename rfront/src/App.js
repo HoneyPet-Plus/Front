@@ -7,14 +7,14 @@ import Mapa from './Components/Mapa/Mapa'
 function App(){
 
   return(
-    <Router>
+    <Router >
       <ButtonAppBar/>
     {/* <Routes>
       <Route path="/Provs" element={<Proveeee/>}/>
     </Routes> */}
-      <Route path='/Proveedores' exact component={Proveedores}/>
-      <Route path='/Inicio' exact component={Home}/>
-      <Route path='/Mapa' exact component={Mapa}/>
+      <Route path='/Proveedores'  component={Proveedores}/>
+      <Route exact path='/Inicio'   component={Home}/>
+      <Route path='/Mapa'  component={Mapa}/>
 
     </Router>);
 }
