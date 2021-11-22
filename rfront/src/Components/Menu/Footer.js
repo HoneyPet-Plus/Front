@@ -8,7 +8,7 @@ export default function Footer () {
     return (
         <div>
             <Stack className='Footer' alignItems='center' justifyContent='center'>
-                <Typography variant="body1" fontSize='10px' color="inherit" align='center'>
+                <Typography variant="body1" fontSize='10px' color="#7A9D96" align='center'>
                     © 2021 - TODOS LOS DERECHOS RESERVADOS HONEYPET+ -DEVELOP BY MTIC:UTP_G2-08
                 </Typography>
             </Stack>
