@@ -1,6 +1,10 @@
+*{
+    color: #00303F;
+}
+
 .leaflet-container{
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
 }
 
 .btn-map{
@@ -10,27 +14,28 @@
 
 .text{
     text-align: center;
-
+    color: #004F67;
 }
 
 .box-imagen{
-    width: auto;
-    height: 400px;
+    width: 600px;
+    height: 500px;
 }
 
 .box-nombreshop{
     width: auto;
     height: 50px;
-    padding: 20px;
+    padding: 5px;
     text-align: center;
-
+    color: blue;
 }
 
 .box-descripcion{
     width: auto;
     height: 300px;
-    padding: 20px;
+    padding: 0.1px;
     text-align: center;
+    
 }
 
 .box-btn{
@@ -38,13 +43,54 @@
     height: 50px;
     padding: 20px;
     text-align: center;
+
 }
 
 .btn-style{
-    background-color: rgb(160, 161, 153);
+    background-color: #F7CC31;
     color: #004F67;
-    width: 200px;
-    height: 50px;
+    width: 400px;
+    height: 65px;
     border-color: #004F67;
     text-size-adjust: 100px;
+    font-size: x-large;
+    border-radius: 10px;
+}
+
+.btn-style1{
+    background-color: #cfcfcf;
+    border-radius: 10px;
+    color: #004F67;
+    width: 400px;
+    height: 65px;
+    border-color: #004F67;
+    text-size-adjust: 100px;
+    font-size: x-large;
+}
+
+.header{
+    width: 100vw;
+    height: 60px;
+}
+
+.icono{
+    background-color: #F2F2F2;
+}
+
+.h1{
+    color: #00303F;
+}
+
+.h2{
+    color: #004F67;
+
+}
+
+.btn-info{
+    background-color: #004F67;
+    border-color: #00303F;
+    width: 220px;
+    height: 40px;
+    border-radius: 20px;
+    color: #fdfdfd;
 }
