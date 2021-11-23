@@ -15,8 +15,8 @@ import Home from './Components/Home/Home';
 
 ReactDOM.render(
   <React.StrictMode>
-  {/* <App/> */}
-  <PublicarNegocio/>
+  <App/>
+  {/* <PublicarNegocio/> */}
     
   </React.StrictMode>,
   document.getElementById('root')
