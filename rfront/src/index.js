@@ -9,11 +9,6 @@ import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio';
 ReactDOM.render(
   <React.StrictMode>
   <App/>
-<<<<<<< HEAD
-=======
-  {/* <PublicarNegocio/> */}
-    
->>>>>>> 613ba670ef992255e901178b367fd7a305902067
   </React.StrictMode>,
   document.getElementById('root')
 );
