@@ -1,19 +1,19 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import CssBaseline from "@mui/material/CssBaseline";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // function Copyright() {
 //   return (
@@ -39,9 +39,9 @@ export default function Proveedores() {
 
       <main>
         {/* Hero unit */}
-        <Box 
+        <Box
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: "background.paper",
             pt: 8,
             pb: 6,
           }}
@@ -53,6 +53,7 @@ export default function Proveedores() {
               align="center"
               color="text.primary"
               gutterBottom
+              pt="10%"
             >
               Lista de Proveedores
             </Typography>
@@ -65,18 +66,21 @@ export default function Proveedores() {
               direction="row"
               spacing={2}
               justifyContent="center"
-            >
-            </Stack>
+            ></Stack>
           </Container>
         </Box>
         <Container sx={{ py: 2 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card 
-                  style={{backgroundColor: "#CAE4DB"}}
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+              <Grid item key={card} xs={12} sm={6} md={4} mb={4}>
+                <Card
+                  style={{ backgroundColor: "#CAE4DB" }}
+                  sx={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
                 >
                   <CardMedia
                     component="img"
@@ -92,11 +96,19 @@ export default function Proveedores() {
                       Servicio
                     </Typography>
                     <Typography>
-                      Acá va una breve descripción del servicio que se brindará. Y si quiere ver la información completa debe clickear en el botón
+                      Acá va una breve descripción del servicio que se brindará.
+                      Y si quiere ver la información completa debe clickear en
+                      el botón
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" variant="contained" style={{backgroundColor: "#F7CC31", color: "#00303F"}}>Ver más información</Button>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      style={{ backgroundColor: "#F7CC31", color: "#00303F" }}
+                    >
+                      Ver más información
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -118,7 +130,7 @@ export default function Proveedores() {
           Something here to give the footer a purpose!
         </Typography>
         {/* <Copyright /> */}
-      {/* </Box> */} 
+      {/* </Box> */}
       {/* End footer */}
     </ThemeProvider>
   );
