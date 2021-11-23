@@ -12,7 +12,8 @@ p, h2{
     background: #f2f2f2;
 }
 .divnavperf{
-    padding: 5%;
+    padding: 10% 5% 5% 5%;
+    color: #00303F;
 }
 .bordescardperf{
 border-radius: 5%;
