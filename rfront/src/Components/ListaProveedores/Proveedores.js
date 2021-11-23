@@ -15,18 +15,18 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://honeypet.herokuapp.com/">
-        HoneyPet
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="text.secondary" align="center">
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://honeypet.herokuapp.com/">
+//         HoneyPet
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -105,7 +105,7 @@ export default function Proveedores() {
         </Container>
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: '#00303F', p: 6 }} component="footer">
+      {/* <Box sx={{ bgcolor: '#00303F', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom color="#7A9D96">
           Footer
         </Typography>
@@ -117,8 +117,8 @@ export default function Proveedores() {
         >
           Something here to give the footer a purpose!
         </Typography>
-        <Copyright />
-      </Box>
+        {/* <Copyright /> */}
+      {/* </Box> */} 
       {/* End footer */}
     </ThemeProvider>
   );
