@@ -1,21 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './App';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio';
-/*
-import Proveedores from './Components/ListaProveedores/Proveedores';
-import Home from './Components/Home/Home';
-*/
-// import Nav from './Components/Menu/Nav';
-// import ButtonAppBar from './Components/Menu/Nav';
-// import Proveedores from './Components/ListaProveedores/Proveedores';
+
 
 
 ReactDOM.render(
   <React.StrictMode>
   <App/>
+<<<<<<< HEAD
+=======
+  {/* <PublicarNegocio/> */}
+    
+>>>>>>> 613ba670ef992255e901178b367fd7a305902067
   </React.StrictMode>,
   document.getElementById('root')
 );
