@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio';
+// import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio';
 
 
 
