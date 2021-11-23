@@ -4,6 +4,8 @@
     box-shadow: none;
 }
 
+
+
 .bg-foto-mapa{
     /*background-image: '@/assets/mapa-bg.png';*/
     background-image: url("../../assets/Home/mapa-bg.png");
@@ -56,6 +58,16 @@
 .seccion-about-as{
     background-color:#ffffff ;
     padding: 40px;
+}
+
+.items-e{
+    display: block;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.items-empresa{
+    color: #ffffff ;
 }
 
 

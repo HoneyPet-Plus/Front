@@ -73,9 +73,6 @@ const images = [
       urlGithub: 'https://github.com/franciscoww',
       urlLin: 'https://www.linkedin.com/in/francisco-javier-sanchez-toro-b8564a221/',
       urlInterp: 'https://interacpedia.com/user/francisco-javier-sanchez-toro',
-      urlGithub: 'https://github.com/danimidi',
-      urlLin: 'https://www.linkedin.com/in/nelsi-miramag-734144220/',
-      urlInterp: 'https://interacpedia.com/user/nelsi-miramag?tab=profile',
     },
 ];
 
@@ -147,9 +144,17 @@ export default function  AboutAs() {
   
           <Typography component="div" color="#00303F" fontSize='14px' align='center'  >{images[activeStep].descrip}</Typography>
           <Stack alignItems='center' direction='row' justifyContent='center' mt spacing={1}>
-            <LinkedInIcon/>
-            <GitHubIcon/>
-            <BadgeIcon/>
+            
+              <Link target='_blank' color="inherit" href={images[activeStep].urlGithub}>
+                <GitHubIcon/>
+              </Link>
+              <Link target='_blank' color="inherit" href={images[activeStep].urlLin}>
+                <LinkedInIcon/>
+              </Link>
+              <Link target='_blank' color="inherit" href={images[activeStep].urlInterp}>
+                <BadgeIcon/>  
+              </Link>
+
           </Stack>
           
           <Icon baseClassName="fas" className="fa-plus-circle" color="primary" />
