@@ -6,6 +6,7 @@ import Mapa from './Components/Mapa/Mapa'
 import VistaPerfil from './Components/PerfilUsuario/pruebasmui'
 import Footer from './Components/Menu/Footer'
 import { Redirect } from 'react-router';
+import NavBar from './Components/Menu/NavBar'
 
 
 function App(){
@@ -13,6 +14,7 @@ function App(){
   return(
     <Router >
       <ButtonAppBar/>
+      {/* <NavBar/> */}
     {/* <Routes>
       <Route path="/Provs" element={<Proveeee/>}/>
     </Routes> */}

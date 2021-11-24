@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './Components/Menu/NavBar'
 /*
 import Proveedores from './Components/ListaProveedores/Proveedores';
 import Home from './Components/Home/Home';
@@ -16,6 +18,7 @@ import Home from './Components/Home/Home';
 ReactDOM.render(
   <React.StrictMode>
   <App/>
+  {/* <NavBar/> */}
   {/* <PublicarNegocio/> */}
     
   </React.StrictMode>,
