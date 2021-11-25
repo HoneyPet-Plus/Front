@@ -18,6 +18,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+
 function Copyright(props) {
   return (
     <Typography
@@ -27,7 +28,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="/Inicio">
         HoneyPet
       </Link>{" "}
       {new Date().getFullYear()}
@@ -142,7 +143,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href='/ingresar' variant="body2">
                   ¿Ya tienes una cuenta? Inicia Sesión
                 </Link>
               </Grid>
