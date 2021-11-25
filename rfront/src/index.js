@@ -2,15 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio';
-
-
+import SignIn from './Components/CuentaUsuario/Ingresar'
+import SignUp from './Components/CuentaUsuario/Registrar'
 
 ReactDOM.render(
   <React.StrictMode>
+  {/* <SignUp/> */}
+  {/* <SignIn/> */}
   <App/>
-  {/* <PublicarNegocio/> */}
-    
   </React.StrictMode>,
   document.getElementById('root')
 );

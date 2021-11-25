@@ -58,8 +58,14 @@ export default function ButtonAppBar() {
           |
           <Button color="inherit" className="btnNav"><Link to='/Proveedores' className="btnin">Proveedores</Link></Button>
           |
-          <Button color="inherit" className="btnNav"><Link to='/Perfil' className="btnin">Ingresar</Link></Button>
-          
+          <Button color="inherit" className="btnNav"><Link to='/Ingresar' className="btnin">Ingresar</Link></Button>
+          {/* <Button color="inherit" className="btnNav"><Link to='/Perfil' className="btnin">Ingresar</Link></Button> */}
+          |
+          {/*TODO Borrar al integrar */}
+          <Button color="inherit" className="btnNav"><Link to='/Pagina' className="btnin">Pagina</Link></Button>
+          |
+          <Button color="inherit" className="btnNav"><Link to='/Publicar' className="btnin">Publicar</Link></Button>
+
         </Toolbar>
       </AppBar>
     </Box>

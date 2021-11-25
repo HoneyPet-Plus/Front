@@ -30,7 +30,7 @@ function getStepContent(step) {
 
 const theme = createTheme();
 
-export default function Checkout() {
+export default function PublicarNegocio() {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
