@@ -25,7 +25,7 @@ function ProvBar({email}) {
                   <BusinessIcon />
                   </IconButton>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>{email}</Typography>
-                  <Button color="inherit">Eliminar Perfil</Button>
+                  <Button color="inherit">Eliminar Página</Button>
                   <Button color="inherit">Cerrar Sesión</Button>
                   <Button color="inherit">Editar Página</Button>
                 </Toolbar>

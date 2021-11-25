@@ -1,23 +1,33 @@
 .bar-container {
+    position: fixed;
+    width: 96%;
     margin: 10px 2%;
     border-radius: 50px;
     overflow: hidden;
+    opacity: .7;
+}
+.bar-container:hover {
+    opacity: .9;
 }
 
 .hero-img {
     width: 100%;
 }
 
-.main-container {
+.flex-container {
     display: flex;
+    justify-content: space-evenly;
+}
+
+.aside-bizp {
+    min-width: 400px;
     margin: 0 2%;
 }
 
-aside {
-    background-color: aquamarine;
-    width: 30%;
-}
-main {
+.main-bizp {
+    min-width: 400px;
+    max-width: 900px;
     background-color: aqua;
-    width: 60%;
+    overflow: -webkit-paged-x;
 }
+

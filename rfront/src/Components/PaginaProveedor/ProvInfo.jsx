@@ -2,7 +2,7 @@ import React from 'react';
 
 function ProvInfo({provName, provSlogan, provDesc}) {
     return (
-        <section>
+        <section className="hero-biz">
             <h1>{provName}</h1>
             <p className="slogan">{provSlogan}</p>
             <p>{provDesc}</p>

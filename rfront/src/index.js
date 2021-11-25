@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import App from './App';
 // import PagProveedor from './Components/PaginaProveedor/PagProveedor';
 import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio';
+// import SignUp from './Components/CrearCuenta/SignUp';
 
 
 
 ReactDOM.render(
   <React.StrictMode>
     <PublicarNegocio />
-    
+    {/* <PagProveedor /> */}
+
   </React.StrictMode>,
   document.getElementById('root')
 );
