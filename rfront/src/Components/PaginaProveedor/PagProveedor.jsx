@@ -1,6 +1,7 @@
 import './PagProveedor.css';
-import ProvBar from './ProvBar';
+import ProvAdminBar from './ProvAdminBar';
 import ProvImg from './ProvImg';
+import FavBtn from './FavBtn';
 import ProvContactData from './ProvContactData';
 import ProvInfo from './ProvInfo';
 import ProvDescription from './ProvDescription';
@@ -9,26 +10,29 @@ import Box from '@mui/material/Box';
 import hpdcImg from "../../assets/proveedor/hpdc-min.png";
 import mapImg from "../../assets/proveedor/map.png";
 import Button from 'react-bootstrap/Button'
+import StarsIcon from '@mui/icons-material/Stars';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+
+
 
 function PagProveedor() {
-  const bgColor = '#333';
+  const bgColor = '#004F67';
   const txtColor = 'whitesmoke';
 
   return (
     <div className="pag-container">
       <header>
-        <ProvBar email="dummy2@email.com"/>
+        <ProvAdminBar email="dummy2@email.com"/>
+        <FavBtn />
         {/* <div className="img-cont"> */}
         <ProvImg src={hpdcImg} />
         {/* </div>
         <div className="hero-container">  */}
-        <Box sx={{
+        <Box className="hero-container" sx={{
           maxWidth: 900,
           backgroundColor: `${bgColor}`,
-          marginBottom: 2,
-          marginTop: 2,
           marginX: 'auto',
-          borderRadius:5,
           textAlign: 'center',
           paddingY:5,
           paddingX:7,
@@ -45,9 +49,10 @@ function PagProveedor() {
       <div className="flex-container">
         <aside className="aside-bizp">
           <Box sx={{
-            maxWidth: 400,
+            // maxWidth: 400,
             backgroundColor: `${bgColor}`,
             borderRadius:5,
+            mb: 4,
             paddingY: 3,
             paddingX: 4,
             color: `${txtColor}`
@@ -115,30 +120,52 @@ function PagProveedor() {
                 bgcolor: `${bgColor}`
               }} />
             </Box>
+
             <Box sx={{
               backgroundColor: `${bgColor}`,
               borderRadius:5,
               textAlign: 'center',
               padding: 3,
-              color: `${txtColor}`
+              color: `${txtColor}`,
+              mb: 3
             }}>
+              <h4><StarsIcon /> Servicio</h4>
               <ProvOffer 
-              offerType="serviestrella" 
+              offerType="Servicio" 
               title="Desarrollo de Software a Medida" 
               description="Servicio integral con el cual construimos las soluciones digitales que requiera su empresa brindando consultoría, acompañamiento y soporte en todas las etapas de su proyecto, ofreciendo la mejor solución posible ajustada a su situación y presupuesto." 
               />
             </Box>
+
             <div className="offer-container">
-              <ProvOffer 
-              offerType="producto" 
-              title="Aplicación Estandar" 
-              description="Usamos las mejores técnicas para ofrecerle una aplicación corporativa estandar que le ayudará a promocionar su empresa o marca." 
-              />
-              <ProvOffer 
-              offerType="servicio" 
-              title="Consultoría TIC" 
-              description="Contamos con los profesionales, la experiencia y el respaldo para estudiar y estructurar su proyecto desde un enfoque profesional y efectivo." 
-              />
+              <Box className="rps-card" sx={{
+                border: 1,
+                borderColor: `${bgColor}`,
+                borderRadius:4,
+                padding: 3,
+                color: `${bgColor}`
+              }}>
+                <h4><AddShoppingCartIcon /> Producto</h4>
+                <ProvOffer 
+                offerType="producto" 
+                title="Aplicación Estandar" 
+                description="Usamos las mejores técnicas para ofrecerle una aplicación corporativa estandar que le ayudará a promocionar su empresa o marca." 
+                />
+              </Box>
+              <Box className="rps-card" sx={{
+                border: 1,
+                borderColor: `${bgColor}`,
+                borderRadius:4,
+                padding: 3,
+                color: `${bgColor}`
+              }}>
+                <h4><BusinessCenterIcon /> Servicio</h4>
+                <ProvOffer 
+                offerType="servicio" 
+                title="Consultoría TIC" 
+                description="Contamos con los profesionales, la experiencia y el respaldo para estudiar y estructurar su proyecto desde un enfoque profesional y efectivo." 
+                />
+              </Box>
             </div>
           </section>
         </main>

@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import BusinessIcon from '@mui/icons-material/Business';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -12,7 +11,7 @@ import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import Tooltip from '@mui/material/Tooltip';
 
-function ProvBar({email}) {
+function ProvAdminBar({email}) {
     return (
         <div className="bar-container">
             <Box sx={{ flexGrow: 1 }}>
@@ -77,4 +76,4 @@ function ProvBar({email}) {
     );
 }
 
-export default ProvBar;
+export default ProvAdminBar;
