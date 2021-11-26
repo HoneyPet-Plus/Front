@@ -1,7 +1,5 @@
 import './PagProveedor.css';
-import ProvAdminBar from './ProvAdminBar';
 import ProvImg from './ProvImg';
-import FavBtn from './FavBtn';
 import ProvContactData from './ProvContactData';
 import ProvInfo from './ProvInfo';
 import ProvDescription from './ProvDescription';
@@ -14,9 +12,7 @@ import StarsIcon from '@mui/icons-material/Stars';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 
-
-
-function PagProveedor() {
+function DemoPagProveedor() {
   const bgColor = '#004F67';
   const txtColor = 'whitesmoke';
 
@@ -39,12 +35,10 @@ function PagProveedor() {
           provDesc="Sumamos amor a las familias, dandole una segunda oportunidad a una mascota que necesita un hogar. En este sitio podrás publicar o adoptar una mascota en cualquier lugar de Colombia."
           />
         </Box>
-        {/* </div> */}
       </header>
       <div className="flex-container">
         <aside className="aside-bizp">
           <Box sx={{
-            // maxWidth: 400,
             backgroundColor: `${bgColor}`,
             borderRadius:5,
             mb: 4,
@@ -169,4 +163,4 @@ function PagProveedor() {
   );
 }
 
-export default PagProveedor;
+export default DemoPagProveedor;
