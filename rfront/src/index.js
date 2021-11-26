@@ -4,12 +4,14 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import SignIn from './Components/CuentaUsuario/Ingresar'
 import SignUp from './Components/CuentaUsuario/Registrar'
+import Pruebas from './Components/Home/Pruebas'
 
 ReactDOM.render(
   <React.StrictMode>
   {/* <SignUp/> */}
   {/* <SignIn/> */}
-  <App/>
+  {/* <App/> */}
+  <Pruebas/>
   </React.StrictMode>,
   document.getElementById('root')
 );
