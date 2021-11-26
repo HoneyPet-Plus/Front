@@ -4,6 +4,10 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import SignIn from './Components/CuentaUsuario/Ingresar'
 import SignUp from './Components/CuentaUsuario/Registrar'
+import Axios from 'axios'
+
+
+Axios.defaults.baseURL='http://localhost:4000'
 
 ReactDOM.render(
   <React.StrictMode>
