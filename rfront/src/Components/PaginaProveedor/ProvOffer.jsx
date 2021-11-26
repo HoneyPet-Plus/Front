@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ProvOffer({title, description}) {
+function ProvOffer({offerType, title, description}) {
     return (
-        <div>
-            <h3>{title}</h3>
+        <div className={offerType}>
+            <h2>{title}</h2>
             <p>{description}</p>
         </div>
     );

@@ -1,22 +1,45 @@
+.pag-container {
+    padding-top: 58px;
+    padding-bottom: 25px;
+}
+
 .bar-container {
     position: fixed;
     width: 96%;
-    margin: 10px 2%;
+    margin: 15px 2%;
     border-radius: 50px;
     overflow: hidden;
-    opacity: .7;
+    opacity: .5;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .bar-container:hover {
     opacity: .9;
+    box-shadow: 0 3px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .hero-img {
     width: 100%;
 }
 
+/* .img-cont {
+    z-index: 190;
+}
+
+.hero-container {
+    margin-top: -50px;
+    z-index: 90;
+} */
+
+.slogan {
+    font-size: 1.2em;
+}
+
 .flex-container {
     display: flex;
-    justify-content: space-evenly;
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: aquamarine;
+    /* justify-content: space-evenly; */
 }
 
 .aside-bizp {
@@ -24,10 +47,48 @@
     margin: 0 2%;
 }
 
+.dt-title {
+    font-size: 1em;
+    font-weight: 200;
+}
+
+.dd-data {
+    padding: 3px 0;
+    font-size: 1.3em;
+    font-weight: 400;
+    margin-bottom: 1.3em;
+    border-bottom: 1px solid rgba(150,150,150,0.3)
+}
+
+.map-img-container {
+    text-align: center;
+}
+
+.map-img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.map-btn {
+    margin-top: -100px;
+}
+
 .main-bizp {
-    min-width: 400px;
-    max-width: 900px;
+    /* min-width: 400px;
+    max-width: 900px; */
+    margin-right: 2%;
     background-color: aqua;
     overflow: -webkit-paged-x;
 }
 
+.prov-services p {
+    margin: 0;
+}
+
+.prov-services h2 {
+    font-size: 1.4em;
+}
+
+.offer-container {
+    display: flex;
+}

@@ -6,6 +6,9 @@ import ProvInfo from './ProvInfo';
 import ProvDescription from './ProvDescription';
 import ProvOffer from './ProvOffer';
 import Box from '@mui/material/Box';
+import hpdcImg from "../../assets/proveedor/hpdc-min.png";
+import mapImg from "../../assets/proveedor/map.png";
+import Button from 'react-bootstrap/Button'
 
 function PagProveedor() {
   const bgColor = '#333';
@@ -15,17 +18,20 @@ function PagProveedor() {
     <div className="pag-container">
       <header>
         <ProvBar email="dummy2@email.com"/>
-        <ProvImg src="https://loremflickr.com/1440/560/cat"/>
+        {/* <div className="img-cont"> */}
+        <ProvImg src={hpdcImg} />
+        {/* </div>
+        <div className="hero-container">  */}
         <Box sx={{
-          maxWidth: 800,
+          maxWidth: 900,
           backgroundColor: `${bgColor}`,
           marginBottom: 2,
           marginTop: 2,
           marginX: 'auto',
           borderRadius:5,
           textAlign: 'center',
-          paddingY:3,
-          paddingX:4,
+          paddingY:5,
+          paddingX:7,
           color: `${txtColor}`
         }}>
           <ProvInfo 
@@ -34,6 +40,7 @@ function PagProveedor() {
           provDesc="Sumamos amor a las familias, dandole una segunda oportunidad a una mascota que necesita un hogar. En este sitio podrás publicar o adoptar una mascota en cualquier lugar de Colombia."
           />
         </Box>
+        {/* </div> */}
       </header>
       <div className="flex-container">
         <aside className="aside-bizp">
@@ -45,7 +52,12 @@ function PagProveedor() {
             paddingX: 4,
             color: `${txtColor}`
           }}>
-            <h2>Datos de Contacto</h2>
+            <h3>Datos de Contacto</h3>
+            <Box sx={{
+              height: 2,
+              mb: 4,
+              bgcolor: `${txtColor}`
+            }} />
             <dl>
               <ProvContactData 
               type="Horario de Atención:"
@@ -59,11 +71,34 @@ function PagProveedor() {
               type="Dirección:"
               data="Calle 10 # 12 - 13"
               />
+              <ProvContactData 
+              type="Email:"
+              data="hola@honeypetdc.com"
+              />
+              <ProvContactData 
+              type="Sitio Web:"
+              data="honeypetdc.com"
+              />
+              <ProvContactData 
+              type="Otro:"
+              data="Esta Página es Demostrativa"
+              />
             </dl>
+            <div className="map-img-container">
+              <img className="map-img" src={mapImg} alt="Mapa Representativo" />
+              <Button className="map-btn" variant="warning">Ver en Mapa</Button>
+            </div>
           </Box>
         </aside>
         <main className="main-bizp">
           <section className="prov-description">
+            <Box sx={{ mb: 4, color: `${bgColor}`}}>
+              <h3>Descripción de la Empresa</h3>
+              <Box sx={{
+                height: 2,
+                bgcolor: `${bgColor}`
+              }} />
+            </Box>
             <ProvDescription 
             description="Es un proyecto que nace como ejercicio y muestra de las habilidades adquiridas durante el tercer ciclo del diplomado en programación MisionTIC2022, impartido por la Universidad Tecnológica de Pereira UTP y el Ministerio de Tecnologías de la Información y las Comunicaciones de Colombia (MinTIC).
 
@@ -73,31 +108,38 @@ function PagProveedor() {
             />
           </section>
           <section className="prov-services">
+            <Box sx={{ my: 4, color: `${bgColor}`}}>
+              <h3>Productos / Servicios</h3>
+              <Box sx={{
+                height: 2,
+                bgcolor: `${bgColor}`
+              }} />
+            </Box>
+            <Box sx={{
+              backgroundColor: `${bgColor}`,
+              borderRadius:5,
+              textAlign: 'center',
+              padding: 3,
+              color: `${txtColor}`
+            }}>
               <ProvOffer 
-              type="servicio" 
-              title="Servicio uno" 
-              description="Esta es la descripción limitada del servicio para conocer detalles o características destacadas de cada producto o servicio" 
+              offerType="serviestrella" 
+              title="Desarrollo de Software a Medida" 
+              description="Servicio integral con el cual construimos las soluciones digitales que requiera su empresa brindando consultoría, acompañamiento y soporte en todas las etapas de su proyecto, ofreciendo la mejor solución posible ajustada a su situación y presupuesto." 
+              />
+            </Box>
+            <div className="offer-container">
+              <ProvOffer 
+              offerType="producto" 
+              title="Aplicación Estandar" 
+              description="Usamos las mejores técnicas para ofrecerle una aplicación corporativa estandar que le ayudará a promocionar su empresa o marca." 
               />
               <ProvOffer 
-              type="servicio" 
-              title="Servicio dos" 
-              description="Esta es la descripción limitada del servicio para conocer detalles o características destacadas de cada producto o servicio" 
+              offerType="servicio" 
+              title="Consultoría TIC" 
+              description="Contamos con los profesionales, la experiencia y el respaldo para estudiar y estructurar su proyecto desde un enfoque profesional y efectivo." 
               />
-              <ProvOffer 
-              type="servicio" 
-              title="Servicio tres" 
-              description="Esta es la descripción limitada del servicio para conocer detalles o características destacadas de cada producto o servicio" 
-              />
-              <ProvOffer 
-              type="producto" 
-              title="Producto uno" 
-              description="Esta es la descripción limitada del servicio para conocer detalles o características destacadas de cada producto o servicio" 
-              />
-              <ProvOffer 
-              type="producto" 
-              title="Producto dos" 
-              description="Esta es la descripción limitada del servicio para conocer detalles o características destacadas de cada producto o servicio" 
-              />
+            </div>
           </section>
         </main>
       </div>

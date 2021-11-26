@@ -5,6 +5,7 @@ import { InputGroup, FormControl } from 'react-bootstrap';
 function InfoForm() {
     return (
         <div>
+            <h2 className="mb-4">Describa su Negocio</h2>
             <div className="mb-4">
                 <label htmlFor="biz-img" className="form-label">Imagen destacada:</label>
                 <input type="file" className="form-control mb-2" id="biz-img" accept="image/*" />
@@ -48,6 +49,7 @@ function InfoForm() {
                 placeholder="Describa su empresa o negocio."
                 ></textarea>
             </div>
+            <p className="mb-4">*Campos obligatorios</p>
         </div>
     )
 }
