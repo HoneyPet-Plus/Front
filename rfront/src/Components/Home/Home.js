@@ -19,16 +19,6 @@ import { shadows, sizeHeight } from '@mui/system';
 import { styled } from '@mui/material/styles';
 import Logo from '../../assets/Home/Logo.svg';
 import pets from '../../assets/Home/pets.svg';
-import empresas from '../../assets/Home/empresas.svg';
-import peopleandpet from '../../assets/Home/peopleandpet.svg';
-import seccioempresas from '../../assets/Home/seccioempresas.svg';
-import { useTheme } from '@mui/material/styles';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
 import logoheader from '../../assets/Home/logoheader.svg'
 
 import AboutAs from './AboutAs';
