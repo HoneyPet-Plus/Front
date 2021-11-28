@@ -13,8 +13,8 @@ ReactDOM.render(
   <React.StrictMode>
   {/* <SignUp/> */}
   {/* <SignIn/> */}
-  {/* <App/> */}
-  <Pruebas/>
+  <App/>
+  {/* <Pruebas/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
