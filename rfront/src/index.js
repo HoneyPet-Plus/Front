@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SignIn from './Components/CuentaUsuario/Ingresar'
-import SignUp from './Components/CuentaUsuario/Registrar'
+// import SignIn from './Components/CuentaUsuario/Ingresar'
+// import SignUp from './Components/CuentaUsuario/Registrar'
 import Axios from 'axios'
 
 

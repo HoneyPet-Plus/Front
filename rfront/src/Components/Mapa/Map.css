@@ -1,7 +1,3 @@
-/* *{
-    color: #00303F;
-} */
-
 .leaflet-container{
     width: 100vw;
     height: 88vh;
@@ -27,7 +23,6 @@
     height: 50px;
     padding: 5px;
     text-align: center;
-    color: blue;
 }
 
 .box-descripcion{
@@ -86,7 +81,7 @@
 
 }
 
-.btn-info{
+.btn-infom{
     background-color: #004F67;
     border-color: #00303F;
     width: 220px;
