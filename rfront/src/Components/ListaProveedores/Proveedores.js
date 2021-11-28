@@ -1,19 +1,19 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import CssBaseline from "@mui/material/CssBaseline";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -28,9 +28,13 @@ export default function Proveedores() {
 
       <main>
         {/* Hero unit */}
-        <Box 
+        <Box
           sx={{
+<<<<<<< HEAD
             bgcolor: "#CAE4DB",
+=======
+            bgcolor: "background.paper",
+>>>>>>> 0a352b0438b56e77a1ffa2208148b9e296c1e2b9
             pt: 8,
             pb: 6,
           }}
@@ -40,6 +44,7 @@ export default function Proveedores() {
               component="h1"
               variant="h2"
               align="center"
+<<<<<<< HEAD
               color="#00303F"
               pt = "10%"
               fontWeight="bold"
@@ -47,6 +52,20 @@ export default function Proveedores() {
               Lista de Proveedores
             </Typography>
             
+=======
+              color="text.primary"
+              gutterBottom
+              pt="10%"
+            >
+              Lista de Proveedores
+            </Typography>
+            <Stack
+              sx={{ pt: 4 }}
+              direction="row"
+              spacing={2}
+              justifyContent="center"
+            ></Stack>
+>>>>>>> 0a352b0438b56e77a1ffa2208148b9e296c1e2b9
           </Container>
         </Box>
         <Container sx={{ py: 2 }} maxWidth="md">
@@ -71,12 +90,20 @@ export default function Proveedores() {
                       Servicio
                     </Typography>
                     <Typography>
-                      Acá va una breve descripción del servicio que se brindará. Y si quiere ver la información completa debe clickear en el botón
+                      Acá va una breve descripción del servicio que se brindará.
+                      Y si quiere ver la información completa debe clickear en
+                      el botón
                     </Typography>
                   </CardContent>
                   <Stack alignItems="center" mb>
                   <CardActions>
-                    <Button size="small" variant="contained" style={{backgroundColor: "#F7CC31", color: "#00303F"}}>Ver más información</Button>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      style={{ backgroundColor: "#F7CC31", color: "#00303F" }}
+                    >
+                      Ver más información
+                    </Button>
                   </CardActions>
                   </Stack>
                 </Card>
