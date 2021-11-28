@@ -30,11 +30,7 @@ export default function Proveedores() {
         {/* Hero unit */}
         <Box
           sx={{
-<<<<<<< HEAD
             bgcolor: "#CAE4DB",
-=======
-            bgcolor: "background.paper",
->>>>>>> 0a352b0438b56e77a1ffa2208148b9e296c1e2b9
             pt: 8,
             pb: 6,
           }}
@@ -44,7 +40,6 @@ export default function Proveedores() {
               component="h1"
               variant="h2"
               align="center"
-<<<<<<< HEAD
               color="#00303F"
               pt = "10%"
               fontWeight="bold"
@@ -52,20 +47,6 @@ export default function Proveedores() {
               Lista de Proveedores
             </Typography>
             
-=======
-              color="text.primary"
-              gutterBottom
-              pt="10%"
-            >
-              Lista de Proveedores
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            ></Stack>
->>>>>>> 0a352b0438b56e77a1ffa2208148b9e296c1e2b9
           </Container>
         </Box>
         <Container sx={{ py: 2 }} maxWidth="md">
