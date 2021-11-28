@@ -15,18 +15,6 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://honeypet.herokuapp.com/">
-//         HoneyPet
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -57,10 +45,6 @@ export default function Proveedores() {
             >
               Lista de Proveedores
             </Typography>
-            {/* <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
-            </Typography> */}
             <Stack
               sx={{ pt: 4 }}
               direction="row"
@@ -116,22 +100,6 @@ export default function Proveedores() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      {/* <Box sx={{ bgcolor: '#00303F', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom color="#7A9D96">
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="#7A9D96"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        {/* <Copyright /> */}
-      {/* </Box> */}
-      {/* End footer */}
     </ThemeProvider>
   );
 }
