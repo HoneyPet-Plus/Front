@@ -1,13 +1,13 @@
 import React from 'react'
 import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import StarIcon from '@mui/icons-material/Star';
 
 
 function FavBtn() {
     return (
         <div className="fab-btn-container">
             <IconButton aria-label="favorito" size="large">
-                <FavoriteIcon sx={{ color: 'white' }} fontSize="inherit" />
+                <StarIcon sx={{ color: 'white' }} fontSize="inherit" />
             </IconButton>
         </div>
     )

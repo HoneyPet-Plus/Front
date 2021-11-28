@@ -1,5 +1,4 @@
 import React from 'react';
-import Typography from '@mui/material/Typography';
 
 function ProvInfo({provName, provSlogan, provDesc}) {
     return (
