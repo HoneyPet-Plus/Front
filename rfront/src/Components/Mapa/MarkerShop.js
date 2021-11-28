@@ -78,7 +78,7 @@ const MarkerShop = (place) => {
           <Divider sx={{m: 2}}/>
             <div  className='text'>
                 <React.Fragment key={anchor}>
-                    <button className='btn-info' variant="contained" onClick={toggleDrawer(anchor, true)}>Mas Informacion</button>
+                    <button className='btn-infom' variant="contained" onClick={toggleDrawer(anchor, true)}>Mas Informacion</button>
                         <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
                           
                             {infoDrawer(anchor, place)}
