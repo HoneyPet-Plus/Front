@@ -3,7 +3,7 @@ import ButtonAppBar from './Components/Menu/Nav'
 import Proveedores from './Components/ListaProveedores/Proveedores'
 import Home from './Components/Home/Home'
 import Mapa from './Components/Mapa/Mapa'
-import VistaPerfil from './Components/PerfilUsuario/pruebasmui'
+import VistaPerfil from './Components/PerfilUsuario/vistaperfil'
 import Footer from './Components/Menu/Footer'
 import { Redirect } from 'react-router';
 import NavBar from './Components/Menu/NavBar'
