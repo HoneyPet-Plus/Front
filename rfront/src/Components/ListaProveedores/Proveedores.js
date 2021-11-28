@@ -22,6 +22,7 @@ const theme = createTheme();
 
 export default function Proveedores() {
   return (
+    <Grid style={{backgroundColor: "#CAE4DB"}}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
@@ -29,42 +30,32 @@ export default function Proveedores() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: "background.paper",
+            bgcolor: "#CAE4DB",
             pt: 8,
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container>
             <Typography
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
-              gutterBottom
-              pt="10%"
+              color="#00303F"
+              pt = "10%"
+              fontWeight="bold"
             >
               Lista de Proveedores
             </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            ></Stack>
+            
           </Container>
         </Box>
         <Container sx={{ py: 2 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4} mb={4}>
-                <Card
-                  style={{ backgroundColor: "#CAE4DB" }}
-                  sx={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card 
+                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
                   <CardMedia
                     component="img"
@@ -85,6 +76,7 @@ export default function Proveedores() {
                       el botón
                     </Typography>
                   </CardContent>
+                  <Stack alignItems="center" mb>
                   <CardActions>
                     <Button
                       size="small"
@@ -94,6 +86,7 @@ export default function Proveedores() {
                       Ver más información
                     </Button>
                   </CardActions>
+                  </Stack>
                 </Card>
               </Grid>
             ))}
@@ -101,5 +94,6 @@ export default function Proveedores() {
         </Container>
       </main>
     </ThemeProvider>
+    </Grid>
   );
 }
