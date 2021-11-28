@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,7 +13,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './logform.css'
-
+import React, { useState } from 'react';
+import Axios from 'axios'
+import Swal from 'sweetalert2'
 
 // function Copyright(props) {
 //   return (
@@ -31,6 +33,54 @@ import './logform.css'
 const theme = createTheme();
 
 export default function Ingresar() {
+
+  
+  const[correo,setCorreo]=useState('')
+  const[contraseña,setContraseña]=useState('')
+  
+
+  const login=async(e)=>{
+    
+    e.preventDefault();
+    const usuario={correo,contraseña}
+    const respuesta = await Axios.post('/api/usuario/login',usuario);
+    console.log(respuesta)
+    const mensaje = respuesta.data.mensaje
+
+    if(mensaje!=='Bienvenidos'){
+      
+      Swal.fire({
+        icon:'error',
+        title: mensaje,
+        showConfirmButton: false,
+        timer:1500
+      })
+
+    }
+
+    else{
+      const token = respuesta.data.token
+      const nombre = respuesta.data.nombre
+      const idUsuario = respuesta.data.id
+
+      sessionStorage.setItem('token',token)
+      sessionStorage.setItem('nombre',nombre)
+      sessionStorage.setItem('idUsuario',idUsuario)
+
+      Swal.fire({
+        icon:'success',
+        title: mensaje,
+        showConfirmButton: false,
+        timer:1500
+      })
+      window.location.href='/perfil'
+
+    }
+
+  }
+
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -59,7 +109,7 @@ export default function Ingresar() {
           <Typography component="h1" variant="h5">
             Iniciar Sesión
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={login} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -69,6 +119,7 @@ export default function Ingresar() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e)=>setCorreo(e.target.value)}
             />
             <TextField
               margin="normal"
@@ -79,6 +130,7 @@ export default function Ingresar() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e)=>setContraseña(e.target.value)}
             />
             {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

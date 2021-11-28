@@ -1,10 +1,10 @@
-*{
+/* *{
     color: #00303F;
-}
+} */
 
 .leaflet-container{
     width: 100vw;
-    height: 90vh;
+    height: 88vh;
 }
 
 .btn-map{
