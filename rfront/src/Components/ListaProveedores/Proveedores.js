@@ -15,18 +15,6 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://honeypet.herokuapp.com/">
-//         HoneyPet
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -34,6 +22,7 @@ const theme = createTheme();
 
 export default function Proveedores() {
   return (
+    <Grid style={{backgroundColor: "#CAE4DB"}}>
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
@@ -41,32 +30,23 @@ export default function Proveedores() {
         {/* Hero unit */}
         <Box 
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: "#CAE4DB",
             pt: 8,
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container>
             <Typography
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
-              gutterBottom
+              color="#00303F"
+              pt = "10%"
+              fontWeight="bold"
             >
               Lista de Proveedores
             </Typography>
-            {/* <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
-            </Typography> */}
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-            </Stack>
+            
           </Container>
         </Box>
         <Container sx={{ py: 2 }} maxWidth="md">
@@ -75,7 +55,6 @@ export default function Proveedores() {
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card 
-                  style={{backgroundColor: "#CAE4DB"}}
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
                   <CardMedia
@@ -95,31 +74,18 @@ export default function Proveedores() {
                       Acá va una breve descripción del servicio que se brindará. Y si quiere ver la información completa debe clickear en el botón
                     </Typography>
                   </CardContent>
+                  <Stack alignItems="center" mb>
                   <CardActions>
                     <Button size="small" variant="contained" style={{backgroundColor: "#F7CC31", color: "#00303F"}}>Ver más información</Button>
                   </CardActions>
+                  </Stack>
                 </Card>
               </Grid>
             ))}
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      {/* <Box sx={{ bgcolor: '#00303F', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom color="#7A9D96">
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="#7A9D96"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        {/* <Copyright /> */}
-      {/* </Box> */} 
-      {/* End footer */}
     </ThemeProvider>
+    </Grid>
   );
 }
