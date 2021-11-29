@@ -12,7 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InfoForm from './InfoForm';
 import ContactForm from './ContactForm';
 import ServicesForm from './ServicesForm';
-import { createProv } from '../../services';
+import { createProv } from '../../services/NegocioService';
 import Swal from 'sweetalert2';
 
 const steps = ['Información de la empresa', 'Datos de contacto', 'Productos / Servicios'];
