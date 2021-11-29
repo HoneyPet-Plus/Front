@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -12,6 +12,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InfoForm from './InfoForm';
 import ContactForm from './ContactForm';
 import ServicesForm from './ServicesForm';
+import { createProv } from '../../services';
+import Swal from 'sweetalert2';
 
 const steps = ['Información de la empresa', 'Datos de contacto', 'Productos / Servicios'];
 
@@ -31,6 +33,7 @@ function getStepContent(step) {
 const theme = createTheme();
 
 export default function PublicarNegocio() {
+  // logica del steper
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -40,6 +43,33 @@ export default function PublicarNegocio() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  // binding del form
+  // const [bizName, setbizName] = useState('')
+  // const [bizSlogan, setbizSlogan] = useState('')
+  // const [bizDesc, setbizDesc] = useState('')
+  // const [bizDescription, setbizDescription] = useState('')
+
+  // const publicarNegocio = () => {
+  //   const publisherId = 'TODO capturar del session storage'
+  //   const negocio = { bizName,bizSlogan,bizDesc,bizDescription,publisherId };
+  //   console.log(negocio)
+  //   createProv(negocio)
+  //     .then((response) => {
+  //       console.log("Exitooooo!!!!!! " + response)
+  //       const mensaje = response.data.mensaje
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: mensaje,
+  //         showConfirmButton: false,
+  //         timer: 2000
+  //       })
+  //     })
+  //     .catch((e) => {
+  //       console.error(e);
+  //     })
+
+  // }
 
   return (
     <ThemeProvider theme={theme}>
