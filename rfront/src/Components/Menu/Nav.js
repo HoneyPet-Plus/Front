@@ -10,9 +10,46 @@ import Stack from '@mui/material/Stack'
 import "./Nav.css"
 import { Link } from 'react-router-dom';
 import logoheader from '../../assets/Home/logoheader.svg'
+import { styled } from '@mui/material/styles';
+
+const ColorButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.getContrastText('#00303F'),
+  backgroundColor: '#00303F',
+  '&:hover': {
+    backgroundColor: '#002935',
+    color:'#fff'
+
+  },
+}));
 
 
 export default function ButtonAppBar() {
+
+  const [provee, setProvee]= useState(true)
+  const [user, setUser]= useState(true)
+  const [opcionIngresar, setOpcionIngresar]= useState(false)
+  const [ambos, setAmbos]= useState(true)
+  
+
+  useEffect(() => {
+
+    if (sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='proveedor' ) {
+      setProvee(false)
+      setOpcionIngresar(true)
+      setAmbos(false)
+
+    }else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='Usuario' ){
+      setUser(false)
+      setOpcionIngresar(true)
+      setAmbos(false)
+    }
+
+  }, [])
+  
+  // const salir= ()=>{
+  //   sessionStorage.clear()
+  //   window.location.href='/'
+  // }
 
   const [state, setstate] = useState({
     longitud:4.627354,
@@ -52,19 +89,18 @@ export default function ButtonAppBar() {
             <img src={logoheader} alt="HoneyPet +" />
           </Typography >
           
-          <Button color="inherit" className="btnNav"><Link to='/Inicio' className="btnin">Inicio</Link></Button>
-          |
-          <Button color="inherit" className="btnNav"><Link to={{pathname:'/Mapa',state}} className="btnin">Mapa</Link></Button>
-          |
-          <Button color="inherit" className="btnNav"><Link to='/Proveedores' className="btnin">Proveedores</Link></Button>
-          |
-          <Button color="inherit" className="btnNav"><Link to='/Ingresar' className="btnin">Ingresar</Link></Button>
-          {/* <Button color="inherit" className="btnNav"><Link to='/Perfil' className="btnin">Ingresar</Link></Button> */}
-          |
-          {/*TODO Borrar al integrar */}
-          <Button color="inherit" className="btnNav"><Link to='/Pagina' className="btnin">Pagina</Link></Button>
-          |
-          <Button color="inherit" className="btnNav"><Link to='/Publicar' className="btnin">Publicar</Link></Button>
+          <ColorButton className="btnNav"><Link to='/Inicio' className="btnin">Inicio</Link></ColorButton>
+          
+          <ColorButton className="btnNav"><Link to={{pathname:'/Mapa',state}} className="btnin">Mapa</Link></ColorButton>
+          
+          <ColorButton className="btnNav"><Link to='/Proveedores' className="btnin">Proveedores</Link></ColorButton>
+          
+          <ColorButton hidden={opcionIngresar} className="btnNav"><Link to='/Ingresar' className="btnin">Ingresar</Link></ColorButton>
+          
+          <ColorButton hidden={ambos} className="btnNav"><Link to='/Pagina' className="btnin">Pagina</Link></ColorButton>
+          
+          <ColorButton hidden={provee} className="btnNav"><Link to='/Publicar' className="btnin">Publicar</Link></ColorButton>
+          <ColorButton hidden={user} className="btnNav"><Link to='/Perfil' className="btnin">Mi perfil</Link></ColorButton>
 
         </Toolbar>
       </AppBar>

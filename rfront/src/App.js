@@ -12,6 +12,7 @@ import Ingresar from './Components/CuentaUsuario/Ingresar'
 import PagProveedor from './Components/PaginaProveedor/PagProveedor'
 import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio'
 import ViewMapInput from './Components/Mapa/ViewMapInput'
+import DemoPagProveedor from './Components/PaginaProveedor/DemoPagProveedor'
 
 
 function App(){
@@ -33,6 +34,7 @@ function App(){
       <Route path='/Ingresar' exact component={Ingresar}/>
       <Route path='/Pagina' exact component={PagProveedor}/>
       <Route path='/Publicar' exact component={PublicarNegocio}/>
+      <Route path='/DemoPagProveedor' exact component={DemoPagProveedor}/>
       
       <Footer/>
 

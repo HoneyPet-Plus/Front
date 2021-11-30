@@ -52,10 +52,10 @@ export default function Section2(){
               <Stack direction='row' spacing={1} mt>
                 
                 <Button id="button-empezar" size='medium' variant="outlined" >
-                  <Link to='/Perfil' className="btnin">VER UNA DEMO</Link>
+                  <Link to='/DemoPagProveedor' className="btnin">VER UNA DEMO</Link>
                 </Button>
                 <Button id="button-empezar" size='medium' variant="outlined" >
-                  <Link to='/Perfil' className="btnin">CREAR CUENTA</Link>
+                  <Link to='/registrar' className="btnin">CREAR CUENTA</Link>
                 </Button>
                 
               </Stack>

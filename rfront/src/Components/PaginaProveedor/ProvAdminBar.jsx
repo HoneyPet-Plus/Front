@@ -12,6 +12,12 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import Tooltip from '@mui/material/Tooltip';
 
 function ProvAdminBar({email}) {
+  const salir=()=>{
+
+    sessionStorage.clear()
+    window.location.href='/'
+
+  }
     return (
         <div className="bar-container">
             <Box sx={{ flexGrow: 1 }}>
@@ -39,6 +45,8 @@ function ProvAdminBar({email}) {
                   </IconButton>
 
                   <IconButton
+                    onClick={()=>salir()}
+                    to='/'
                     size="large"
                     color="inherit"
                     aria-label="menu"

@@ -46,6 +46,7 @@ export default function Ingresar() {
     const respuesta = await Axios.post('/api/usuario/login',usuario);
     console.log(respuesta)
     const mensaje = respuesta.data.mensaje
+    const rol = respuesta.data.rol
 
     if(mensaje!=='Bienvenidos'){
       
@@ -56,9 +57,7 @@ export default function Ingresar() {
         timer:1500 
       })
 
-    }
-
-    else{
+    } else if(rol == 'proveedor'){
       console.log(respuesta.data)
       const token = respuesta.data.token
       const nombre = respuesta.data.nombre
@@ -75,7 +74,30 @@ export default function Ingresar() {
 
       Swal.fire({
         icon:'success',
-        title: mensaje,
+        title: `Bienvenido ${nombre}`,
+        showConfirmButton: false,
+        timer:1500
+      })
+      window.location.href='/Pagina'
+
+    } else{
+      console.log(respuesta.data)
+      const token = respuesta.data.token
+      const nombre = respuesta.data.nombre
+      const idUser = respuesta.data.idUser
+      const correo = respuesta.data.correo
+      const rol = respuesta.data.rol
+
+
+      sessionStorage.setItem('token',token)
+      sessionStorage.setItem('nombre',nombre)
+      sessionStorage.setItem('idUsuario',idUser)
+      sessionStorage.setItem('correo',correo)
+      sessionStorage.setItem('rol',rol)
+
+      Swal.fire({
+        icon:'success',
+        title: `Bienvenido ${nombre}`,
         showConfirmButton: false,
         timer:1500
       })

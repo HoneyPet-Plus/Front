@@ -112,7 +112,7 @@ export default function Section1(){
 
                         <div>
                             <Button id="button-empezar" size='medium' variant="outlined" >
-                                <Link to='/Perfil' className="btnin">CREAR CUENTA</Link>
+                                <Link to='/registrar' className="btnin">CREAR CUENTA</Link>
                             </Button>
                         </div>
 
