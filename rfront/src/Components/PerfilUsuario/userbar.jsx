@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +11,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import Tooltip from '@mui/material/Tooltip';
 
 
-function Userbar({email}) {
+function Userbar() {
+  const salir=()=>{
+
+    sessionStorage.clear()
+    window.location.href='/'
+
+  }
+
     return (
         <div className="bar-container">
             <Box className='cont' sx={{ flexGrow: 1 }}>
@@ -25,19 +32,20 @@ function Userbar({email}) {
                   >
                     <AccountCircleIcon />
                   </IconButton>
-                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>{email}</Typography>
-
+                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>{sessionStorage.getItem('nombre')}</Typography>
                   <IconButton
                     size="large"
                     aria-label="menu"
                     sx={{ color: "FireBrick" }}
                   >
-                    <Tooltip title="Borrar Página" arrow>
+                    <Tooltip title="Borrar Perfil" arrow>
                       <DeleteForeverIcon />
                     </Tooltip>
                   </IconButton>
 
                   <IconButton
+                    onClick={()=>salir()}
+                    to='/'
                     size="large"
                     color="inherit"
                     aria-label="menu"

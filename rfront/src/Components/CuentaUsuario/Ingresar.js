@@ -35,8 +35,8 @@ const theme = createTheme();
 export default function Ingresar() {
 
   
-  const[correo,setCorreo]=useState('')
-  const[contraseña,setContraseña]=useState('')
+  const [correo,setCorreo]= useState('')
+  const [contraseña,setContraseña]= useState('')
   
 
   const login=async(e)=>{
@@ -53,19 +53,25 @@ export default function Ingresar() {
         icon:'error',
         title: mensaje,
         showConfirmButton: false,
-        timer:1500
+        timer:1500 
       })
 
     }
 
     else{
+      console.log(respuesta.data)
       const token = respuesta.data.token
       const nombre = respuesta.data.nombre
-      const idUsuario = respuesta.data._id
+      const idUser = respuesta.data.idUser
+      const correo = respuesta.data.correo
+      const rol = respuesta.data.rol
+
 
       sessionStorage.setItem('token',token)
       sessionStorage.setItem('nombre',nombre)
-      sessionStorage.setItem('idUsuario',idUsuario)
+      sessionStorage.setItem('idUsuario',idUser)
+      sessionStorage.setItem('correo',correo)
+      sessionStorage.setItem('rol',rol)
 
       Swal.fire({
         icon:'success',
