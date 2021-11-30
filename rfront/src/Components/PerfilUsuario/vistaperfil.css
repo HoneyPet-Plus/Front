@@ -26,6 +26,7 @@ border-radius: 5%;
     background: #f2f2f2;
 }
 .texx{
+    padding-top: 100px;
     color: #004F67;
 }
 .txtdes{
@@ -33,4 +34,7 @@ border-radius: 5%;
 }
 .padc{
     padding-left: 2%;
+}
+.texx{
+    text-align: center;
 }
