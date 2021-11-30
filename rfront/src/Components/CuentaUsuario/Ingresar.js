@@ -54,7 +54,7 @@ export default function Ingresar() {
         icon:'error',
         title: mensaje,
         showConfirmButton: false,
-        timer:1500 
+        timer:3000 
       })
 
     } else if(rol == 'proveedor'){
@@ -76,7 +76,7 @@ export default function Ingresar() {
         icon:'success',
         title: `Bienvenido ${nombre}`,
         showConfirmButton: false,
-        timer:1500
+        timer:3000
       })
       window.location.href='/Pagina'
 
