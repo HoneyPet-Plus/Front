@@ -11,7 +11,6 @@ function ContactForm() {
     const [bizEmail, setBizEmail] = useLocalStorage('bizEmail', '')
     const [bizWeb, setBizWeb] = useLocalStorage('bizWeb', '')
     const [bizOtro, setBizOtro] = useLocalStorage('bizOtro', '')
-    // const [bizLoc, setBizLoc] = useLocalStorage('bizLoc', '')
 
     return (
         <div>

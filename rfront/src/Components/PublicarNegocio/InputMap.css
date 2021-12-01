@@ -17,6 +17,10 @@
     z-index: 1000;
 }
 
+.no-outline {
+    background-color: rgba(220,220,220,.1) !important;
+}
+
 .no-outline:focus {
     box-shadow: none !important;
 }
