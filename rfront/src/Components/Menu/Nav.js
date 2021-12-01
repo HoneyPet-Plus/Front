@@ -31,8 +31,8 @@ export default function ButtonAppBar() {
                 zoom: 18,
                 minZoom: 8 
             })
-            
-
+            window.localStorage.setItem('userLng', position.coords.longitude);
+            window.localStorage.setItem('userLat', position.coords.latitude);
         },
         function(error){
             console.log(error)
@@ -41,7 +41,7 @@ export default function ButtonAppBar() {
             enableHighAccuracy: true
         }
     );
-  })
+  },[])
 
 
   return (

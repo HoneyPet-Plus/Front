@@ -1,39 +1,22 @@
-// import './MapInput.css';
-import {Marker} from 'react-leaflet'
-import React, {useState, useMemo, useCallback, useRef} from 'react'
-import {IconLocation} from "./IconLocation";
+import React from 'react'
+import DraggableMarker from "./DraggableMarker"
+import {MapContainer,TileLayer} from 'react-leaflet'
+import './MapInput.css';
 
 
-export default function DraggableMarker(props) {
+const center = {
+    lat: 4.627354,
+    lng: -74.082807,
+}
 
-    const [draggable, setDraggable] = useState(false)
-    const [position, setPosition] = useState(props.props)
-    const markerRef = useRef(null)
-    const eventHandlers = useMemo(
-      () => ({
-        dragend() {
-          const marker = markerRef.current
-          if (marker != null) {
-            setPosition(marker.getLatLng())
-          }
-          console.log(marker.getLatLng());
-        },
-      }),
-      [],
-    )
-    const toggleDraggable = useCallback(() => {
-      setDraggable((d) => !d)
-    }, [])
-  
+export default function MapInput (){
     return (
-      <Marker
-        icon={IconLocation}
-        draggable={draggable}
-        eventHandlers={eventHandlers}
-        position={position}
-        ref={markerRef}>
-        {toggleDraggable}
-
-      </Marker>
+        <MapContainer  className="input-map" center={center} zoom={20} scrollWheelZoom={false}>
+            <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <DraggableMarker props={center}/>
+        </MapContainer>
     )
-  }
+}
