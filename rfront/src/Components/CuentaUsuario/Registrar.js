@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,7 +12,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import Swal from 'sweetalert2'
+import Axios from 'axios'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -50,7 +51,77 @@ export default function SignUp() {
     });
   };
 
+  const[nombre,setNombre]=useState('')
+  const[correo,setCorreo]=useState('')
+  const[contraseña,setContraseña]=useState('')
+  const[rol,setRol]=useState([])
+  const[rolSelect,setRolSelect]=useState([])
+
+  useEffect(()=>{
+    setRol(['Proveedor','Usuario'])
+    setRolSelect('Usuario')
+  }, [])
+
+  const guardar = async(e)=>{
+    e.preventDefault()
+    const usuario = {
+      nombre,
+      correo,
+      contraseña,
+      rol:rolSelect
+    }
+
+    if(nombre===""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe ingresar un nombre',
+        showConfirmButton: false,
+        timer:1500
+      })
+    }
+    else if(correo===""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe ingresar un correo',
+        showConfirmButton: false,
+        timer:1500
+      })
+    }
+    else if(contraseña===""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Debe ingresar una contraseña',
+        showConfirmButton: false,
+        timer:1500
+      })
+    }
+    else{
+
+      const token = sessionStorage.getItem('token')
+      const respuesta = await Axios.post('/api/usuario/create/', usuario,{
+        headers:{'autorizacion':token}
+      })
+      const mensaje = respuesta.data.mensaje
+      console.log(mensaje)
+
+      Swal.fire({
+        icon: 'success',
+        title: 'usuario creado',
+        showConfirmButton: false,
+        timer:1500
+      })
+
+      e.target.reset();
+      setNombre('')
+      setCorreo('')
+      setContraseña('')
+
+    }
+
+  }
+
   return (
+
     <ThemeProvider theme={theme}>
       <Container className='form-container' component="main" maxWidth="xs">
         <CssBaseline />
@@ -71,7 +142,7 @@ export default function SignUp() {
           <Box
             component="form"
             noValidate
-            onSubmit={handleSubmit}
+            onSubmit={guardar}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
@@ -84,6 +155,7 @@ export default function SignUp() {
                   id="firstName"
                   label="Nombre"
                   autoFocus
+                  onChange={(e)=>setNombre(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -94,6 +166,7 @@ export default function SignUp() {
                   label="Correo Electronico"
                   name="email"
                   autoComplete="email"
+                  onChange={(e)=>setCorreo(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -105,6 +178,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(e)=>setContraseña(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} >
@@ -112,15 +186,19 @@ export default function SignUp() {
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Tipo de Usuario *</InputLabel>
                     <Select
+                    // className='form-control'
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       // value={role}
                       label="Tipo de Usuario"
                       // onChange={handleChange}
-                    >
-                      <MenuItem value={10}>Usuario con mascota</MenuItem>
-                      <MenuItem value={20}>Negocio</MenuItem>
+                      onChange={(e)=>setRolSelect(e.target.value)}
+                      >
+                    <MenuItem value={'usuario'}>Usuario con mascota</MenuItem>
+                    <MenuItem value={'proveedor'}>Negocio</MenuItem>
                     </Select>
+                    {/* <MenuItem value={10}>Usuario con mascota</MenuItem>
+                    <MenuItem value={20}>Negocio</MenuItem> */}
                   </FormControl>
                 </Box>
               </Grid>

@@ -55,16 +55,6 @@ function Userbar() {
                       <LogoutIcon />
                     </Tooltip>
                   </IconButton>
-
-                  <IconButton
-                    size="large"
-                    color="inherit"
-                    aria-label="menu"
-                  >
-                    <Tooltip title="Editar Datos" arrow>
-                      <EditIcon />
-                    </Tooltip>
-                  </IconButton>
                 </Toolbar>
               </AppBar>
             </Box>
