@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -12,8 +12,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InfoForm from './InfoForm';
 import ContactForm from './ContactForm';
 import ServicesForm from './ServicesForm';
-import { createProv } from '../../services/NegocioService';
+// import { createProv } from '../../services/NegocioService';
 import Swal from 'sweetalert2';
+
+// ref para escribir la logica con el contex https://youtu.be/EUsNVz53gMc?t=4039
 
 const steps = ['Información de la empresa', 'Datos de contacto', 'Productos / Servicios'];
 
@@ -37,18 +39,64 @@ export default function PublicarNegocio() {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    if(activeStep !== steps.length){
+      console.log("Aqui Vamo a hacer submit")
+      setActiveStep(activeStep + 1);
+    } else {
+      setActiveStep(activeStep + 1);
+    }
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
 
-  // binding del form
-  // const [bizName, setbizName] = useState('')
-  // const [bizSlogan, setbizSlogan] = useState('')
-  // const [bizDesc, setbizDesc] = useState('')
-  // const [bizDescription, setbizDescription] = useState('')
+  const clearBizLS = () => {
+    localStorage.removeItem('bizDesc');
+    localStorage.removeItem('bizDescription');
+    localStorage.removeItem('bizDir');
+    localStorage.removeItem('bizEmail');
+    localStorage.removeItem('bizHour');
+    localStorage.removeItem('bizName');
+    localStorage.removeItem('bizOtro');
+    localStorage.removeItem('bizPS2desc');
+    localStorage.removeItem('bizPS2title');
+    localStorage.removeItem('bizPS2type');
+    localStorage.removeItem('bizPS3desc');
+    localStorage.removeItem('bizPS3title');
+    localStorage.removeItem('bizPS3type');
+    localStorage.removeItem('bizPSEdesc');
+    localStorage.removeItem('bizPSEtitle');
+    localStorage.removeItem('bizPSEtype');
+    localStorage.removeItem('bizSlogan');
+    localStorage.removeItem('bizTel');
+    localStorage.removeItem('bizWeb');
+  }
+
+  const handleClearLS = () => {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Se borraran todos los textos digitados',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Limpia el Formulario!',
+      cancelButtonText: 'No, Cancelar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Hecho!',
+          'La información se limpió con éxito',
+          'success'
+        )
+        clearBizLS();
+        setActiveStep(0);
+      }
+    })
+  };
+
+  
 
   // const publicarNegocio = () => {
   //   const publisherId = 'TODO capturar del session storage'
@@ -103,6 +151,9 @@ export default function PublicarNegocio() {
               <React.Fragment>
                 {getStepContent(activeStep)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <Button onClick={handleClearLS} sx={{ mt: 3, ml: 1 }}>
+                    Limpiar Formulario
+                  </Button>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
                       Anterior
