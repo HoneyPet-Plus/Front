@@ -12,10 +12,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InfoForm from './InfoForm';
 import ContactForm from './ContactForm';
 import ServicesForm from './ServicesForm';
-// import { createProv } from '../../services/NegocioService';
+import { createProv } from '../../services/NegocioService';
 import Swal from 'sweetalert2';
 
 // ref para escribir la logica con el contex https://youtu.be/EUsNVz53gMc?t=4039
+// TODO escribir la redirección del boton final del steper
 
 const steps = ['Información de la empresa', 'Datos de contacto', 'Productos / Servicios'];
 
@@ -39,9 +40,66 @@ export default function PublicarNegocio() {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    if(activeStep !== steps.length){
-      console.log("Aqui Vamo a hacer submit")
-      setActiveStep(activeStep + 1);
+    if(activeStep === steps.length - 1){
+      console.log("Aqui Vamo a hace el submit")
+      const negocio = { 
+        "contacto_id": window.sessionStorage.getItem('idUsuario'),
+        "nombre_empresa": JSON.parse(window.localStorage.getItem('bizName')),
+        "eslogan": JSON.parse(window.localStorage.getItem('bizSlogan')),
+        "descripcion_corta": JSON.parse(window.localStorage.getItem('bizDesc')),
+        "descripcion_empresa": JSON.parse(window.localStorage.getItem('bizDescription')),
+        "horario_atencion": JSON.parse(window.localStorage.getItem('bizHour')),
+        "telefono": JSON.parse(window.localStorage.getItem('bizTel')),
+        "direccion": JSON.parse(window.localStorage.getItem('bizDir')),
+        "email": JSON.parse(window.localStorage.getItem('bizEmail')),
+        "web": JSON.parse(window.localStorage.getItem('bizWeb')),
+        "otro": JSON.parse(window.localStorage.getItem('bizOtro')),
+        "ubicacion_mapa": {'lat': JSON.parse(window.localStorage.getItem('bizLat')), 'log': JSON.parse(window.localStorage.getItem('bizLng'))},
+        "productos": [ 
+          {
+          "tipo": JSON.parse(window.localStorage.getItem('bizPSEtype')),
+          "titulo": JSON.parse(window.localStorage.getItem('bizPSEtitle')),
+          "descripcion": JSON.parse(window.localStorage.getItem('bizPSEdesc'))
+          },
+          {
+          "tipo": JSON.parse(window.localStorage.getItem('bizPS2type')),
+          "titulo": JSON.parse(window.localStorage.getItem('bizPS2title')),
+          "descripcion": JSON.parse(window.localStorage.getItem('bizPS2desc'))
+          },
+          {
+          "tipo": JSON.parse(window.localStorage.getItem('bizPS3type')),
+          "titulo": JSON.parse(window.localStorage.getItem('bizPS3title')),
+          "descripcion": JSON.parse(window.localStorage.getItem('bizPS3desc'))
+          }
+        ]
+      };
+      const token = window.sessionStorage.getItem('token');
+
+      console.log(negocio);
+      console.log(token);
+
+      createProv(negocio, token)
+        .then((response) => {
+          console.log("Exitooooo!!!!!! " + response)
+          Swal.fire({
+            icon: 'success',
+            title: '¡Negocio creado con éxito!',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          setActiveStep(activeStep + 1);
+          clearBizLS();
+        })
+        .catch((e) => {
+          console.error('No funcionó la petición' + e);
+          Swal.fire({
+            icon: 'error',
+            title: 'Paila',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        })
+
     } else {
       setActiveStep(activeStep + 1);
     }
@@ -71,12 +129,14 @@ export default function PublicarNegocio() {
     localStorage.removeItem('bizSlogan');
     localStorage.removeItem('bizTel');
     localStorage.removeItem('bizWeb');
+    localStorage.removeItem('bizLat');
+    localStorage.removeItem('bizLng');
   }
 
   const handleClearLS = () => {
     Swal.fire({
       title: '¿Estás seguro?',
-      text: 'Se borraran todos los textos digitados',
+      text: 'Se borraran todos los campos diligenciados.',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -95,29 +155,6 @@ export default function PublicarNegocio() {
       }
     })
   };
-
-  
-
-  // const publicarNegocio = () => {
-  //   const publisherId = 'TODO capturar del session storage'
-  //   const negocio = { bizName,bizSlogan,bizDesc,bizDescription,publisherId };
-  //   console.log(negocio)
-  //   createProv(negocio)
-  //     .then((response) => {
-  //       console.log("Exitooooo!!!!!! " + response)
-  //       const mensaje = response.data.mensaje
-  //       Swal.fire({
-  //         icon: 'error',
-  //         title: mensaje,
-  //         showConfirmButton: false,
-  //         timer: 2000
-  //       })
-  //     })
-  //     .catch((e) => {
-  //       console.error(e);
-  //     })
-
-  // }
 
   return (
     <ThemeProvider theme={theme}>
@@ -144,6 +181,7 @@ export default function PublicarNegocio() {
                   Ahora, podrá administrar y editar la infoprmación de su negocio desde la página: "Mi Negocio".
                 </Typography>
                 <Typography variant="subtitle1" align="center" marginTop="15px">
+                    {/* onClick={toBizPage}  */}
                     <Button variant="outlined">Ir a Mi Negocio</Button>
                 </Typography>
               </React.Fragment>

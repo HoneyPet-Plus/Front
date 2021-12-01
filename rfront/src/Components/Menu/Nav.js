@@ -33,12 +33,12 @@ export default function ButtonAppBar() {
 
   useEffect(() => {
 
-    if (sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='proveedor' ) {
+    if (sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='proveedor' ) {
       setProvee(false)
       setOpcionIngresar(true)
       setAmbos(false)
 
-    }else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')=='Usuario' ){
+    }else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='Usuario' ){
       setUser(false)
       setOpcionIngresar(true)
       setAmbos(false)
