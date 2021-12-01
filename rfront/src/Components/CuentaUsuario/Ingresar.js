@@ -35,8 +35,8 @@ const theme = createTheme();
 export default function Ingresar() {
 
   
-  const[correo,setCorreo]=useState('')
-  const[contraseña,setContraseña]=useState('')
+  const [correo,setCorreo]= useState('')
+  const [contraseña,setContraseña]= useState('')
   
 
   const login=async(e)=>{
@@ -46,6 +46,7 @@ export default function Ingresar() {
     const respuesta = await Axios.post('/api/usuario/login',usuario);
     console.log(respuesta)
     const mensaje = respuesta.data.mensaje
+    const rol = respuesta.data.rol
 
     if(mensaje!=='Bienvenidos'){
       
@@ -53,23 +54,50 @@ export default function Ingresar() {
         icon:'error',
         title: mensaje,
         showConfirmButton: false,
-        timer:1500
+        timer:3000 
       })
 
-    }
-
-    else{
+    } else if(rol == 'proveedor'){
+      console.log(respuesta.data)
       const token = respuesta.data.token
       const nombre = respuesta.data.nombre
-      const idUsuario = respuesta.data._id
+      const idUser = respuesta.data.idUser
+      const correo = respuesta.data.correo
+      const rol = respuesta.data.rol
+
 
       sessionStorage.setItem('token',token)
       sessionStorage.setItem('nombre',nombre)
-      sessionStorage.setItem('idUsuario',idUsuario)
+      sessionStorage.setItem('idUsuario',idUser)
+      sessionStorage.setItem('correo',correo)
+      sessionStorage.setItem('rol',rol)
 
       Swal.fire({
         icon:'success',
-        title: mensaje,
+        title: `Bienvenido ${nombre}`,
+        showConfirmButton: false,
+        timer:3000
+      })
+      window.location.href='/Pagina'
+
+    } else{
+      console.log(respuesta.data)
+      const token = respuesta.data.token
+      const nombre = respuesta.data.nombre
+      const idUser = respuesta.data.idUser
+      const correo = respuesta.data.correo
+      const rol = respuesta.data.rol
+
+
+      sessionStorage.setItem('token',token)
+      sessionStorage.setItem('nombre',nombre)
+      sessionStorage.setItem('idUsuario',idUser)
+      sessionStorage.setItem('correo',correo)
+      sessionStorage.setItem('rol',rol)
+
+      Swal.fire({
+        icon:'success',
+        title: `Bienvenido ${nombre}`,
         showConfirmButton: false,
         timer:1500
       })

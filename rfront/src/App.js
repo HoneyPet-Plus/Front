@@ -3,7 +3,7 @@ import ButtonAppBar from './Components/Menu/Nav'
 import Proveedores from './Components/ListaProveedores/Proveedores'
 import Home from './Components/Home/Home'
 import Mapa from './Components/Mapa/Mapa'
-import VistaPerfil from './Components/PerfilUsuario/pruebasmui'
+import VistaPerfil from './Components/PerfilUsuario/vistaperfil'
 import Footer from './Components/Menu/Footer'
 import { Redirect } from 'react-router';
 import NavBar from './Components/Menu/NavBar'
@@ -11,6 +11,8 @@ import Registrar from './Components/CuentaUsuario/Registrar'
 import Ingresar from './Components/CuentaUsuario/Ingresar'
 import PagProveedor from './Components/PaginaProveedor/PagProveedor'
 import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio'
+import ViewMapInput from './Components/Mapa/ViewMapInput'
+import DemoPagProveedor from './Components/PaginaProveedor/DemoPagProveedor'
 
 
 function App(){
@@ -32,6 +34,7 @@ function App(){
       <Route path='/Ingresar' exact component={Ingresar}/>
       <Route path='/Pagina' exact component={PagProveedor}/>
       <Route path='/Publicar' exact component={PublicarNegocio}/>
+      <Route path='/DemoPagProveedor' exact component={DemoPagProveedor}/>
       
       <Footer/>
 

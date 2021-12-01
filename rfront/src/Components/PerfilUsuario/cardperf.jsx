@@ -4,8 +4,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import './ppp.css';
-import SimpleBottomNavigation from './botonesss';
+import './vistaperfil.css';
+import SimpleBottomNavigation from './botonescard';
 
 
 export default function ImgMediaCard({nombre,descripcion,imagen}) {

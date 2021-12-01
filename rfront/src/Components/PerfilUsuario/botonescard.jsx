@@ -5,7 +5,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import MapIcon from '@mui/icons-material/Map';
 import StarIcon from '@mui/icons-material/Star';
 import InfoIcon from '@mui/icons-material/Info';
-import './ppp.css';
+import './vistaperfil.css';
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
