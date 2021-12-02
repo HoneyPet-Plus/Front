@@ -11,7 +11,7 @@ import Registrar from './Components/CuentaUsuario/Registrar'
 import Ingresar from './Components/CuentaUsuario/Ingresar'
 import PagProveedor from './Components/PaginaProveedor/PagProveedor'
 import PublicarNegocio from './Components/PublicarNegocio/PublicarNegocio'
-import ViewMapInput from './Components/Mapa/ViewMapInput'
+// import ViewMapInput from './Components/Mapa/ViewMapInput'
 import DemoPagProveedor from './Components/PaginaProveedor/DemoPagProveedor'
 
 
