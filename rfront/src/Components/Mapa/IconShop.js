@@ -5,9 +5,9 @@ import icon from '../../assets/Mapa/pinhplus.svg'
 export const IconShop = L.icon({
     
     iconUrl:          icon,
-    iconSize:     [38, 95], 
-    iconAnchor:   [22, 94], 
-    popupAnchor:  [-3, -76] 
+    iconSize:     [40, 50], 
+    iconAnchor:   [20, 50], 
+    popupAnchor:  [0, -50] 
 
 });
 

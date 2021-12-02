@@ -1,6 +1,6 @@
 .leaflet-container{
-    width: 100vw;
-    height: 88vh;
+    width: 1530px;
+    height: 653px;
 }
 
 .btn-map{
@@ -12,6 +12,31 @@
     text-align: center;
     color: #004F67;
 }
+
+.leaflet-popup-content-wrapper {
+    padding: 0.5px; 
+    text-align: center;
+    border-radius: 12px;
+}
+
+.divider-popup{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.name-store {
+    font-size: x-large;
+    margin: auto;
+
+}
+
+.desc-store{
+    font-size: small;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
 
 .box-imagen{
     width: 600px;
@@ -88,4 +113,11 @@
     height: 40px;
     border-radius: 20px;
     color: #fdfdfd;
+}
+
+.btn-ubc{
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
+    z-index: 400;
 }

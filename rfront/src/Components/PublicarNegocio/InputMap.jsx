@@ -5,6 +5,7 @@ import inputPin from "../../assets/Mapa/inputpin.svg"
 import { InputGroup, Form, FormControl, Button } from 'react-bootstrap';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import Tooltip from '@mui/material/Tooltip';
+import { useLocalStorage } from '../../Hooks/useLocalStorage';
 
 
 const userLat = window.localStorage.getItem('userLat')
@@ -15,6 +16,15 @@ const center = [userLat,userLng]
 const zoom = 18
 
 function DisplayPosition({ map }) {
+
+    const [bizLat, setBizLat] = useLocalStorage('bizLat', '')
+    const [bizLng, setBizLng] = useLocalStorage('bizLng', '')
+
+    const setBizLocation = () => {
+        setBizLat(position.lat.toFixed(4));
+        setBizLng(position.lng.toFixed(4));
+    }
+
     const [position, setPosition] = useState(map.getCenter())
   
     const onClick = useCallback(() => {
@@ -46,24 +56,30 @@ function DisplayPosition({ map }) {
                 </Tooltip>
                 <InputGroup.Text id="biz-lat">Latitud</InputGroup.Text>
                 <FormControl 
-                className="no-outline"
-                value={position.lat.toFixed(4)}
-                aria-label="Latitud"
-                aria-describedby="biz-lat"
+                    className="no-outline"
+                    value={position.lat.toFixed(4)}
+                    aria-label="Latitud"
+                    aria-describedby="biz-lat"
+                    readOnly
                 />
                 <InputGroup.Text id="biz-lng">Longitud</InputGroup.Text>
                 <FormControl 
-                className="no-outline"
-                value={position.lng.toFixed(4)}
-                aria-label="Longitud"
-                aria-describedby="biz-lng"
+                    className="no-outline"
+                    value={position.lng.toFixed(4)}
+                    aria-label="Longitud"
+                    aria-describedby="biz-lng"
+                    readOnly
                 />
-                <Button variant={!window.localStorage.getItem('bizLat') && !window.localStorage.getItem('bizLng') ? 'outline-danger' : 'outline-success'} id="setLoc">
+                <Button 
+                    onClick={setBizLocation}
+                    id="setLoc"
+                    variant={!window.localStorage.getItem('bizLat') && !window.localStorage.getItem('bizLng') ? 'outline-danger' : 'outline-success'} 
+                >
                     {!window.localStorage.getItem('bizLat') && !window.localStorage.getItem('bizLng') ? 'Asignar Ubicación' : 'Actualizar Ubicación'}
                 </Button>
             </InputGroup>
             <Form.Text id="bizLocHelpBlock" muted>
-                <span className="badge bg-secondary">Ubicación Asignada: </span> Latitud: 0, Longitud: 0
+                <span className={!window.localStorage.getItem('bizLat') && !window.localStorage.getItem('bizLng') ? 'badge bg-danger' : 'badge bg-success'}>{!window.localStorage.getItem('bizLat') && !window.localStorage.getItem('bizLng') ? 'Ubicación sin asignar: ' : 'Ubicación asignada: '}</span> Latitud: {bizLat}, Longitud: {bizLng}
             </Form.Text>
         </div>
     )

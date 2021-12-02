@@ -71,11 +71,11 @@ const MarkerShop = (place) => {
     
     return (
         <Marker position={place.place.popup.geometry} icon={IconShop} >
-        <Popup>   
-          <h1 className='text'>{place.place.popup.nombre}</h1>
+        <Popup className='popup-marker'>   
+          <p className='name-store'>{place.place.popup.nombre}</p>
           <Divider/>
-          <h3 className='text'>{place.place.popup.descripción}</h3>
-          <Divider sx={{m: 2}}/>
+          <p className='desc-store'>{place.place.popup.descripción}</p>
+          <Divider sx={{m: 1}}/>
             <div  className='text'>
                 <React.Fragment key={anchor}>
                     <button className='btn-infom' variant="contained" onClick={toggleDrawer(anchor, true)}>Mas Informacion</button>

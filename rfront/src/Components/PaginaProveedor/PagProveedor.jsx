@@ -17,7 +17,7 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 // referencia para la logica de negocio: https://youtu.be/0Q7LA6jRdA4?t=9251
 
 function PagProveedor() {
-  const bgColor = '#004F67';
+  const bgColor = '#333';
   const txtColor = 'whitesmoke';
 
   return (
