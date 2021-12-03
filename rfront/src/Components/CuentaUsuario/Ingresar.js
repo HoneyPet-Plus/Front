@@ -3,8 +3,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -35,8 +35,8 @@ const theme = createTheme();
 export default function Ingresar() {
 
   
-  const[correo,setCorreo]=useState('')
-  const[contraseña,setContraseña]=useState('')
+  const [correo,setCorreo]= useState('')
+  const [contraseña,setContraseña]= useState('')
   
 
   const login=async(e)=>{
@@ -46,6 +46,8 @@ export default function Ingresar() {
     const respuesta = await Axios.post('/api/usuario/login',usuario);
     console.log(respuesta)
     const mensaje = respuesta.data.mensaje
+    const rol = respuesta.data.rol
+    const empresa_id = respuesta.data.usuario.negocio_id
 
     if(mensaje!=='Bienvenidos'){
       
@@ -53,23 +55,64 @@ export default function Ingresar() {
         icon:'error',
         title: mensaje,
         showConfirmButton: false,
-        timer:1500
+        timer:3000 
       })
 
-    }
-
-    else{
+    } else if(rol == 'proveedor' ){
+      console.log(respuesta.data)
       const token = respuesta.data.token
       const nombre = respuesta.data.nombre
-      const idUsuario = respuesta.data.id
+      const idUser = respuesta.data.idUser
+      const correo = respuesta.data.correo
+      const rol = respuesta.data.rol
+      const empresa_id = respuesta.data.usuario.negocio_id
 
       sessionStorage.setItem('token',token)
       sessionStorage.setItem('nombre',nombre)
-      sessionStorage.setItem('idUsuario',idUsuario)
+      sessionStorage.setItem('idUsuario',idUser)
+      sessionStorage.setItem('correo',correo)
+      sessionStorage.setItem('rol',rol)
+      sessionStorage.setItem('empresa_id',empresa_id)
+
+      if (empresa_id) {
+        
+        Swal.fire({
+          icon:'success',
+          title: `Bienvenido ${nombre}`,
+          showConfirmButton: false,
+          timer:3000
+        })
+        window.location.href='/Pagina'
+      } else {
+        
+        Swal.fire({
+          icon:'success',
+          title: `Bienvenido ${nombre}`,
+          showConfirmButton: false,
+          timer:3000
+        })
+        window.location.href='/Publicar'
+      }
+
+
+    } else{
+      console.log(respuesta.data)
+      const token = respuesta.data.token
+      const nombre = respuesta.data.nombre
+      const idUser = respuesta.data.idUser
+      const correo = respuesta.data.correo
+      const rol = respuesta.data.rol
+
+
+      sessionStorage.setItem('token',token)
+      sessionStorage.setItem('nombre',nombre)
+      sessionStorage.setItem('idUsuario',idUser)
+      sessionStorage.setItem('correo',correo)
+      sessionStorage.setItem('rol',rol)
 
       Swal.fire({
         icon:'success',
-        title: mensaje,
+        title: `Bienvenido ${nombre}`,
         showConfirmButton: false,
         timer:1500
       })

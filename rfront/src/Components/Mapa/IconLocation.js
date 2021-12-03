@@ -4,8 +4,8 @@ import icon from '../../assets/Mapa/pinu.svg'
 export const IconLocation = L.icon({
     
     iconUrl:          icon,
-    iconSize:     [38, 95], 
-    iconAnchor:   [22, 94], 
+    iconSize:     [40, 50], 
+    iconAnchor:   [20, 50], 
     popupAnchor:  [-3, -76] 
 
 });
