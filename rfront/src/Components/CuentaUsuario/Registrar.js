@@ -56,6 +56,7 @@ export default function SignUp() {
   const[contraseña,setContraseña]=useState('')
   const[rol,setRol]=useState([])
   const[rolSelect,setRolSelect]=useState([])
+  const empresa_id= ''
 
   useEffect(()=>{
     setRol(['Proveedor','Usuario'])
@@ -68,7 +69,8 @@ export default function SignUp() {
       nombre,
       correo,
       contraseña,
-      rol:rolSelect
+      rol:rolSelect,
+      empresa_id
     }
 
     if(nombre===""){
