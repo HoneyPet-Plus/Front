@@ -5,16 +5,16 @@ import MarkerShop from "./MarkerShop";
 // import infoDrawer from "./drawer";
 
 
-function MarkersShop (props){
+function MarkersShop (){
 
-    const {lugares} = props
+  const lugares = JSON.parse(window.localStorage.getItem('proveedores'))
 
-    const markers = lugares.map((place) =>(
-     
-      <MarkerShop place={place}></MarkerShop>
-    ))
+  const markers = lugares.map((place) =>(
+      
+      <MarkerShop key={1} place={place}></MarkerShop>
+  ))
 
-    return markers;
+  return markers;
 }
 
 export default MarkersShop
