@@ -19,7 +19,7 @@ export default function Section1(){
     
     
     return (
-        <Grid container alignItems='center' justifyContent='center' className='seccion-lideres'>
+        <Grid container alignItems='center' justifyContent='center' className='seccion-lideres' paddingLeft='10%'  pb='5%'>
       
                     <Grid sx={12} sm={12} md={6}>
                         <Typography fontSize='24' align="left" component="div" mb='0px'>
@@ -34,9 +34,9 @@ export default function Section1(){
                             Puesdes ver un listado de proveedores cercanos desde la página de “Proveedores” o los puedes geo-referenciar desde la página de “Mapa”, cuando un negocio te llame la atención puedes ampliar la información y ver su página con productos, servicios, datos de contacto, etc.
                         </Typography>
 
-                        <Stack direction='row' spacing={1} mt>
+                        <Stack direction='row' spacing={1} mt mb>
 
-                            <Button id="button-empezar" size='medium' variant="outlined">
+                            <Button id="button-empezar" size='medium' variant="outlined" >
                                 <Link to='/Proveedores' className="btnin">VER DIRECTORIO</Link>
                             </Button>
                 
