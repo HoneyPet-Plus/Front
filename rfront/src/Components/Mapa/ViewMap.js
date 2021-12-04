@@ -6,7 +6,7 @@ import "leaflet/dist/leaflet.css"
 import './Map.css';
 import 'leaflet';
 import {Button} from 'react-bootstrap';
-import MyLocationIcon from '@mui/icons-material/MyLocation';
+import MyLocationIcon from '@mui/icons-material/MyLocation' ;
 
 const center = [window.localStorage.getItem('userLat'), window.localStorage.getItem('userLng')]
 const zoom = 13
