@@ -16,6 +16,7 @@ import './logform.css'
 import React, { useState } from 'react';
 import Axios from 'axios'
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 // function Copyright(props) {
 //   return (
@@ -33,6 +34,8 @@ import Swal from 'sweetalert2'
 const theme = createTheme();
 
 export default function Ingresar() {
+
+  const navigate = useNavigate()
 
   
   const [correo,setCorreo]= useState('')
@@ -57,7 +60,7 @@ export default function Ingresar() {
         timer:3000 
       })
 
-    } else if(rol == 'proveedor'){
+    } else if(rol === 'proveedor'){
       console.log(respuesta.data)
       const token = respuesta.data.token
       const nombre = respuesta.data.nombre
@@ -78,7 +81,7 @@ export default function Ingresar() {
         showConfirmButton: false,
         timer:3000
       })
-      window.location.href='/Pagina'
+      navigate('/mi_pagina', { replace:true })
 
     } else{
       console.log(respuesta.data)
@@ -101,7 +104,7 @@ export default function Ingresar() {
         showConfirmButton: false,
         timer:1500
       })
-      window.location.href='/perfil'
+      navigate('/perfil', { replace:true })
 
     }
 

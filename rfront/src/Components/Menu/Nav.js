@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack'
+// import Stack from '@mui/material/Stack'
 // import IconButton from '@mui/material/IconButton';
 // import MenuIcon from '@mui/icons-material/Menu';
 import "./Nav.css"
@@ -52,8 +52,8 @@ export default function ButtonAppBar() {
   // }
 
   const [state, setstate] = useState({
-    longitud:4.627354,
-    latitud:-74.082807,
+    longitud: 4.627354,
+    latitud: -74.082807,
     zoom: 13,
     minZoom: 5  
   })
@@ -89,18 +89,18 @@ export default function ButtonAppBar() {
             <img src={logoheader} alt="HoneyPet +" />
           </Typography >
           
-          <ColorButton className="btnNav"><Link to='/Inicio' className="btnin">Inicio</Link></ColorButton>
+          <ColorButton className="btnNav"><Link to='/inicio' className="btnin">Inicio</Link></ColorButton>
           
-          <ColorButton className="btnNav"><Link to={{pathname:'/Mapa',state}} className="btnin">Mapa</Link></ColorButton>
+          <ColorButton className="btnNav"><Link to={{pathname:'/mapa',state}} className="btnin">Mapa</Link></ColorButton>
           
-          <ColorButton className="btnNav"><Link to='/Proveedores' className="btnin">Proveedores</Link></ColorButton>
+          <ColorButton className="btnNav"><Link to='/proveedores' className="btnin">Proveedores</Link></ColorButton>
           
-          <ColorButton hidden={opcionIngresar} className="btnNav"><Link to='/Ingresar' className="btnin">Ingresar</Link></ColorButton>
+          <ColorButton hidden={opcionIngresar} className="btnNav"><Link to='/ingresar' className="btnin">Ingresar</Link></ColorButton>
           
-          <ColorButton hidden={ambos} className="btnNav"><Link to='/Pagina' className="btnin">Pagina</Link></ColorButton>
+          <ColorButton hidden={ambos} className="btnNav"><Link to='/mi_pagina/:myPageIdSS' className="btnin">Mi Pagina</Link></ColorButton>
           
-          <ColorButton hidden={provee} className="btnNav"><Link to='/Publicar' className="btnin">Publicar</Link></ColorButton>
-          <ColorButton hidden={user} className="btnNav"><Link to='/Perfil' className="btnin">Mi perfil</Link></ColorButton>
+          <ColorButton hidden={provee} className="btnNav"><Link to='/publicar' className="btnin">Publicar</Link></ColorButton>
+          <ColorButton hidden={user} className="btnNav"><Link to='/perfil' className="btnin">Mi Perfil</Link></ColorButton>
 
         </Toolbar>
       </AppBar>

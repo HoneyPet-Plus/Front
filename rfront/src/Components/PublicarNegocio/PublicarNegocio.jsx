@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -36,6 +37,9 @@ function getStepContent(step) {
 const theme = createTheme();
 
 export default function PublicarNegocio() {
+
+  const navigate = useNavigate();
+
   // logica del steper
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -108,6 +112,13 @@ export default function PublicarNegocio() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const handleToMyPage = () => {
+    console.log('Este es el último paso del stepper');
+    //// ojo poner la logica para que funcione
+    const myPageIdSS = 'TODO poner la logica necesaria'
+    navigate(`/mi_pagina/${myPageIdSS}`, { replace:true })
+  }
 
   const clearBizLS = () => {
     localStorage.removeItem('bizDesc');
@@ -182,7 +193,12 @@ export default function PublicarNegocio() {
                 </Typography>
                 <Typography variant="subtitle1" align="center" marginTop="15px">
                     {/* onClick={toBizPage}  */}
-                    <Button variant="outlined">Ir a Mi Negocio</Button>
+                    <Button 
+                      onClick={handleToMyPage}
+                      variant="outlined"
+                    >
+                      Ir a Mi Negocio
+                    </Button>
                 </Typography>
               </React.Fragment>
             ) : (
