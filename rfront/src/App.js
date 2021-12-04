@@ -5,8 +5,6 @@ import Home from './Components/Home/Home'
 import Mapa from './Components/Mapa/Mapa'
 import VistaPerfil from './Components/PerfilUsuario/vistaperfil'
 import Footer from './Components/Menu/Footer'
-// import { Redirect } from 'react-router';
-// import NavBar from './Components/Menu/NavBar'
 import Registrar from './Components/CuentaUsuario/Registrar'
 import Ingresar from './Components/CuentaUsuario/Ingresar'
 import PagProveedor from './Components/PaginaProveedor/PagProveedor'

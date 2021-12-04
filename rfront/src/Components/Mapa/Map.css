@@ -1,6 +1,7 @@
 .leaflet-container{
-    width: 1530px;
-    height: 653px;
+    width: 100vw;
+    height: calc(100vh - 100px);
+    margin-top: 60px;
 }
 
 .btn-map{
@@ -25,9 +26,10 @@
 }
 
 .name-store {
-    font-size: x-large;
-    margin: auto;
-
+    color: #00303F;
+    margin-bottom: 5px;
+    text-align: center;
+    
 }
 
 .desc-store{
@@ -38,10 +40,7 @@
 
 
 
-.box-imagen{
-    width: 600px;
-    height: 500px;
-}
+
 
 .box-nombreshop{
     width: auto;
@@ -50,13 +49,7 @@
     text-align: center;
 }
 
-.box-descripcion{
-    width: auto;
-    height: 300px;
-    padding: 0.1px;
-    text-align: center;
-    
-}
+
 
 .box-btn{
     width: auto;
@@ -66,27 +59,7 @@
 
 }
 
-.btn-style{
-    background-color: #F7CC31;
-    color: #004F67;
-    width: 400px;
-    height: 65px;
-    border-color: #004F67;
-    text-size-adjust: 100px;
-    font-size: x-large;
-    border-radius: 10px;
-}
 
-.btn-style1{
-    background-color: #cfcfcf;
-    border-radius: 10px;
-    color: #004F67;
-    width: 400px;
-    height: 65px;
-    border-color: #004F67;
-    text-size-adjust: 100px;
-    font-size: x-large;
-}
 
 .header{
     width: 100vw;
@@ -97,8 +70,59 @@
     background-color: #F2F2F2;
 }
 
-.h1{
+/* CSS del Drawer */
+
+.box-imagen-drawer{
+    width: 100%;
+}
+
+.box-nombreshop-drawer{
     color: #00303F;
+    text-align: center;
+
+}
+
+.box-location-drawer{
+    width: auto;
+    height: 50px;
+    padding: 5px;
+    text-align: center;
+    font-size: x-large;
+}
+
+.box-descripcion-drawer{
+    width: auto;
+    height: 200px;
+    padding: 0.1px;
+    text-align: center;
+    font-size:large;
+}
+
+.box-btninfo-drawer{
+    text-align: center;
+}
+
+.btn-info-drawer{
+    background-color: #F7CC31;
+    color: #004F67;
+    width: 300px;
+    height: 50px;
+    border-color: #004F67;
+    text-size-adjust: 100px;
+    font-size: x-large;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.btn-favoritos-drawer{
+    background-color: #cfcfcf;
+    border-radius: 10px;
+    color: #004F67;
+    width: 300px;
+    height: 50px;
+    border-color: #004F67;
+    text-size-adjust: 100px;
+    font-size: x-large;
 }
 
 .h2{
@@ -117,7 +141,7 @@
 
 .btn-ubc{
     position: absolute;
-    bottom: 50px;
-    right: 100px;
+    bottom: 80px;
+    right: 50px;
     z-index: 400;
 }
