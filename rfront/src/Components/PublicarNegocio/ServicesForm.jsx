@@ -18,16 +18,16 @@ function ServicesForm() {
         <div>
             <h2 className="mb-4">Productos / Servicios</h2>
             <h5>*Producto o Servicio Destacado:</h5>
-            <Form.Group 
-                onChange={e => setBizPSEtype(e.target.value)}
-                value={bizPSEtype}
-                className="mb-4" 
-                controlId="spStar"
-            >
-                <Form.Select className="mb-2" aria-label="tipo-star">
+            <Form.Group className="mb-4" controlId="spStar">
+                <Form.Select 
+                    onChange={e => setBizPSEtype(e.target.value)}
+                    value={bizPSEtype}
+                    className="mb-2" 
+                    aria-label="tipo-star"
+                >
                     <option>*Seleccione un Tipo...</option>
-                    <option value="servcioEstrella">Servicio Estrella</option>
-                    <option value="productoEstrella">Producto Estrella</option>
+                    <option value="Servcio Estrella">Servicio Estrella</option>
+                    <option value="Producto Estrella">Producto Estrella</option>
                 </Form.Select>
                 <InputGroup className="mb-2">
                     <InputGroup.Text id="biz-sps">*Título:</InputGroup.Text>
@@ -44,7 +44,6 @@ function ServicesForm() {
                     onChange={e => setBizPSEdesc(e.target.value)}
                     value={bizPSEdesc}
                     as="textarea"
-                    placeholder="Leave a comment here"
                     style={{ height: '110px' }}
                     />
                 </FloatingLabel>
@@ -59,8 +58,8 @@ function ServicesForm() {
                     aria-label="tipo-sp2"
                 >
                     <option>*Seleccione un Tipo...</option>
-                    <option value="servcio2">Servicio</option>
-                    <option value="producto2">Producto</option>
+                    <option value="Servcio">Servicio</option>
+                    <option value="Producto">Producto</option>
                 </Form.Select>
                 <InputGroup className="mb-2">
                     <InputGroup.Text id="biz-sp2">*Título:</InputGroup.Text>
@@ -77,7 +76,6 @@ function ServicesForm() {
                     onChange={e => setBizPS2desc(e.target.value)}
                     value={bizPS2desc}
                     as="textarea"
-                    placeholder="Leave a comment here"
                     style={{ height: '110px' }}
                     />
                 </FloatingLabel>
@@ -92,8 +90,8 @@ function ServicesForm() {
                     aria-label="tipo-sp3"
                 >
                     <option>*Seleccione un Tipo...</option>
-                    <option value="servcio3">Servicio</option>
-                    <option value="producto3">Producto</option>
+                    <option value="Servcio">Servicio</option>
+                    <option value="Producto">Producto</option>
                 </Form.Select>
                 <InputGroup className="mb-2">
                     <InputGroup.Text id="biz-sp3">*Título:</InputGroup.Text>
@@ -110,7 +108,6 @@ function ServicesForm() {
                     onChange={e => setBizPS3desc(e.target.value)}
                     value={bizPS3desc}
                     as="textarea"
-                    placeholder="Leave a comment here"
                     style={{ height: '110px' }}
                     />
                 </FloatingLabel>

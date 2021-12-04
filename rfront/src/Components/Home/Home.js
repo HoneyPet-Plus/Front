@@ -10,10 +10,11 @@ import { styled } from '@mui/material/styles';
 import Logo from '../../assets/Home/Logo.svg';
 import logoheader from '../../assets/Home/logoheader.svg'
 
-import AboutAs from './AboutAs';
+import Cards from './Cards';
 import Section1 from './Section1';
-
 import Section2 from './Section2';
+import AboutAs from './AboutAs';
+
 import { Box } from '@mui/system';
 
 
@@ -55,6 +56,7 @@ export default function Home() {
                   marginLeft="10%"
                   marginRight="10%"
                   gutterBottom
+                  mt
                 >
                   {descripHeader}
                 </Typography>
@@ -68,6 +70,7 @@ export default function Home() {
 
       <Grid sx={12} sm={12} md={12}>
 
+        <Cards/>
         <Section1/>
 
         <Section2/>
@@ -93,6 +96,7 @@ export default function Home() {
         
 
       </Grid>
+
       <Box sx={{ bgcolor: '#004F67', p: 6, marginTop:'3%' }} component="footer">
         <Stack direction='row' spacing={7} alignItems='center' paddingX='2%'>
         <Typography align="center" color="#7A9D96" mt>
