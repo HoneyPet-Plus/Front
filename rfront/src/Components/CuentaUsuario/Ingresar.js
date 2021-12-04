@@ -84,7 +84,8 @@ export default function Ingresar() {
         })
         window.location.href='/Pagina'
       } else {
-        
+
+        sessionStorage.setItem('empresa_id','')
         Swal.fire({
           icon:'success',
           title: `Bienvenido ${nombre}`,
@@ -102,6 +103,7 @@ export default function Ingresar() {
       const idUser = respuesta.data.idUser
       const correo = respuesta.data.correo
       const rol = respuesta.data.rol
+      const empresa_id = ''
 
 
       sessionStorage.setItem('token',token)
@@ -109,6 +111,7 @@ export default function Ingresar() {
       sessionStorage.setItem('idUsuario',idUser)
       sessionStorage.setItem('correo',correo)
       sessionStorage.setItem('rol',rol)
+      sessionStorage.setItem('empresa_id',empresa_id)
 
       Swal.fire({
         icon:'success',
