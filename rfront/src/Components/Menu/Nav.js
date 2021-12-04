@@ -54,8 +54,6 @@ export default function ButtonAppBar() {
 
 
 
-
-
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(
         
@@ -100,18 +98,18 @@ export default function ButtonAppBar() {
             {empresa_id}
           </Typography > */}
           
-          <ColorButton className="btnNav"><Link to='/Inicio' className="btnin">Inicio</Link></ColorButton>
+          <ColorButton className="btnNav"><Link to='/inicio' className="btnin">Inicio</Link></ColorButton>
           
-          <ColorButton onClick={enviarProveedores} className="btnNav"><Link to='/Mapa' className="btnin">Mapa</Link></ColorButton>
+          <ColorButton onClick={enviarProveedores} className="btnNav"><Link to='/mapa' className="btnin">Mapa</Link></ColorButton>
           
-          <ColorButton className="btnNav"><Link to='/Proveedores' className="btnin">Proveedores</Link></ColorButton>
+          <ColorButton className="btnNav"><Link to='/proveedores' className="btnin">Proveedores</Link></ColorButton>
           
-          <ColorButton hidden={opcionIngresar} className="btnNav"><Link to='/Ingresar' className="btnin">Ingresar</Link></ColorButton>
+          <ColorButton hidden={opcionIngresar} className="btnNav"><Link to='/ingresar' className="btnin">Ingresar</Link></ColorButton>
           
-          <ColorButton hidden={aprov} className="btnNav"><Link to='/Pagina' className="btnin">Mi Página</Link></ColorButton>
+          <ColorButton hidden={aprov} className="btnNav"><Link to='/mi_pagina/:myPageIdSS' className="btnin">Mi Página</Link></ColorButton>
           
-          <ColorButton hidden={nprov} className="btnNav"><Link to='/Publicar' className="btnin">Publicar</Link></ColorButton>
-          <ColorButton hidden={user} className="btnNav"><Link to='/Perfil' className="btnin">Mi perfil</Link></ColorButton>
+          <ColorButton hidden={nprov} className="btnNav"><Link to='/publicar' className="btnin">Publicar</Link></ColorButton>
+          <ColorButton hidden={user} className="btnNav"><Link to='/perfil' className="btnin">Mi Perfil</Link></ColorButton>
 
         </Toolbar>
       </AppBar>

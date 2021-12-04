@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './PagProveedor.css';
 import ProvAdminBar from './ProvAdminBar';
 import ProvImg from './ProvImg';
@@ -17,13 +18,17 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 // referencia para la logica de negocio: https://youtu.be/0Q7LA6jRdA4?t=9251
 
 function PagProveedor() {
-  const bgColor = '#333';
-  const txtColor = 'whitesmoke';
+
+  const [bgColor, setBgColor] = useState('#333')
+  const [txtColor, setTxtColor] = useState('#ddd')
+
+  const userEmailSS = window.sessionStorage.getItem('correo') 
+
 
   return (
     <div className="pag-container">
       <header>
-        <ProvAdminBar email="dummy2@email.com"/>
+        <ProvAdminBar email={userEmailSS} />
         <FavBtn />
         {/* <div className="img-cont"> */}
         <ProvImg src={hpdcImg} />

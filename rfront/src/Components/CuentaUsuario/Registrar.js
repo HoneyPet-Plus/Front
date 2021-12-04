@@ -55,13 +55,13 @@ export default function SignUp() {
   const[correo,setCorreo]=useState('')
   const[contraseña,setContraseña]=useState('')
   const[rol,setRol]=useState([])
-  const[rolSelect,setRolSelect]=useState([])
+  // const[rolSelect,setRolSelect]=useState([])
   const empresa_id= ''
 
-  useEffect(()=>{
-    setRol(['Proveedor','Usuario'])
-    setRolSelect('Usuario')
-  }, [])
+  // useEffect(()=>{
+  //   setRol(['Proveedor','Usuario'])
+  //   setRolSelect('Usuario')
+  // }, [])
 
   const guardar = async(e)=>{
     e.preventDefault()
@@ -69,7 +69,7 @@ export default function SignUp() {
       nombre,
       correo,
       contraseña,
-      rol:rolSelect,
+      rol:rol,
       empresa_id
     }
 
@@ -189,12 +189,13 @@ export default function SignUp() {
                     <InputLabel id="demo-simple-select-label">Tipo de Usuario *</InputLabel>
                     <Select
                     // className='form-control'
+                      value={rol}
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       // value={role}
                       label="Tipo de Usuario"
                       // onChange={handleChange}
-                      onChange={(e)=>setRolSelect(e.target.value)}
+                      onChange={(e)=>setRol(e.target.value)}
                       >
                     <MenuItem value={'usuario'}>Usuario con mascota</MenuItem>
                     <MenuItem value={'proveedor'}>Negocio</MenuItem>
