@@ -12,6 +12,10 @@ const createProvWithImg = (newProv) => httpClient.post(`${END_POINT}create`, new
         "Content-Type": "multipart/form-data"
     }
 });
+const favProveedor = (idUser, idProv, token) => httpClient.post(`${END_POINT}favoritos/${idUser}/${idProv}`,{
+    headers:{"autorizacion": token}
+});
+
 
 export {
     getAllProvs,
@@ -19,5 +23,6 @@ export {
     editProv,
     deleteProvById,
     createProv,
-    createProvWithImg
+    createProvWithImg,
+    favProveedor
 }
