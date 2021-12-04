@@ -4,12 +4,15 @@ import '../../Components/Mapa/Map.css'
 import {Marker, Popup} from 'react-leaflet'
 import {IconLocation} from "./IconLocation";
 
-function MarkerLocation (lng){
+function MarkerLocation (){
     
+    const lat  = window.localStorage.getItem('userLat')
+    const long = window.localStorage.getItem('userLng')
+
     return (
-        <Marker position={[lng.lng,lng.lat]} icon={IconLocation} >
+        <Marker position={[lat,long]} icon={IconLocation} >
             <Popup>
-                <h1>Tu estas aqui</h1>
+                <h3>Tu estas aqui</h3>
             </Popup>
         </Marker>
     );

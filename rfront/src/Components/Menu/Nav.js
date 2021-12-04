@@ -8,7 +8,8 @@ import "./Nav.css"
 import { Link } from 'react-router-dom';
 import logoheader from '../../assets/Home/logoheader.svg'
 import { styled } from '@mui/material/styles';
-// import Axios from 'axios'
+import { getAllProvs } from '../../services/NegocioService';
+
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText('#00303F'),
@@ -51,25 +52,18 @@ export default function ButtonAppBar() {
 
   }, [])
 
-  const [state, setstate] = useState({
-    longitud:4.627354,
-    latitud:-74.082807,
-    zoom: 13,
-    minZoom: 5  
-  })
+
+
 
 
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(
-        function(position){
-            setstate({
-                longitud:position.coords.longitude,
-                latitud: position.coords.latitude,
-                zoom: 18,
-                minZoom: 8 
-            })
+        
+      function(position){
+
             window.localStorage.setItem('userLng', position.coords.longitude);
             window.localStorage.setItem('userLat', position.coords.latitude);
+
         },
         function(error){
             console.log(error)
@@ -79,6 +73,20 @@ export default function ButtonAppBar() {
         }
     );
   },[])
+
+
+  function enviarProveedores(e) {
+    
+    e.preventDefault();
+
+    getAllProvs().then((response)=>{
+
+      window.localStorage.setItem('proveedores', JSON.stringify(response.data));
+
+    }).catch((e) => {
+      console.error('No funcionó la petición' + e);
+    })
+  }
 
 
   return (
@@ -94,7 +102,7 @@ export default function ButtonAppBar() {
           
           <ColorButton className="btnNav"><Link to='/Inicio' className="btnin">Inicio</Link></ColorButton>
           
-          <ColorButton className="btnNav"><Link to={{pathname:'/Mapa',state}} className="btnin">Mapa</Link></ColorButton>
+          <ColorButton onClick={enviarProveedores} className="btnNav"><Link to='/Mapa' className="btnin">Mapa</Link></ColorButton>
           
           <ColorButton className="btnNav"><Link to='/Proveedores' className="btnin">Proveedores</Link></ColorButton>
           
