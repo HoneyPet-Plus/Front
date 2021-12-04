@@ -116,7 +116,7 @@ const MarkerShop = (place) => {
     
           >
           <div className='box-imagen-drawer'>
-            <img  className='box-imagen-drawer' src={img} alt="Imagen " />
+            <img  className='box-imagen-drawer' src={place.place.imagen_destacada} alt="Imagen " />
           </div> 
           <div className='box-nombreshop-drawer'>
             <h1 >{place.place.nombre_empresa}</h1>
