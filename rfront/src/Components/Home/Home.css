@@ -4,15 +4,18 @@
     box-shadow: none;
 }
 
-
-
 .bg-foto-mapa{
     /*background-image: '@/assets/mapa-bg.png';*/
     background-image: url("../../assets/Home/mapa-bg.png");
     background-position: center;
     background-size: cover;
-    block-size: 325px;
+    block-size: 400px;
 }
+
+.logo-principal{
+    padding-top: 50px;
+}
+
 .title-p{
     padding-top: 35px;
     padding-bottom: 10px;
@@ -21,13 +24,20 @@
 .bg-para-mapa{
     background-color:#00303F;
     opacity: 85%;
-    block-size: 325px;
+    block-size: 400px;
+}
+
+.contenido-header{
+    padding-top: 8%;
+}
+
+.seccion-cards{
+    background-color:#CAE4DB ;
 }
 
 .seccion-lideres{
     background-color:#CAE4DB ;
 }
-
 
 .seccion2{
     background-color: #080a0a;
@@ -41,13 +51,6 @@
     padding: 15px;
 }
 
-.logo-principal{
-    padding-top: 50px;
-}
-
-.contenido-header{
-    padding-top: 70px;
-}
 
 .seccion-empresas{
     background-color:#00303F ;
@@ -70,3 +73,65 @@
 }
 
 
+
+@media (max-width: 600px){
+    .all-page{
+        align-items: center;
+        display: block;
+        min-height: 100vw;
+        justify-content: center;
+    } 
+}
+
+@media (max-width: 850px){
+    .contenido-header{
+        align-items: center;
+        display: block;
+        min-height: 100vw;
+        justify-content: center;
+        padding: 14%;
+    } 
+}
+
+@media (max-width: 600px){
+    .seccion-cards{
+        align-items: center;
+        display: block;
+        min-height: 100vw;
+        justify-content: center;
+    } 
+}
+
+
+
+
+
+@media (max-width: 870px){
+    .seccion-lideres{
+        align-items: center;
+        display: block;
+        min-height: 100vw;
+        justify-content: center;
+        align-items: center;
+    } 
+}
+
+@media (max-width: 870px){
+    .imagen-people-pet{
+        align-items: center;
+        display: block;
+        min-height: 100vw;
+        justify-content: center;
+        align-items: center;
+    } 
+}
+
+@media (max-width: 890px){
+    .img-people-pet{
+        align-items: center;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        margin:auto;
+    } 
+}

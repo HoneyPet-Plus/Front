@@ -14,6 +14,10 @@ const changeHeroImg = (id, heroImg) => httpClient.put(`${END_POINT}id/${id}`, he
         "Content-Type": "multipart/form-data"
     }
 });
+const favProveedor = (idUser, idProv, token) => httpClient.post(`${END_POINT}favoritos/${idUser}/${idProv}`,{
+    headers:{"autorizacion": token}
+});
+
 
 export {
     getAllProvs,
@@ -21,5 +25,6 @@ export {
     editProv,
     deleteProvById,
     createProv,
+    favProveedor,
     changeHeroImg
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import ButtonAppBar from './Components/Menu/Nav'
 import Proveedores from './Components/ListaProveedores/Proveedores'
 import Home from './Components/Home/Home'
@@ -15,27 +15,29 @@ import DemoPagProveedor from './Components/PaginaProveedor/DemoPagProveedor'
 function App(){
 
   return(
-    <Router >
+    <BrowserRouter >
       <ButtonAppBar/>
       {/* <NavBar/> */}
     {/* <Routes>
       <Route path="/Provs" element={<Proveeee/>}/>
     </Routes> */}
-      
-      <Route path='/' exact component={Home}/>
-      <Route path='/Proveedores' exact component={Proveedores}/>
-      <Route path='/Inicio' exact component={Home}/>
-      <Route path='/Mapa' exact component={Mapa}/>
-      <Route path='/Perfil' exact component={VistaPerfil}/>
-      <Route path='/Registrar' exact component={Registrar}/>
-      <Route path='/Ingresar' exact component={Ingresar}/>
-      <Route path='/Pagina' exact component={PagProveedor}/>
-      <Route path='/Publicar' exact component={PublicarNegocio}/>
-      <Route path='/DemoPagProveedor' exact component={DemoPagProveedor}/>
-      
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/proveedores' element={<Proveedores />}/>
+        <Route path='/inicio' element={<Home />}/>
+        <Route path='/mapa' element={<Mapa />}/>
+        <Route path='/perfil' element={<VistaPerfil />}/>
+        <Route path='/registrar' element={<Registrar />}/>
+        <Route path='/ingresar' element={<Ingresar />}/>
+        <Route path='/publicar' element={<PublicarNegocio />}/>
+        <Route path='/negocio/:negocioId' element={<PagProveedor />}/>
+        <Route path='/mi_pagina/:myPageIdSS' element={<PagProveedor />}/>
+        <Route path='/demo_pagina' element={<DemoPagProveedor />}/>
+      </Routes> 
+
       <Footer/>
 
-    </Router>);
+    </BrowserRouter>);
 }
 
 export default App;
