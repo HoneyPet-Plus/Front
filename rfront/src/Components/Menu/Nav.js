@@ -36,7 +36,7 @@ export default function ButtonAppBar() {
   useEffect(() => {
 
     if (sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='proveedor' ) {
-      if (sessionStorage.getItem('empresa_id') && sessionStorage.getItem('empresa_id')!= 'undefined' ) { 
+      if (sessionStorage.getItem('empresa_id') && sessionStorage.getItem('empresa_id')!== 'undefined' ) { 
         setOpcionIngresar(true)
         setAprov(false)
 
@@ -45,7 +45,7 @@ export default function ButtonAppBar() {
         setNprov(false)
       }
 
-    }else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='Usuario' ){
+    }else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='usuario' ){
       setUser(false)
       setOpcionIngresar(true)
     }

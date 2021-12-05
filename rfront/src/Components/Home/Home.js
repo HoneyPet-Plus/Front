@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import Logo from '../../assets/Home/Logo.svg';
 import logoheader from '../../assets/Home/logoheader.svg'
@@ -17,9 +16,6 @@ import AboutAs from './AboutAs';
 
 import { Box } from '@mui/system';
 
-
-const theme = createTheme();
-const mapa = '../../assets/mapa-bg.png';
 const descripHeader = "Ayudamos a nuestros usuarios a encontrar los mejores proveedores de servicios para mascotas desde cualquier parte del país."
 
 const ColorButton = styled(Button)(({ theme }) => ({

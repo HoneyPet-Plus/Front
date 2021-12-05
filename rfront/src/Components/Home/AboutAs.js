@@ -23,7 +23,6 @@ import francis from '../../assets/Home/francis.png'
 import pipe from '../../assets/Home/pipe.png'
 import nelsi from '../../assets/Home/nelsi.png'
 import ivan from '../../assets/Home/ivan.png'
-import { Avatar, listItemAvatarClasses } from '@mui/material';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
