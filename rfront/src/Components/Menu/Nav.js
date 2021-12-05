@@ -61,7 +61,8 @@ export default function ButtonAppBar() {
 
             window.localStorage.setItem('userLng', position.coords.longitude);
             window.localStorage.setItem('userLat', position.coords.latitude);
-
+            window.localStorage.setItem('centerLat',position.coords.latitude);
+            window.localStorage.setItem('centerLng',position.coords.longitude);
         },
         function(error){
             console.log(error)
@@ -75,15 +76,35 @@ export default function ButtonAppBar() {
 
   function enviarProveedores(e) {
     
+    navigator.geolocation.getCurrentPosition(
+        
+      function(position){
+
+            window.localStorage.setItem('userLng', position.coords.longitude);
+            window.localStorage.setItem('userLat', position.coords.latitude);
+            window.localStorage.setItem('centerLat',position.coords.latitude);
+            window.localStorage.setItem('centerLng',position.coords.longitude);
+        },
+        function(error){
+            console.log(error)
+        },
+        {
+            enableHighAccuracy: true
+        }
+    );
+
     e.preventDefault();
 
     getAllProvs().then((response)=>{
 
       window.localStorage.setItem('proveedores', JSON.stringify(response.data));
+      window.location.href='/mapa'
 
     }).catch((e) => {
       console.error('No funcionó la petición' + e);
     })
+
+    
   }
 
 
