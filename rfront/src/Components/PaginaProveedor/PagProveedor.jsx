@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button'
 import StarsIcon from '@mui/icons-material/Stars';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getProvById } from '../../services/NegocioService';
 
 // referencia para la logica de negocio: https://youtu.be/0Q7LA6jRdA4?t=9251
@@ -21,7 +21,41 @@ import { getProvById } from '../../services/NegocioService';
 function PagProveedor() {
 
   const { myPageIdSS } = useParams();
-  const [pageData, setPageData] = useState({})
+  const [pageData, setPageData] = useState({
+    contacto_id: null,
+    nombre_empresa: '',
+    eslogan: '',
+    descripcion_corta : '',
+    descripcion_empresa : '',
+    imagen_destacada : '',
+    color_tema: '',
+    horario_atencion : '',
+    telefono : 0,
+    direccion : '',
+    email : '',
+    web: '',
+    otro: '',
+    ubicacion_mapa: {} ,
+    productos: [ 
+      {
+        tipo: '',
+        titulo: '',
+        descripcion: ''
+      },
+      {
+        tipo: '',
+        titulo: '',
+        descripcion: ''
+      }, 
+      {
+        tipo: '',
+        titulo: '',
+        descripcion: ''
+      }
+    ]
+  })
+
+  const navigate = useNavigate()
 
   const [bgColor, setBgColor] = useState('#333')
   const [txtColor, setTxtColor] = useState('#ddd')
@@ -42,6 +76,12 @@ function PagProveedor() {
     .catch((e) => console.error('La petición no se completó: '+ e));
 
   }, [])
+
+  const handleToMap = () => {
+    window.localStorage.setItem('centerLat', pageData.ubicacion_mapa.lat)
+    window.localStorage.setItem('centerLng', pageData.ubicacion_mapa.lng)
+    navigate('/map')
+  }
 
   return (
     <div className="pag-container">
@@ -112,7 +152,13 @@ function PagProveedor() {
             </dl>
             <div className="map-img-container">
               <img className="map-img" src={mapImg} alt="Mapa Representativo" />
-              <Button className="map-btn" variant="warning">Ver en Mapa</Button>
+              <Button 
+                onClick={handleToMap}
+                className="map-btn" 
+                variant="warning"
+              >
+                Ver en Mapa
+              </Button>
             </div>
           </Box>
         </aside>
@@ -146,11 +192,10 @@ function PagProveedor() {
               color: `${txtColor}`,
               mb: 3
             }}>
-              <h4><StarsIcon /> algo</h4>
+              <h4><StarsIcon /> {pageData.productos[0].tipo}</h4>
               <ProvOffer 
-              offerType=''
-              title="Desarrollo de Software a Medida" 
-              description="Servicio integral con el cual construimos las soluciones digitales que requiera su empresa brindando consultoría, acompañamiento y soporte en todas las etapas de su proyecto, ofreciendo la mejor solución posible ajustada a su situación y presupuesto." 
+              title={pageData.productos[0].titulo}
+              description={pageData.productos[0].descripcion}
               />
             </Box>
 
@@ -162,11 +207,10 @@ function PagProveedor() {
                 padding: 3,
                 color: `${bgColor}`
               }}>
-                <h4><AddShoppingCartIcon />  algo</h4>
+                <h4>{pageData.productos[1].tipo==="Producto"?<AddShoppingCartIcon />:<BusinessCenterIcon />} {pageData.productos[1].tipo}</h4>
                 <ProvOffer 
-                offerType='algo'
-                title="Aplicación Estandar" 
-                description="Usamos las mejores técnicas para ofrecerle una aplicación corporativa estandar que le ayudará a promocionar su empresa o marca." 
+                title={pageData.productos[1].titulo}
+                description={pageData.productos[1].descripcion}
                 />
               </Box>
               <Box className="rps-card" sx={{
@@ -176,11 +220,10 @@ function PagProveedor() {
                 padding: 3,
                 color: `${bgColor}`
               }}>
-                <h4><BusinessCenterIcon />  algo</h4>
+                <h4>{pageData.productos[2].tipo==="Producto"?<AddShoppingCartIcon />:<BusinessCenterIcon />} {pageData.productos[2].tipo}</h4>
                 <ProvOffer 
-                offerType='algo'
-                title="Consultoría TIC" 
-                description="Contamos con los profesionales, la experiencia y el respaldo para estudiar y estructurar su proyecto desde un enfoque profesional y efectivo." 
+                title={pageData.productos[2].titulo}
+                description={pageData.productos[2].descripcion}
                 />
               </Box>
             </div>
