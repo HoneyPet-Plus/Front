@@ -1,11 +1,11 @@
 import * as React from 'react';
 import './Home.css';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
 import Logo from '../../assets/Home/Logo.svg';
 import logoheader from '../../assets/Home/logoheader.svg'
 
@@ -18,13 +18,13 @@ import { Box } from '@mui/system';
 
 const descripHeader = "Ayudamos a nuestros usuarios a encontrar los mejores proveedores de servicios para mascotas desde cualquier parte del país."
 
-const ColorButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText('#00303F'),
-  backgroundColor: '#00303F',
-  '&:hover': {
-    backgroundColor: '#00303F',
-  },
-}));
+// const ColorButton = styled(Button)(({ theme }) => ({
+//   color: theme.palette.getContrastText('#00303F'),
+//   backgroundColor: '#00303F',
+//   '&:hover': {
+//     backgroundColor: '#00303F',
+//   },
+// }));
 
 
 export default function Home() {
