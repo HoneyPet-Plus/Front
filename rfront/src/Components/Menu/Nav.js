@@ -36,7 +36,7 @@ export default function ButtonAppBar() {
   useEffect(() => {
 
     if (sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='proveedor' ) {
-      if (sessionStorage.getItem('empresa_id') && sessionStorage.getItem('empresa_id')!= 'undefined' ) { 
+      if (sessionStorage.getItem('empresa_id') && sessionStorage.getItem('empresa_id')!== 'undefined' ) { 
         setOpcionIngresar(true)
         setAprov(false)
 

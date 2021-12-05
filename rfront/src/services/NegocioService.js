@@ -5,8 +5,10 @@ const END_POINT = "/api/proveedor/";
 const getAllProvs = () => httpClient.get(`${END_POINT}all`);
 const getProvById = (id) => httpClient.get(`${END_POINT}id/${id}`);
 const editProv = (id, newData) => httpClient.put(`${END_POINT}id/${id}`, newData);
-const deleteProvById = (idProv, idPublisher) => httpClient.delete((`${END_POINT}${idProv}/${idPublisher}`));
-const createProv = (newProv,token) => httpClient.post(`${END_POINT}create`, newProv,{
+const deleteProvById = (idProv, idPublisher, token) => httpClient.delete(`${END_POINT}${idProv}/${idPublisher}`,{
+    headers:{"autorizacion": token}
+});
+const createProv = (newProv, token) => httpClient.post(`${END_POINT}create`, newProv,{
     headers:{"autorizacion": token}
 });
 const changeHeroImg = (id, heroImg) => httpClient.put(`${END_POINT}id/${id}`, heroImg, {

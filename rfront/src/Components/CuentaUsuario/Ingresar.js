@@ -84,7 +84,7 @@ export default function Ingresar() {
           showConfirmButton: false,
           timer:3000
         })
-        navigate('/mi_pagina/:myPageIdSS', { replace:true })
+        navigate(`/mi_pagina/${empresa_id}`, { replace:true })
       } else {
 
         sessionStorage.setItem('empresa_id','')
