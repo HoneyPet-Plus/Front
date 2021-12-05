@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import seccioempresas from '../../assets/Home/seccioempresas.svg';
 import { Link } from 'react-router-dom';
-import { color } from '@mui/system';
 
 
 export default function Section2(){

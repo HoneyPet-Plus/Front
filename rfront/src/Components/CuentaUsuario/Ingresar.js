@@ -84,7 +84,7 @@ export default function Ingresar() {
           showConfirmButton: false,
           timer:3000
         })
-        navigate('/mi_pagina/:myPageIdSS', { replace:true })
+        window.location.href='/mi_pagina/:myPageIdSS'
       } else {
 
         sessionStorage.setItem('empresa_id','')
@@ -94,7 +94,8 @@ export default function Ingresar() {
           showConfirmButton: false,
           timer:3000
         })
-        navigate('/publicar', { replace:true })
+        window.location.href='/publicar'
+
       }
       
 
@@ -119,7 +120,7 @@ export default function Ingresar() {
         showConfirmButton: false,
         timer:1500
       })
-      navigate('/perfil', { replace:true })
+      window.location.href='/perfil'
 
     }
 
