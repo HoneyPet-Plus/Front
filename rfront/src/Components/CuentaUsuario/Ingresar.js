@@ -16,7 +16,7 @@ import './logform.css'
 import React, { useState } from 'react';
 import Axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 // function Copyright(props) {
 //   return (
@@ -35,7 +35,7 @@ const theme = createTheme();
 
 export default function Ingresar() {
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   
   const [correo,setCorreo]= useState('')
@@ -84,7 +84,10 @@ export default function Ingresar() {
           showConfirmButton: false,
           timer:3000
         })
-        navigate(`/mi_pagina/${empresa_id}`, { replace:true })
+        // navigate(`/mi_pagina/${empresa_id}`, { replace:true })
+        // window.location.href='/mi_pagina/:myPageIdSS'
+        window.location.href="/mi_pagina/"+empresa_id
+
       } else {
 
         sessionStorage.setItem('empresa_id','')
@@ -94,7 +97,8 @@ export default function Ingresar() {
           showConfirmButton: false,
           timer:3000
         })
-        navigate('/publicar', { replace:true })
+        window.location.href='/publicar'
+
       }
       
 
@@ -105,7 +109,6 @@ export default function Ingresar() {
       const idUser = respuesta.data.idUser
       const correo = respuesta.data.correo
       const rol = respuesta.data.rol
-      const empresa_id = ''
 
 
       sessionStorage.setItem('token',token)
@@ -113,7 +116,6 @@ export default function Ingresar() {
       sessionStorage.setItem('idUsuario',idUser)
       sessionStorage.setItem('correo',correo)
       sessionStorage.setItem('rol',rol)
-      sessionStorage.setItem('empresa_id',empresa_id)
 
       Swal.fire({
         icon:'success',
@@ -121,7 +123,7 @@ export default function Ingresar() {
         showConfirmButton: false,
         timer:1500
       })
-      navigate('/perfil', { replace:true })
+      window.location.href='/perfil'
 
     }
 

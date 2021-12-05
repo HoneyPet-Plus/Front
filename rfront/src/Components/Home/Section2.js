@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import seccioempresas from '../../assets/Home/seccioempresas.svg';
 import { Link } from 'react-router-dom';
-import { color } from '@mui/system';
 
 
 export default function Section2(){
@@ -52,7 +51,7 @@ export default function Section2(){
               <Stack direction='row' spacing={1} mt>
                 
                 <Button id="button-empezar" size='medium' variant="outlined" >
-                  <Link to='/DemoPagProveedor' className="btnin">VER UNA DEMO</Link>
+                  <Link to='/demo_pagina' className="btnin">VER UNA DEMO</Link>
                 </Button>
                 <Button id="button-empezar" size='medium' variant="outlined" >
                   <Link to='/registrar' className="btnin">CREAR CUENTA</Link>
