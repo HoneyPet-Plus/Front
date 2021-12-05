@@ -45,7 +45,7 @@ export default function ButtonAppBar() {
         setNprov(false)
       }
 
-    }else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='Usuario' ){
+    }else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='usuario' ){
       setUser(false)
       setOpcionIngresar(true)
     }
