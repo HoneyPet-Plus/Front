@@ -80,6 +80,8 @@ export default function ButtonAppBar() {
     getAllProvs().then((response)=>{
 
       window.localStorage.setItem('proveedores', JSON.stringify(response.data));
+      window.localStorage.setItem('centerLat',window.localStorage.getItem('userLat'));
+      window.localStorage.setItem('userLng',window.localStorage.getItem('userLng'));
 
     }).catch((e) => {
       console.error('No funcionó la petición' + e);

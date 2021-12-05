@@ -40,11 +40,11 @@ function DisplayPosition({ map }) {
 
 function MapView(){
 
-    const lat  = window.localStorage.getItem('userLat')
-    const long = window.localStorage.getItem('userLng')
+    const lat  = window.localStorage.getItem('centerLat')
+    const long = window.localStorage.getItem('centerLng')
 
-    return (
-        
+    const displayMap = useMemo(
+      () => (
         <Fragment>
             <MapContainer center={[lat,long]} zoom={18} minZoom={8}>
             <TileLayer
@@ -63,6 +63,18 @@ function MapView(){
                 <MyLocationIcon />
             </Button>
         </Fragment>
+      ),
+      [],
+    )
+  
+
+
+    return (
+        
+      <div>
+        {map ? <DisplayPosition map={map} /> : null}
+        {displayMap}
+      </div>
         
     )
 };
