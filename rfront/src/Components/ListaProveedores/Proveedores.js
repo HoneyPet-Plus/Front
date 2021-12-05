@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useEffect, useState } from 'react';
+// import * as React from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -8,18 +9,33 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-// import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-// import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import { getAllProvs } from '../../services/NegocioService';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme();
 
 export default function Proveedores() {
+
+  const [bizData, setBizData] = useState([])
+
+  useEffect(() => {
+    getAllProvs()
+      .then((response) => {
+        setBizData(response.data)
+        console.log('peticion: ');
+        console.log(response.data)
+        console.log(bizData);
+      })
+      .catch((er) => {
+        console.error('La petición no se completó: ')
+        console.error(er);
+      });
+
+  }, [])
   return (
     <Grid style={{ backgroundColor: "#CAE4DB" }}>
       <ThemeProvider theme={theme}>
