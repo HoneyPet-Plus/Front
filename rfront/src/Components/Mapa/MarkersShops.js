@@ -11,7 +11,7 @@ function MarkersShop (){
 
   const markers = lugares.map((place) =>(
       
-      <MarkerShop key={1} place={place}></MarkerShop>
+      <MarkerShop key={place.id} place={place}></MarkerShop>
   ))
 
   return markers;

@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Divider from '@mui/material/Divider';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
-import img from '../../assets/Mapa/tienda.jpg'
 import {Marker, Popup} from 'react-leaflet'
 import {IconShop} from "./IconShop";
 import Swal from 'sweetalert2';
@@ -29,19 +28,20 @@ const MarkerShop = (place) => {
 
     const visitarPagina = () => (event) =>{
       
-      Swal.fire({
-        title: '¿Estas seguro de que quieres visitar la pagina de "'+place.place.nombre_empresa+'" ahora mismo?',
-        text: "Elige una opcion",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#F7CC31',
-        cancelButtonColor: '#cfcfcf',
-        confirmButtonText: 'Si, visitar pagina'
-      }).then((result) => {
-        if (result.isConfirmed) {
+      
+      // Swal.fire({
+      //   title: '¿Estas seguro de que quieres visitar la pagina de "'+place.place.nombre_empresa+'" ahora mismo?',
+      //   text: "Elige una opcion",
+      //   icon: 'question',
+      //   showCancelButton: true,
+      //   confirmButtonColor: '#F7CC31',
+      //   cancelButtonColor: '#cfcfcf',
+      //   confirmButtonText: 'Si, visitar pagina'
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
           
-        }
-      })
+      //   }
+      // })
         
     }
 
@@ -65,25 +65,36 @@ const MarkerShop = (place) => {
             confirmButtonText: 'Si, añadir a favoritos'
           }).then((result) => {
             if (result.isConfirmed) {
-              favProveedor(idUsuario,idNegocio,token)
-              .them((response)=>{
-                if(response === 'El proveedor se añadioa la lista de favoritos'){
-                  Swal.fire(
-                    'Añadido!',
-                    '"'+place.place.nombre_empresa+'" se ha añadido a tu lista de favoritos',
-                    'success'
-                  )
-                }else{
-                  if(response === 'El proveedor ya esta en tu lista de favoritos'){
-                    Swal.fire(
-                      'No añadido!',
-                      '"'+place.place.nombre_empresa+'" ya se encuentra en tu lista da favoritos. si deseas eliminarlo de esta, dirigete a tu perfil para poder realizar esta accion',
-                      'warning',
-                    )
-                  }
-                }
-              })
               
+              console.log(token)
+              favProveedor(idUsuario,idNegocio,token)
+                .then((response) => {
+                  console.log(response.data.mensaje)
+                  if(response.data.mensaje === 'El proveedor se añadió a la lista de favoritos'){
+                    Swal.fire(
+                      'Añadido!',
+                      '"'+place.place.nombre_empresa+'" se ha añadido a tu lista de favoritos',
+                      'success'
+                    )
+                  }else{
+                    if(response.data.mensaje === 'El proveedor ya esta en tu lista de favoritos'){
+                      Swal.fire(
+                        'No añadido!',
+                        '"'+place.place.nombre_empresa+'" ya se encuentra en tu lista da favoritos. sí deseas eliminarlo de esta, dirígete a tu perfil para poder realizar esta acción ',
+                        'warning',
+                      )
+                    }
+                  }
+                })
+                .catch((e) => {
+                  console.error('No funcionó la petición' + e);
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Paila',
+                    showConfirmButton: false,
+                    timer: 2000
+                  })
+                })
             }
           })
           
@@ -116,7 +127,7 @@ const MarkerShop = (place) => {
     
           >
           <div className='box-imagen-drawer'>
-            <img  className='box-imagen-drawer' src={img} alt="Imagen " />
+            <img  className='box-imagen-drawer' src={place.place.imagen_destacada} alt="Imagen " />
           </div> 
           <div className='box-nombreshop-drawer'>
             <h1 >{place.place.nombre_empresa}</h1>
