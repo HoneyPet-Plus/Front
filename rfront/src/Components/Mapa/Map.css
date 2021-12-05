@@ -143,5 +143,5 @@
     position: absolute;
     bottom: 80px;
     right: 50px;
-    z-index: 400;
+    z-index: 1000;
 }

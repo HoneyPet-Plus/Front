@@ -28,19 +28,20 @@ const MarkerShop = (place) => {
 
     const visitarPagina = () => (event) =>{
       
-      Swal.fire({
-        title: '¿Estas seguro de que quieres visitar la pagina de "'+place.place.nombre_empresa+'" ahora mismo?',
-        text: "Elige una opcion",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#F7CC31',
-        cancelButtonColor: '#cfcfcf',
-        confirmButtonText: 'Si, visitar pagina'
-      }).then((result) => {
-        if (result.isConfirmed) {
+      
+      // Swal.fire({
+      //   title: '¿Estas seguro de que quieres visitar la pagina de "'+place.place.nombre_empresa+'" ahora mismo?',
+      //   text: "Elige una opcion",
+      //   icon: 'question',
+      //   showCancelButton: true,
+      //   confirmButtonColor: '#F7CC31',
+      //   cancelButtonColor: '#cfcfcf',
+      //   confirmButtonText: 'Si, visitar pagina'
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
           
-        }
-      })
+      //   }
+      // })
         
     }
 
