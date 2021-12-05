@@ -46,7 +46,7 @@ function MapView(){
     return (
         
         <Fragment>
-            <MapContainer center={[lat,long]} zoom={13} minZoom={8}>
+            <MapContainer center={[lat,long]} zoom={18} minZoom={8}>
             <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
