@@ -1,18 +1,12 @@
 import * as React from 'react';
 import './Home.css';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import pets from '../../assets/Home/pets.svg';
-import empresas from '../../assets/Home/empresas.svg';
 import peopleandpet from '../../assets/Home/peopleandpet.svg';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 
-import { Box } from '@mui/system';
 
 
 export default function Section1(){
@@ -37,7 +31,7 @@ export default function Section1(){
                         <Stack direction='row' spacing={1} mt mb>
 
                             <Button id="button-empezar" size='medium' variant="outlined" >
-                                <Link to='/Proveedores' className="btnin">VER DIRECTORIO</Link>
+                                <Link to='/proveedores' className="btnin">VER DIRECTORIO</Link>
                             </Button>
                 
                         </Stack>
