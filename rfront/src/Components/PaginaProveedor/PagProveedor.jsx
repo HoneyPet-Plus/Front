@@ -28,7 +28,7 @@ function PagProveedor() {
     descripcion_corta : '',
     descripcion_empresa : '',
     imagen_destacada : '',
-    color_tema: '',
+    color_tema: '#333',
     horario_atencion : '',
     telefono : 0,
     direccion : '',
@@ -57,30 +57,53 @@ function PagProveedor() {
 
   const navigate = useNavigate()
 
-  const [bgColor, setBgColor] = useState('#333')
-  const [txtColor, setTxtColor] = useState('#ddd')
+  const txtColor = '#ddd'
   
   const userEmailSS = window.sessionStorage.getItem('correo') 
   const empresaIdSS = window.sessionStorage.getItem('empresa_id')
   
   useEffect(() => {
-    console.log('aqui va la petición' + myPageIdSS)
     getProvById(myPageIdSS)
-    .then((response) => {
-      setPageData(response.data)
-      // PREGUNTAR POR QUE???
-      console.log('Funka respuesta de la peticion: ');
-      console.log(response.data)
-      console.log(pageData);
-    })
-    .catch((e) => console.error('La petición no se completó: '+ e));
+      .then((response) => {
+        setPageData(response.data)
+        // PREGUNTAR POR QUE???
+        console.log('Funka respuesta de la peticion: ');
+        console.log(response.data)
+        console.log(pageData);
+        window.localStorage.setItem('bizName', JSON.stringify(response.data.nombre_empresa))
+        window.localStorage.setItem('bizSlogan', JSON.stringify(response.data.eslogan))
+        window.localStorage.setItem('bizDesc', JSON.stringify(response.data.descripcion_corta))
+        window.localStorage.setItem('bizDescription', JSON.stringify(response.data.descripcion_empresa))
+        window.localStorage.setItem('bizHour', JSON.stringify(response.data.horario_atencion))
+        window.localStorage.setItem('bizTel', response.data.telefono)
+        window.localStorage.setItem('bizDir', JSON.stringify(response.data.direccion))
+        window.localStorage.setItem('bizEmail', JSON.stringify(response.data.email))
+        window.localStorage.setItem('bizWeb', JSON.stringify(response.data.web))
+        window.localStorage.setItem('bizOtro', JSON.stringify(response.data.otro))
+        window.localStorage.setItem('bizLat', response.data.ubicacion_mapa.lat)
+        window.localStorage.setItem('bizLng', response.data.ubicacion_mapa.log)
+        window.localStorage.setItem('bizPSEtype', JSON.stringify(response.data.productos[0].tipo))
+        window.localStorage.setItem('bizPSEtitle', JSON.stringify(response.data.productos[0].titulo))
+        window.localStorage.setItem('bizPSEdesc', JSON.stringify(response.data.productos[0].descripcion))
+        window.localStorage.setItem('bizPS2type', JSON.stringify(response.data.productos[1].tipo))
+        window.localStorage.setItem('bizPS2title', JSON.stringify(response.data.productos[1].titulo))
+        window.localStorage.setItem('bizPS2desc', JSON.stringify(response.data.productos[1].descripcion))
+        window.localStorage.setItem('bizPS3type', JSON.stringify(response.data.productos[2].tipo))
+        window.localStorage.setItem('bizPS3title', JSON.stringify(response.data.productos[2].titulo))
+        window.localStorage.setItem('bizPS3desc', JSON.stringify(response.data.productos[2].descripcion))
+
+      })
+      .catch((e) => {
+        console.error('La petición no se completó: ')
+        console.error(e);
+      });
 
   }, [])
 
   const handleToMap = () => {
     window.localStorage.setItem('centerLat', pageData.ubicacion_mapa.lat)
-    window.localStorage.setItem('centerLng', pageData.ubicacion_mapa.lng)
-    navigate('/map')
+    window.localStorage.setItem('centerLng', pageData.ubicacion_mapa.log)
+    navigate('/mapa')
   }
 
   return (
@@ -92,7 +115,7 @@ function PagProveedor() {
         <ProvImg src={pageData.imagen_destacada} />
         <Box className="hero-container" sx={{
           maxWidth: 900,
-          backgroundColor: `${bgColor}`,
+          backgroundColor: pageData.color_tema,
           marginX: 'auto',
           textAlign: 'center',
           paddingY:5,
@@ -111,7 +134,7 @@ function PagProveedor() {
         <aside className="aside-bizp">
           <Box sx={{
             // maxWidth: 400,
-            backgroundColor: `${bgColor}`,
+            backgroundColor: pageData.color_tema,
             borderRadius:5,
             mb: 4,
             paddingY: 3,
@@ -164,11 +187,11 @@ function PagProveedor() {
         </aside>
         <main className="main-bizp">
           <section className="prov-description">
-            <Box sx={{ mb: 4, color: `${bgColor}`}}>
+            <Box sx={{ mb: 4, color: pageData.color_tema}}>
               <h3>Descripción de la Empresa</h3>
               <Box sx={{
                 height: 2,
-                bgcolor: `${bgColor}`
+                bgcolor: pageData.color_tema
               }} />
             </Box>
             <ProvDescription 
@@ -176,16 +199,16 @@ function PagProveedor() {
             />
           </section>
           <section className="prov-services">
-            <Box sx={{ my: 4, color: `${bgColor}`}}>
+            <Box sx={{ my: 4, color: pageData.color_tema}}>
               <h3>Productos / Servicios</h3>
               <Box sx={{
                 height: 2,
-                bgcolor: `${bgColor}`
+                bgcolor: pageData.color_tema
               }} />
             </Box>
 
             <Box sx={{
-              backgroundColor: `${bgColor}`,
+              backgroundColor: pageData.color_tema,
               borderRadius:5,
               textAlign: 'center',
               padding: 3,
@@ -202,10 +225,10 @@ function PagProveedor() {
             <div className="offer-container">
               <Box className="rps-card" sx={{
                 border: 1,
-                borderColor: `${bgColor}`,
+                borderColor: pageData.color_tema,
                 borderRadius:4,
                 padding: 3,
-                color: `${bgColor}`
+                color: pageData.color_tema
               }}>
                 <h4>{pageData.productos[1].tipo==="Producto"?<AddShoppingCartIcon />:<BusinessCenterIcon />} {pageData.productos[1].tipo}</h4>
                 <ProvOffer 
@@ -215,10 +238,10 @@ function PagProveedor() {
               </Box>
               <Box className="rps-card" sx={{
                 border: 1,
-                borderColor: `${bgColor}`,
+                borderColor: pageData.color_tema,
                 borderRadius:4,
                 padding: 3,
-                color: `${bgColor}`
+                color: pageData.color_tema
               }}>
                 <h4>{pageData.productos[2].tipo==="Producto"?<AddShoppingCartIcon />:<BusinessCenterIcon />} {pageData.productos[2].tipo}</h4>
                 <ProvOffer 
