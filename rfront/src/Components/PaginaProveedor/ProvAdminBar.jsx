@@ -13,6 +13,8 @@ import PanoramaIcon from '@mui/icons-material/Panorama';
 import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { deleteProvById } from '../../services/NegocioService';
+
 
 function ProvAdminBar({email}) {
   const navigate = useNavigate();
@@ -35,8 +37,29 @@ function ProvAdminBar({email}) {
           showConfirmButton: false,
           timer: 2000
         })
-        sessionStorage.clear()
-        navigate('/', { replace:true })
+        localStorage.removeItem('bizDesc');
+        localStorage.removeItem('bizDescription');
+        localStorage.removeItem('bizDir');
+        localStorage.removeItem('bizEmail');
+        localStorage.removeItem('bizHour');
+        localStorage.removeItem('bizName');
+        localStorage.removeItem('bizOtro');
+        localStorage.removeItem('bizPS2desc');
+        localStorage.removeItem('bizPS2title');
+        localStorage.removeItem('bizPS2type');
+        localStorage.removeItem('bizPS3desc');
+        localStorage.removeItem('bizPS3title');
+        localStorage.removeItem('bizPS3type');
+        localStorage.removeItem('bizPSEdesc');
+        localStorage.removeItem('bizPSEtitle');
+        localStorage.removeItem('bizPSEtype');
+        localStorage.removeItem('bizSlogan');
+        localStorage.removeItem('bizTel');
+        localStorage.removeItem('bizWeb');
+        localStorage.removeItem('bizLat');
+        localStorage.removeItem('bizLng');
+        sessionStorage.clear();
+        window.location.href='/'
       }
     })
 
@@ -54,16 +77,63 @@ function ProvAdminBar({email}) {
       confirmButtonText: 'Si, Borrar Mi Página!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Se eliminó su página exitosamente',
-          showConfirmButton: false,
-          timer: 2000
-        })
         // Aqui va la petición delete
-        navigate('/publicar', { replace:true })
+        const pageId = window.sessionStorage.getItem('empresa_id');
+        const userId = window.sessionStorage.getItem('idUsuario');
+        const token = window.sessionStorage.getItem('token');
+        deleteProvById(pageId,userId,token)
+          .then((response)=>{
+            console.log('Se borro con exito!!!')
+            console.log(response)
+            window.sessionStorage.removeItem('empresa_id')
+            Swal.fire({
+              icon: 'success',
+              title: 'Se eliminó su página exitosamente',
+              showConfirmButton: false,
+              timer: 2000
+            })
+            window.location.href='/inicio'
+
+          })
+          .catch((e) => {
+            console.error('No funcionó la petición');
+            console.error(e);
+            Swal.fire({
+              icon: 'error',
+              title: 'No se completo la petición',
+              showConfirmButton: false,
+              timer: 2000
+            })
+          })   
       }
     })
+  }
+
+  const handleEditPageData = () => {
+    Swal.fire({
+      title: '¿Desea dditar los datos de la página?',
+      text: "Se cargarán los datos actuales en el formulario y solo se actualizarán cuanto se completen los tres pasos.",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#004F67',
+      cancelButtonColor: '#666',
+      confirmButtonText: 'Si, Editar Datos!',
+      cancelButtonText: 'No, Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: 'info',
+          title: 'Cargando Datos al Formulario...',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true
+        })
+        navigate('/publicar')
+     
+      }
+    })
+
+    
   }
 
 
@@ -128,6 +198,7 @@ function ProvAdminBar({email}) {
                   </IconButton>
 
                   <IconButton
+                    onClick={handleEditPageData}
                     size="large"
                     color="inherit"
                     aria-label="menu"

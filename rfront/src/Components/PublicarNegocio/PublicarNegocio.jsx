@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -13,11 +13,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InfoForm from './InfoForm';
 import ContactForm from './ContactForm';
 import ServicesForm from './ServicesForm';
-import { createProv } from '../../services/NegocioService';
+import { createProv, editProv } from '../../services/NegocioService';
 import Swal from 'sweetalert2';
 
+
 // ref para escribir la logica con el contex https://youtu.be/EUsNVz53gMc?t=4039
-// TODO escribir la redirección del boton final del steper
 
 const steps = ['Información de la empresa', 'Datos de contacto', 'Productos / Servicios'];
 
@@ -38,13 +38,72 @@ const theme = createTheme();
 
 export default function PublicarNegocio() {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // logica del steper
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    if(activeStep === steps.length - 1){
+    const token = window.sessionStorage.getItem('token');
+    if(activeStep === steps.length - 1 && window.sessionStorage.getItem('empresa_id')){
+      // aqui se hace el submit del editProveedor
+      console.log('Submit del bizEdit - existe un empresaId en el SS')
+      const empresaId = window.sessionStorage.getItem('empresa_id')
+      console.log(empresaId);
+      const editNegocioData = {
+        "nombre_empresa": JSON.parse(window.localStorage.getItem('bizName')),
+        "eslogan": JSON.parse(window.localStorage.getItem('bizSlogan')),
+        "descripcion_corta": JSON.parse(window.localStorage.getItem('bizDesc')),
+        "descripcion_empresa": JSON.parse(window.localStorage.getItem('bizDescription')),
+        "horario_atencion": JSON.parse(window.localStorage.getItem('bizHour')),
+        "telefono": JSON.parse(window.localStorage.getItem('bizTel')),
+        "direccion": JSON.parse(window.localStorage.getItem('bizDir')),
+        "email": JSON.parse(window.localStorage.getItem('bizEmail')),
+        "web": JSON.parse(window.localStorage.getItem('bizWeb')),
+        "otro": JSON.parse(window.localStorage.getItem('bizOtro')),
+        "ubicacion_mapa": {'lat': JSON.parse(window.localStorage.getItem('bizLat')), 'log': JSON.parse(window.localStorage.getItem('bizLng'))},
+        "productos": [ 
+          {
+          "tipo": JSON.parse(window.localStorage.getItem('bizPSEtype')),
+          "titulo": JSON.parse(window.localStorage.getItem('bizPSEtitle')),
+          "descripcion": JSON.parse(window.localStorage.getItem('bizPSEdesc'))
+          },
+          {
+          "tipo": JSON.parse(window.localStorage.getItem('bizPS2type')),
+          "titulo": JSON.parse(window.localStorage.getItem('bizPS2title')),
+          "descripcion": JSON.parse(window.localStorage.getItem('bizPS2desc'))
+          },
+          {
+          "tipo": JSON.parse(window.localStorage.getItem('bizPS3type')),
+          "titulo": JSON.parse(window.localStorage.getItem('bizPS3title')),
+          "descripcion": JSON.parse(window.localStorage.getItem('bizPS3desc'))
+          }
+        ]
+      };
+      editProv(empresaId, editNegocioData, token)
+        .then((response) => {
+          console.log("Peticion EDITAR negocio Exitooooo!!!!!! ")
+          console.log(response)
+          Swal.fire({
+            icon: 'success',
+            title: '¡Negocio editado con éxito!',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          setActiveStep(activeStep + 1);
+        })
+        .catch((e) => {
+          console.error('No funcionó la petición EDITAR');
+          console.error(e);
+          Swal.fire({
+            icon: 'error',
+            title: 'No se pudo editar, intentelo más tarde',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        })
+
+    } else if(activeStep === steps.length - 1 && !window.sessionStorage.getItem('empresa_id')){
       console.log("Aqui Vamo a hace el submit")
       const negocio = { 
         "contacto_id": window.sessionStorage.getItem('idUsuario'),
@@ -77,28 +136,33 @@ export default function PublicarNegocio() {
           }
         ]
       };
-      const token = window.sessionStorage.getItem('token');
+      // const token = window.sessionStorage.getItem('token');
 
       console.log(negocio);
       console.log(token);
 
       createProv(negocio, token)
         .then((response) => {
-          console.log("Exitooooo!!!!!! " + response)
+          console.log("Peticion crear negocio Exitooooo!!!!!! ")
+          console.log(response)
+          const empresa_id = response.data._id
           Swal.fire({
             icon: 'success',
             title: '¡Negocio creado con éxito!',
             showConfirmButton: false,
             timer: 2000
           })
+          window.sessionStorage.setItem('empresa_id',empresa_id);
           setActiveStep(activeStep + 1);
-          clearBizLS();
+          // lo necesito para editar info
+          // clearBizLS();
         })
         .catch((e) => {
-          console.error('No funcionó la petición' + e);
+          console.error('No funcionó la petición');
+          console.error(e);
           Swal.fire({
             icon: 'error',
-            title: 'Paila',
+            title: 'No se completo la petición',
             showConfirmButton: false,
             timer: 2000
           })
@@ -116,8 +180,8 @@ export default function PublicarNegocio() {
   const handleToMyPage = () => {
     console.log('Este es el último paso del stepper');
     //// ojo poner la logica para que funcione
-    const myPageIdSS = 'TODO poner la logica necesaria'
-    navigate(`/mi_pagina/${myPageIdSS}`, { replace:true })
+    const myPageIdSS = window.sessionStorage.getItem('empresa_id')
+    window.location.href="/mi_pagina/"+myPageIdSS
   }
 
   const clearBizLS = () => {
@@ -172,9 +236,16 @@ export default function PublicarNegocio() {
       <CssBaseline />
       <Container className="pag-container" component="main" maxWidth="lg" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-          <Typography component="h1" variant="h4" align="center">
-            Publicar Negocio
-          </Typography>
+          {/* TODO: Poner la lógica de cambiar titulo */}
+          {
+            !window.sessionStorage.getItem('empresa_id')
+            ?<Typography component="h1" variant="h4" align="center">
+              Publicar Negocio
+            </Typography>
+            :<Typography component="h1" variant="h4" align="center">
+              Editar Datos del Negocio
+            </Typography>
+          }
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }} alternativeLabel>
             {steps.map((label) => (
               <Step key={label}>
@@ -185,14 +256,20 @@ export default function PublicarNegocio() {
           <React.Fragment>
             {activeStep === steps.length ? (
               <React.Fragment>
-                <Typography variant="h5" gutterBottom align="center">
-                  ¡Gracias por publicar su negocio!
-                </Typography>
+                {/* TODO: Poner la lógica de cambiar titulo */}
+                {
+                  !window.sessionStorage.getItem('empresa_id')
+                  ?<Typography variant="h5" gutterBottom align="center">
+                    ¡Gracias por publicar su negocio!
+                  </Typography>
+                  :<Typography variant="h5" gutterBottom align="center">
+                    ¡Operación exitosa, se editaron los datos de su negocio!
+                  </Typography>
+                }
                 <Typography variant="subtitle1" align="center">
                   Ahora, podrá administrar y editar la infoprmación de su negocio desde la página: "Mi Negocio".
                 </Typography>
                 <Typography variant="subtitle1" align="center" marginTop="15px">
-                    {/* onClick={toBizPage}  */}
                     <Button 
                       onClick={handleToMyPage}
                       variant="outlined"
@@ -205,9 +282,13 @@ export default function PublicarNegocio() {
               <React.Fragment>
                 {getStepContent(activeStep)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <Button onClick={handleClearLS} sx={{ mt: 3, ml: 1 }}>
-                    Limpiar Formulario
-                  </Button>
+                  {
+                    !window.sessionStorage.getItem('empresa_id')
+                    ?<Button onClick={handleClearLS} sx={{ mt: 3, ml: 1 }}>
+                      Limpiar Formulario
+                    </Button>
+                    :null
+                  }
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
                       Anterior
