@@ -31,7 +31,7 @@ export default function Section1(){
                         <Stack direction='row' spacing={1} mt mb>
 
                             <Button id="button-empezar" size='medium' variant="outlined" >
-                                <Link to='/Proveedores' className="btnin">VER DIRECTORIO</Link>
+                                <Link to='/proveedores' className="btnin">VER DIRECTORIO</Link>
                             </Button>
                 
                         </Stack>
