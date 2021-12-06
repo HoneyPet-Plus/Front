@@ -34,8 +34,10 @@ export default function Proveedores() {
         console.error('La petición no se completó: ')
         console.error(er);
       });
-
   }, [])
+
+  const proved = bizData
+
   return (
     <Grid style={{ backgroundColor: "#CAE4DB" }}>
       <ThemeProvider theme={theme}>
@@ -67,6 +69,7 @@ export default function Proveedores() {
           <Container sx={{ py: 2 }} maxWidth="md">
             {/* End hero unit */}
             <Grid container spacing={4}>
+
               {cards.map((card) => (
                 <Grid item key={card} xs={12} sm={6} md={4}>
                   <Card
