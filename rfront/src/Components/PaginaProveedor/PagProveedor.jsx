@@ -124,8 +124,8 @@ function PagProveedor() {
         }}>
           <ProvInfo 
           provName={pageData.nombre_empresa}
-          provSlogan={pageData.descripcion_corta}
-          provDesc={pageData.descripcion_empresa}
+          provSlogan={pageData.eslogan}
+          provDesc={pageData.descripcion_corta}
           />
         </Box>
         {/* </div> */}
