@@ -106,7 +106,7 @@ export default function ButtonAppBar() {
 
     
   }
-
+  const empresaURL = "/mi_pagina/" + sessionStorage.getItem('empresa_id')
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -127,7 +127,7 @@ export default function ButtonAppBar() {
           
           <ColorButton hidden={opcionIngresar} className="btnNav"><Link to='/ingresar' className="btnin">Ingresar</Link></ColorButton>
           
-          <ColorButton hidden={aprov} className="btnNav"><Link to='/mi_pagina/:myPageIdSS' className="btnin">Mi Página</Link></ColorButton>
+          <ColorButton hidden={aprov} className="btnNav"><Link to={empresaURL} className="btnin">Mi Página</Link></ColorButton>
           
           <ColorButton hidden={nprov} className="btnNav"><Link to='/publicar' className="btnin">Publicar</Link></ColorButton>
           <ColorButton hidden={user} className="btnNav"><Link to='/perfil' className="btnin">Mi Perfil</Link></ColorButton>
