@@ -139,7 +139,7 @@ export default function  AboutAs() {
             marginBottom: 14,
           }}
         >
-          <Typography component="div" color="#004F67" align='center' mb >{images[activeStep].label}</Typography>
+          <Typography component="div" color="#004F67" align='center' fontWeight="bold" mb >{images[activeStep].label}</Typography>
   
           <Typography component="div" color="#00303F" fontSize='14px' align='center'  >{images[activeStep].descrip}</Typography>
           <Stack alignItems='center' direction='row' justifyContent='center' mt spacing={1}>

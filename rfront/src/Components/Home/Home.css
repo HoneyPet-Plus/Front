@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+
+.figma-headers{
+    font-family: 'Merienda One';
+}
 
 .menu-p{
     opacity: 85%;
@@ -13,7 +18,7 @@
 }
 
 .logo-principal{
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 .title-p{
@@ -28,16 +33,52 @@
 }
 
 .contenido-header{
-    padding-top: 8%;
+    padding-top: 6%;
 }
 
 .seccion-cards{
-    background-color:#CAE4DB ;
+    /* background-color:#aecac0 ; */
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(202,228,219,1) 100%);
+}
+
+.btnin{
+    color: #004F67;
+    font-weight: bold;
+    font-size: 14.5px;
+}
+
+.btnin:hover{
+    color: #004F67;
+}
+
+.btn-blanco{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14.5px;
+    text-decoration: none;
+}
+
+.btn-blanco:hover{
+    color: #ffffff;
+}
+
+.btn-amarillo{
+    color: #004F67;
+    font-weight: bold;
+    font-size: 14.5px;
+    text-decoration: none;
+}
+.btn-amarillo:hover{
+    background-color: #F7C331;
+    color: #004F67;
 }
 
 .seccion-lideres{
-    background-color:#CAE4DB ;
+    /* background-color:#CAE4DB ; */
+    background-color: #ffffff;
 }
+
 
 .seccion2{
     background-color: #080a0a;
@@ -83,13 +124,23 @@
     } 
 }
 
-@media (max-width: 850px){
+/* @media (max-width: 850px){
     .contenido-header{
         align-items: center;
         display: block;
         min-height: 100vw;
         justify-content: center;
-        padding: 14%;
+        padding: 10vh;
+    } 
+} */
+
+@media (max-width: 1550px){
+    .contenido-header{
+        align-items: center;
+        display: block;
+        min-height: 100vw;
+        justify-content: center;
+        padding:17.5vh;
     } 
 }
 
