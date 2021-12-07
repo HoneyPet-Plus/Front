@@ -8,6 +8,7 @@ import "./Nav.css"
 import { NavLink } from 'react-router-dom';
 import logoheader from '../../assets/Home/logoheader.svg'
 import { styled } from '@mui/material/styles';
+import { useLocalStorage } from '../../Hooks/useLocalStorage';
 
 
 const ColorButton = styled(Button)(({ theme }) => ({
@@ -51,6 +52,29 @@ export default function ButtonAppBar() {
 
   }, [])
 
+  const [userLat, setUserLat] = useLocalStorage('userLat',4.6482837)
+  const [userLng, setUserLng] = useLocalStorage('userLng',-74.247894)
+  
+  useEffect(()=>{
+      navigator.geolocation.getCurrentPosition(
+          
+          function(position){
+  
+              setUserLng(position.coords.longitude)
+              setUserLat(position.coords.latitude)
+
+              console.log(userLat, userLng)
+              
+          },
+          function(error){
+              console.log(error)
+          },
+          {
+              enableHighAccuracy: true
+          }
+      );
+  },[])
+
   const empresaURL = "/mi_pagina/" + sessionStorage.getItem('empresa_id')
 
   return (
@@ -64,9 +88,9 @@ export default function ButtonAppBar() {
             {empresa_id}
           </Typography > */}
           
-          <ColorButton className="btnNav" ><NavLink  to='/inicio'  className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')} >Inicio</NavLink></ColorButton>
+          <ColorButton className="btnNav" ><NavLink  to='/'  className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')} >Inicio</NavLink></ColorButton>
           
-          <ColorButton className="btnNav"><NavLink to='/mapa' activeClassName="selected"  className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mapa</NavLink></ColorButton>
+          <ColorButton className="btnNav"><NavLink to='/mapa' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mapa</NavLink></ColorButton>
           
           <ColorButton className="btnNav"><NavLink to='/proveedores' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Proveedores</NavLink></ColorButton>
           

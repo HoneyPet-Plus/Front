@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,13 +15,13 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { deleteProvById } from '../../services/NegocioService';
 import { useLocalStorage } from '../../Hooks/useLocalStorage';
-
+import { Button, Modal } from 'react-bootstrap';
 
 
 function ProvAdminBar({email}) {
   const navigate = useNavigate();
   
-  const [inputColor, setInputColor] = useLocalStorage('bizColor', '#00ff00')
+  const [inputColor, setInputColor] = useLocalStorage('bizColor', '#ffff00')
 
   const handleLogOut = () => {
     Swal.fire({
@@ -115,7 +115,7 @@ function ProvAdminBar({email}) {
 
   const handleEditPageData = () => {
     Swal.fire({
-      title: '¿Desea dditar los datos de la página?',
+      title: '¿Desea editar los datos de la página?',
       text: "Se cargarán los datos actuales en el formulario y solo se actualizarán cuanto se completen los tres pasos.",
       icon: 'question',
       showCancelButton: true,
@@ -177,24 +177,67 @@ function ProvAdminBar({email}) {
 
   const handleChangeTheme = () => {
 
-    Swal.fire({
-      title: 'Cambiar color de la página',
-      html: `<label for="themeInput">Seleccione un tono oscuro: </label> <input onChange={e => setInputColor(e.target.value)} id="themeInput" type="color" value=${inputColor}>`,
-      showCancelButton: true,
-      focusConfirm: false,
-      confirmButtonText: 'Cambiar Color',
-      confirmButtonColor: '#004F67',
-      cancelButtonText:'Cancelar',
-      cancelButtonColor: '#666',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Aqui va la petición actualizar color
-        console.log('Se confirmó Cambiar Color...')
-          
-      }
-    })
-  }
+    
 
+    // Swal.fire({
+    //   title: 'Cambiar color de la página',
+    //   html: `<label for="themeInput">Seleccione un tono oscuro: </label> <input id="themeInput" type="color" value=${inputColor}>`,
+    //   showCancelButton: true,
+    //   focusConfirm: false,
+    //   confirmButtonText: 'Cambiar Color',
+    //   confirmButtonColor: '#004F67',
+    //   cancelButtonText:'Cancelar',
+    //   cancelButtonColor: '#666',
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     // Aqui va la petición actualizar color
+    //     console.log('Se confirmó Cambiar Color...')
+          
+    //   }
+    // })
+  }
+  
+
+  function Example() {
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
+    return (
+      <>
+        {/* <Button variant="primary" onClick={handleShow}>
+          Launch demo modal
+        </Button> */}
+        <IconButton 
+          onClick={handleShow}
+          size="large"
+          color="inherit"
+          aria-label="menu"
+        >
+          <Tooltip title="Cambiar Colores" arrow>
+            <FormatColorFillIcon />
+          </Tooltip>
+        </IconButton>
+  
+        <Modal className="mt-5" show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
+  
 
 
     return (
@@ -211,6 +254,7 @@ function ProvAdminBar({email}) {
                     <BusinessIcon />
                   </IconButton>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>{email}</Typography>
+                  
 
                   <IconButton 
                     onClick={handleDeletePage}
@@ -236,8 +280,9 @@ function ProvAdminBar({email}) {
                     </Tooltip>
                   </IconButton>
 
-                  <IconButton 
-                    onClick={handleChangeTheme}
+                  <Example />
+                  {/* <IconButton 
+                    onClick={handleShow}
                     size="large"
                     color="inherit"
                     aria-label="menu"
@@ -245,7 +290,7 @@ function ProvAdminBar({email}) {
                     <Tooltip title="Cambiar Colores" arrow>
                       <FormatColorFillIcon />
                     </Tooltip>
-                  </IconButton>
+                  </IconButton> */}
                   
                   <IconButton 
                     onClick={handleUploadImg}

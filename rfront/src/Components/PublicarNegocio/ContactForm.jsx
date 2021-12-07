@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { InputGroup, Form, FormControl } from 'react-bootstrap';
 import { useLocalStorage } from '../../Hooks/useLocalStorage';
 import { InputMap } from './InputMap';
@@ -11,6 +11,7 @@ function ContactForm() {
     const [bizEmail, setBizEmail] = useLocalStorage('bizEmail', '')
     const [bizWeb, setBizWeb] = useLocalStorage('bizWeb', '')
     const [bizOtro, setBizOtro] = useLocalStorage('bizOtro', '')
+
 
     return (
         <div>
