@@ -47,7 +47,7 @@ export default function Proveedores() {
     navigate("/negocio/" + idProv);
   };
 
-  const alternarFavorito = (lsprov) => (event) => {
+  const agregarFavorito = (lsprov) => (event) => {
     const idNegocio = lsprov._id;
     const idUsuario = window.sessionStorage.getItem("idUsuario");
     const token = window.sessionStorage.getItem("token");
@@ -128,7 +128,15 @@ export default function Proveedores() {
     }
   };
 
-  const marcarFavorito = () => (event) => {};
+  const quitarFavorito = (card) => (event) => {
+    
+  };
+
+  const favoritosSS = window.sessionStorage.getItem("favoritos");
+  // const favoritos = "Hola favoritos";
+  const favoritos = favoritosSS.split(",");
+  console.log("Favoritos: ");
+  console.log(favoritos);
 
   return (
     <Grid style={{ backgroundColor: "#CAE4DB" }}>
@@ -199,12 +207,38 @@ export default function Proveedores() {
                     </CardContent>
                     <Grid alignItems="center" mb>
                       <CardActions>
-                        {window.sessionStorage.getItem("rol") === "usuario"
-                          ? console.log("Hola")
-                          : console.log("Chao")}
-
+                        {
+                        favoritos.includes(card._id) ? 
                         <Button
-                          onClick={alternarFavorito(card)}
+                        onClick={quitarFavorito(card._id)}
+                        size="small"
+                        variant="contained"
+                        style={{
+                          backgroundColor: "#004F67",
+                          color: "#F7CC31",
+                        }}
+                      >
+                        <StarIcon />
+                        Favorito
+                      </Button>
+                         : 
+                          <Button
+                            onClick={agregarFavorito(card)}
+                            size="small"
+                            variant="contained"
+                            style={{
+                              backgroundColor: "#004F67",
+                              color: "#CAE4DB",
+                            }}
+                          >
+                            <StarIcon />
+                            Agregar favorito
+                          </Button>
+                        
+                        }
+
+                        {/* <Button
+                          onClick={agregarFavorito(card)}
                           size="small"
                           variant="contained"
                           style={{
@@ -214,14 +248,14 @@ export default function Proveedores() {
                         >
                           <StarIcon />
                           Añadir a favoritos
-                        </Button>
+                        </Button> */}
                         <Button
                           onClick={visitarPagina(card._id)}
                           size="small"
                           variant="contained"
                           style={{
-                            backgroundColor: "#ddd",
-                            color: "#00303F",
+                            backgroundColor: "#004F67",
+                              color: "#CAE4DB",
                           }}
                         >
                           <InfoIcon />
