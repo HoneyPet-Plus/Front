@@ -88,19 +88,6 @@ export default function ButtonAppBar() {
             {empresa_id}
           </Typography > */}
           
-          <ColorButton className="btnNav" ><NavLink  to='/'  className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')} >Inicio</NavLink></ColorButton>
-          
-          <ColorButton className="btnNav"><NavLink to='/mapa' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mapa</NavLink></ColorButton>
-          
-          <ColorButton className="btnNav"><NavLink to='/proveedores' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Proveedores</NavLink></ColorButton>
-          
-          <ColorButton hidden={opcionIngresar} className="btnNav"><NavLink to='/ingresar' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Ingresar</NavLink></ColorButton>
-          
-          <ColorButton hidden={aprov} className="btnNav"><NavLink to={empresaURL} className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mi Página</NavLink></ColorButton>
-          
-          <ColorButton hidden={nprov} className="btnNav"><NavLink to='/publicar' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Publicar</NavLink></ColorButton>
-          <ColorButton hidden={user} className="btnNav"><NavLink to='/perfil' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mi Perfil</NavLink></ColorButton>
-
           <ColorButton className="btnNav">
             <NavLink
               to="/inicio"

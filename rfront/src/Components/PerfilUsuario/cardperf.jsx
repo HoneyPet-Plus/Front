@@ -8,25 +8,25 @@ import './vistaperfil.css';
 import SimpleBottomNavigation from './botonescard';
 
 
-export default function ImgMediaCard({nombre,descripcion,imagen}) {
+export default function ImgMediaCard({prov}) {
   return (
     <Card className="conttt" sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         alt="green iguana"
         height="183"
-        image={imagen}
+        image={prov.imagen_destacada}
       />
       <CardContent className="descripcion">
         <Typography gutterBottom variant="h5" component="div">
-          <h3>{nombre}</h3>
+          <h3>{prov.nombre_empresa}</h3>
         </Typography>
         <Typography  variant="body2" color="text.secondary">
-          <p className='txtdes'>{descripcion}</p>
+          <p className='txtdes'>{prov.descripcion_corta}</p>
         </Typography>
       </CardContent>
       <CardActions className="descripcion">
-        <SimpleBottomNavigation/>
+        <SimpleBottomNavigation prov={prov}/>
       </CardActions>
     </Card>
   );
