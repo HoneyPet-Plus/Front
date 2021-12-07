@@ -66,7 +66,7 @@ export default function ButtonAppBar() {
           
           <ColorButton className="btnNav" ><NavLink  to='/inicio'  className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')} >Inicio</NavLink></ColorButton>
           
-          <ColorButton className="btnNav"><NavLink to='/mapa' activeClassName="selected"  className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mapa</NavLink></ColorButton>
+          <ColorButton className="btnNav"><NavLink to='/mapa' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mapa</NavLink></ColorButton>
           
           <ColorButton className="btnNav"><NavLink to='/proveedores' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Proveedores</NavLink></ColorButton>
           

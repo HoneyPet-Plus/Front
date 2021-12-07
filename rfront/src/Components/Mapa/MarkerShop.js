@@ -32,7 +32,7 @@ const MarkerShop = (place) => {
 
     const visitarPagina = () => (event) =>{
       
-        navigate('/negocio/'+place.place._id)
+      navigate('/negocio/'+place.place._id)
     }
 
     const añadirFavoritos= () => (event) =>{
