@@ -41,12 +41,13 @@ export default function Proveedores() {
   }, []);
 
   const navigate = useNavigate();
+
   const visitarPagina = (idProv) => (event) => {
     console.log(idProv);
     navigate("/negocio/" + idProv);
   };
 
-  const añadirFavoritos = (lsprov) => (event) => {
+  const alternarFavorito = (lsprov) => (event) => {
     const idNegocio = lsprov._id;
     const idUsuario = window.sessionStorage.getItem("idUsuario");
     const token = window.sessionStorage.getItem("token");
@@ -101,7 +102,7 @@ export default function Proveedores() {
                 console.error("No funcionó la petición" + e);
                 Swal.fire({
                   icon: "error",
-                  title: "Paila",
+                  title: "Ocurrió un error",
                   showConfirmButton: false,
                   timer: 2000,
                 });
@@ -126,6 +127,8 @@ export default function Proveedores() {
       });
     }
   };
+
+  const marcarFavorito = () => (event) => {};
 
   return (
     <Grid style={{ backgroundColor: "#CAE4DB" }}>
@@ -196,29 +199,33 @@ export default function Proveedores() {
                     </CardContent>
                     <Grid alignItems="center" mb>
                       <CardActions>
-                        {/* <BottomNavigationAction label="Favorite" icon={<StarIcon />} />
-                        <BottomNavigationAction label="Visit Page" icon={<InfoIcon />} /> */}
+                        {window.sessionStorage.getItem("rol") === "usuario"
+                          ? console.log("Hola")
+                          : console.log("Chao")}
+
                         <Button
-                          onClick={añadirFavoritos(card)}
+                          onClick={alternarFavorito(card)}
                           size="small"
                           variant="contained"
                           style={{
-                            backgroundColor: "#F7CC31",
+                            backgroundColor: "#ddd",
                             color: "#00303F",
                           }}
                         >
-                          Añadir a favoritos <StarIcon />
+                          <StarIcon />
+                          Añadir a favoritos
                         </Button>
                         <Button
                           onClick={visitarPagina(card._id)}
                           size="small"
                           variant="contained"
                           style={{
-                            backgroundColor: "#F7CC31",
+                            backgroundColor: "#ddd",
                             color: "#00303F",
                           }}
                         >
-                          Ver más información <InfoIcon />
+                          <InfoIcon />
+                          Ver página
                         </Button>
                       </CardActions>
                     </Grid>
