@@ -94,6 +94,27 @@ export default function Ingresar() {
           showConfirmButton: false,
           timer:3000
         })
+        window.localStorage.removeItem('bizDesc');
+        window.localStorage.removeItem('bizDescription');
+        window.localStorage.removeItem('bizDir');
+        window.localStorage.removeItem('bizEmail');
+        window.localStorage.removeItem('bizHour');
+        window.localStorage.removeItem('bizName');
+        window.localStorage.removeItem('bizOtro');
+        window.localStorage.removeItem('bizPS2desc');
+        window.localStorage.removeItem('bizPS2title');
+        window.localStorage.removeItem('bizPS2type');
+        window.localStorage.removeItem('bizPS3desc');
+        window.localStorage.removeItem('bizPS3title');
+        window.localStorage.removeItem('bizPS3type');
+        window.localStorage.removeItem('bizPSEdesc');
+        window.localStorage.removeItem('bizPSEtitle');
+        window.localStorage.removeItem('bizPSEtype');
+        window.localStorage.removeItem('bizSlogan');
+        window.localStorage.removeItem('bizTel');
+        window.localStorage.removeItem('bizWeb');
+        window.localStorage.removeItem('bizLat');
+        window.localStorage.removeItem('bizLng');
         window.location.href='/publicar'
 
       }

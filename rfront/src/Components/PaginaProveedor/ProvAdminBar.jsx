@@ -13,15 +13,15 @@ import PanoramaIcon from '@mui/icons-material/Panorama';
 import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { deleteProvById } from '../../services/NegocioService';
+import { deleteProvById, editProv } from '../../services/NegocioService';
+import { uploadHeroImg } from '../../services/ImgService';
+import { Button, Modal, Form } from 'react-bootstrap';
 import { useLocalStorage } from '../../Hooks/useLocalStorage';
-import { Button, Modal } from 'react-bootstrap';
 
 
-function ProvAdminBar({email}) {
+function ProvAdminBar({ email }) {
   const navigate = useNavigate();
   
-  const [inputColor, setInputColor] = useLocalStorage('bizColor', '#ffff00')
 
   const handleLogOut = () => {
     Swal.fire({
@@ -96,7 +96,7 @@ function ProvAdminBar({email}) {
               showConfirmButton: false,
               timer: 2000
             })
-            window.location.href='/inicio'
+            window.location.href='/'
 
           })
           .catch((e) => {
@@ -160,6 +160,54 @@ function ProvAdminBar({email}) {
     if (file) {
       // TODO: aquí va la petición para actualizar la imagen
       console.log('Se confirmó Actualizar Imagen...')
+      uploadHeroImg(file)
+        .then((response)=>{
+          console.log('Se subió la img con exito!!!')
+          console.log(response)
+          Swal.fire({
+            icon: 'success',
+            title: 'Se subio la imagen con éxito',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          const empresaId = window.sessionStorage.getItem('empresa_id')
+          const newImgUrl = { "imagen_destacada": response.data.url }
+          const token = window.sessionStorage.getItem('token');
+          editProv(empresaId,newImgUrl,token)
+            .then((response) => {
+              console.log("Peticion EDITAR URL fue un rotundo Exitooooo!!!!!! ")
+              console.log(response)
+              Swal.fire({
+                icon: 'success',
+                title: 'Imagen editada con éxito!',
+                showConfirmButton: false,
+                timer: 2000
+              })
+              window.location.reload()
+            })
+            .catch((e) => {
+              console.error('No funcionó la petición EDITAR IMG');
+              console.error(e);
+              Swal.fire({
+                icon: 'error',
+                title: 'No se pudo editar la imagen, intentelo más tarde',
+                showConfirmButton: false,
+                timer: 2000
+              })
+            })
+          
+
+        })
+        .catch((e) => {
+          console.error('No funcionó la petición, no se subio la imagen');
+          console.error(e);
+          Swal.fire({
+            icon: 'error',
+            title: 'No se completo la petición',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }) 
     
       const reader = new FileReader()
       reader.onload = (e) => {
@@ -177,24 +225,33 @@ function ProvAdminBar({email}) {
 
   const handleChangeTheme = () => {
 
-    
+    const empresaId = window.sessionStorage.getItem('empresa_id')
+    const newColor = {"color_tema": JSON.parse(window.localStorage.getItem('bizColorInput'))}
+    const token = window.sessionStorage.getItem('token');
 
-    // Swal.fire({
-    //   title: 'Cambiar color de la página',
-    //   html: `<label for="themeInput">Seleccione un tono oscuro: </label> <input id="themeInput" type="color" value=${inputColor}>`,
-    //   showCancelButton: true,
-    //   focusConfirm: false,
-    //   confirmButtonText: 'Cambiar Color',
-    //   confirmButtonColor: '#004F67',
-    //   cancelButtonText:'Cancelar',
-    //   cancelButtonColor: '#666',
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     // Aqui va la petición actualizar color
-    //     console.log('Se confirmó Cambiar Color...')
-          
-    //   }
-    // })
+    editProv(empresaId,newColor,token)
+      .then((response) => {
+        console.log("Peticion EDITAR COLOR fue un royundo Exitooooo!!!!!! ")
+        console.log(response)
+        Swal.fire({
+          icon: 'success',
+          title: 'Tema editado con éxito!',
+          showConfirmButton: false,
+          timer: 2000
+        })
+        window.location.reload()
+      })
+      .catch((e) => {
+        console.error('No funcionó la petición EDITAR');
+        console.error(e);
+        Swal.fire({
+          icon: 'error',
+          title: 'No se pudo editar el color, intentelo más tarde',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      })
+
   }
   
 
@@ -204,6 +261,8 @@ function ProvAdminBar({email}) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
+    const [inputColor, setInputColor] = useLocalStorage('bizColorInput', '')
+
     return (
       <>
         {/* <Button variant="primary" onClick={handleShow}>
@@ -222,15 +281,28 @@ function ProvAdminBar({email}) {
   
         <Modal className="mt-5" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Cambiar color de la página</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Body>
+            {/* <input 
+              onChange={e => setInputColor(e.target.value)}
+              value={inputColor} 
+              type="color" /> */}
+            <Form.Label htmlFor="miColorInput">Seleccione un tono oscuro: </Form.Label>
+            <Form.Control
+              onChange={e => setInputColor(e.target.value)}
+              value={inputColor}
+              type="color"
+              id="miColorInput"
+              title="Choose your color"
+            />
+          </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
+            <Button variant="primary" onClick={handleChangeTheme}>
+              Cambiar Color
             </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
+            <Button variant="secondary" onClick={handleClose}>
+              Cancelar
             </Button>
           </Modal.Footer>
         </Modal>
@@ -238,7 +310,6 @@ function ProvAdminBar({email}) {
     );
   }
   
-
 
     return (
         <div className="bar-container">
@@ -267,9 +338,9 @@ function ProvAdminBar({email}) {
                     </Tooltip>
                   </IconButton>
 
+
                   <IconButton
                     onClick={handleLogOut}
-                    to='/'
                     size="large"
                     color="inherit"
                     aria-label="menu"
