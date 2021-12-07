@@ -20,7 +20,7 @@ import { getProvById } from '../../services/NegocioService';
 
 function PagProveedor() {
 
-  const { myPageIdSS } = useParams();
+  const { negocioId } = useParams();
   const [pageData, setPageData] = useState({
     contacto_id: null,
     nombre_empresa: '',
@@ -63,7 +63,7 @@ function PagProveedor() {
   const empresaIdSS = window.sessionStorage.getItem('empresa_id')
   
   useEffect(() => {
-    getProvById(myPageIdSS)
+    getProvById(negocioId)
       .then((response) => {
         setPageData(response.data)
         // PREGUNTAR POR QUE???
@@ -102,7 +102,7 @@ function PagProveedor() {
 
   const handleToMap = () => {
     window.localStorage.setItem('centerLat', pageData.ubicacion_mapa.lat)
-    window.localStorage.setItem('centerLng', pageData.ubicacion_mapa.log)
+    window.localStorage.setItem('centerLng', pageData.ubicacion_mapa.lng)
     navigate('/mapa')
   }
 
@@ -110,7 +110,7 @@ function PagProveedor() {
     <div className="pag-container">
       <header>
         {
-          window.sessionStorage.getItem('rol')==='proveedor'&&myPageIdSS===empresaIdSS ? <ProvAdminBar email={userEmailSS} /> : <FavBtn />
+          window.sessionStorage.getItem('rol')==='proveedor'&&negocioId===empresaIdSS ? <ProvAdminBar email={userEmailSS} /> : <FavBtn />
         }
         <ProvImg src={pageData.imagen_destacada} />
         <Box className="hero-container" sx={{

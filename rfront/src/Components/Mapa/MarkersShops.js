@@ -12,7 +12,6 @@ function MarkersShop (){
     getAllProvs().then((response)=>{
 
       setProvsData(response.data)
-      console.log(response.data)
     }).catch((e) => {
       console.error('No funcionó la petición' + e);
     })

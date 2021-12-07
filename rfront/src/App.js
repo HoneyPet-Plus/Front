@@ -31,7 +31,7 @@ function App(){
         <Route path='/ingresar' element={<Ingresar />}/>
         <Route path='/publicar' element={<PublicarNegocio />}/>
         <Route path='/negocio/:negocioId' element={<PagProveedor />}/>
-        <Route path='/mi_pagina/:myPageIdSS' element={<PagProveedor />}/>
+        <Route path='/mi_pagina/:negocioId' element={<PagProveedor />}/>
         <Route path='/demo_pagina' element={<DemoPagProveedor />}/>
       </Routes> 
 
