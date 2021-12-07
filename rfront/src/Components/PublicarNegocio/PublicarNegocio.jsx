@@ -61,7 +61,7 @@ export default function PublicarNegocio() {
         "email": JSON.parse(window.localStorage.getItem('bizEmail')),
         "web": JSON.parse(window.localStorage.getItem('bizWeb')),
         "otro": JSON.parse(window.localStorage.getItem('bizOtro')),
-        "ubicacion_mapa": {'lat': JSON.parse(window.localStorage.getItem('bizLat')), 'log': JSON.parse(window.localStorage.getItem('bizLng'))},
+        "ubicacion_mapa": {'lat': JSON.parse(window.localStorage.getItem('bizLat')), 'lng': JSON.parse(window.localStorage.getItem('bizLng'))},
         "productos": [ 
           {
           "tipo": JSON.parse(window.localStorage.getItem('bizPSEtype')),
@@ -117,7 +117,7 @@ export default function PublicarNegocio() {
         "email": JSON.parse(window.localStorage.getItem('bizEmail')),
         "web": JSON.parse(window.localStorage.getItem('bizWeb')),
         "otro": JSON.parse(window.localStorage.getItem('bizOtro')),
-        "ubicacion_mapa": {'lat': JSON.parse(window.localStorage.getItem('bizLat')), 'log': JSON.parse(window.localStorage.getItem('bizLng'))},
+        "ubicacion_mapa": {'lat': JSON.parse(window.localStorage.getItem('bizLat')), 'lng': JSON.parse(window.localStorage.getItem('bizLng'))},
         "productos": [ 
           {
           "tipo": JSON.parse(window.localStorage.getItem('bizPSEtype')),

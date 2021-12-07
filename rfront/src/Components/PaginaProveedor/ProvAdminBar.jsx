@@ -14,10 +14,14 @@ import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { deleteProvById } from '../../services/NegocioService';
+import { useLocalStorage } from '../../Hooks/useLocalStorage';
+
 
 
 function ProvAdminBar({email}) {
   const navigate = useNavigate();
+  
+  const [inputColor, setInputColor] = useLocalStorage('bizColor', '#00ff00')
 
   const handleLogOut = () => {
     Swal.fire({
@@ -136,6 +140,61 @@ function ProvAdminBar({email}) {
     
   }
 
+  const handleUploadImg = async () => {
+    // TODO: hacer la conexión con el back y el refresh
+    const { value: file } = await Swal.fire({
+      title: 'Selecciona la imagen',
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: 'Actualizar Imagen',
+      confirmButtonColor: '#004F67',
+      cancelButtonText:'Cancelar',
+      cancelButtonColor: '#666',
+      input: 'file',
+      inputAttributes: {
+        'accept': 'image/*',
+        'aria-label': 'Subir Imagen destacada'
+      }
+    })
+
+    if (file) {
+      // TODO: aquí va la petición para actualizar la imagen
+      console.log('Se confirmó Actualizar Imagen...')
+    
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        Swal.fire({
+          title: 'La imagen subida',
+          imageUrl: e.target.result,
+          imageAlt: 'Imagen destacada subida'
+        })
+      }
+      reader.readAsDataURL(file)
+    } 
+    
+    
+  }
+
+  const handleChangeTheme = () => {
+
+    Swal.fire({
+      title: 'Cambiar color de la página',
+      html: `<label for="themeInput">Seleccione un tono oscuro: </label> <input onChange={e => setInputColor(e.target.value)} id="themeInput" type="color" value=${inputColor}>`,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: 'Cambiar Color',
+      confirmButtonColor: '#004F67',
+      cancelButtonText:'Cancelar',
+      cancelButtonColor: '#666',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Aqui va la petición actualizar color
+        console.log('Se confirmó Cambiar Color...')
+          
+      }
+    })
+  }
+
 
 
     return (
@@ -177,7 +236,8 @@ function ProvAdminBar({email}) {
                     </Tooltip>
                   </IconButton>
 
-                  <IconButton
+                  <IconButton 
+                    onClick={handleChangeTheme}
                     size="large"
                     color="inherit"
                     aria-label="menu"
@@ -187,7 +247,8 @@ function ProvAdminBar({email}) {
                     </Tooltip>
                   </IconButton>
                   
-                  <IconButton
+                  <IconButton 
+                    onClick={handleUploadImg}
                     size="large"
                     color="inherit"
                     aria-label="menu"
