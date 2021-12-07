@@ -30,6 +30,7 @@
     background-color:#00303F;
     opacity: 85%;
     block-size: 400px;
+    width: 100vw;
 }
 
 .contenido-header{

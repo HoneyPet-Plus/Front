@@ -2,7 +2,6 @@ import * as React from 'react';
 import './Home.css';
 // import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 // import { styled } from '@mui/material/styles';
@@ -13,6 +12,7 @@ import Cards from './Cards';
 import Section1 from './Section1';
 import Section2 from './Section2';
 import AboutAs from './AboutAs';
+import Nosotros from './Nosotros'
 
 import { Box } from '@mui/system';
 
@@ -31,9 +31,7 @@ export default function Home() {
   return (
     <div className='all-page'>
       <CssBaseline/>
-      <Grid container xs={12} sm={12} md={12}>
-        <Grid sx={12} sm={12} md={12}>
-          <Box className="bg-foto-mapa">
+          <Box className="bg-foto-mapa" >
 
             <div className="bg-para-mapa">
               <div className='contenido-header'>
@@ -62,9 +60,7 @@ export default function Home() {
             </div>
           </Box>
 
-        </Grid>
-
-      <Grid sx={12} sm={12} md={12}>
+      <div>
 
         <Cards/>
         <Section1/>
@@ -84,14 +80,15 @@ export default function Home() {
 
           <Stack className='nosotros' justifyContent='center' alignItems='center' marginX='100px'>
 
-            <AboutAs/>
+            {/* <AboutAs/> */}
+            <Nosotros/>
 
           </Stack>
 
         </Stack>
         
 
-      </Grid>
+      </div>
 
       <Box sx={{ bgcolor: '#004F67', p: 6, marginTop:'3%' }} component="footer">
         <Stack direction='row' spacing={7} alignItems='center' paddingX='2%'>
@@ -117,7 +114,6 @@ export default function Home() {
         
         </Stack>
       </Box>
-      </Grid>
     </div>
 
   );

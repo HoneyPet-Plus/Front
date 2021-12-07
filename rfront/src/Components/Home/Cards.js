@@ -29,7 +29,6 @@ function card_cont(imagen, titulo, descripcion, donde, btname) {
             <Card
                 style={{ backgroundColor: "#ffffff" }}
                 sx={{ alignItems: 'center', height: '100%', borderRadius: '20px', display: 'flex', flexDirection: 'column', minWidth: 225, maxWidth: 400, minHeight: 220, maxHeight: 350, paddingTop: '20px' }}
-                md={6}
             >
                 <CardMedia
 
@@ -38,7 +37,6 @@ function card_cont(imagen, titulo, descripcion, donde, btname) {
                         height: 120,
                         width: 120,
                     }}
-                    md={6}
                     image={imagen}
                     alt="random" />
                 <CardContent sx={{ flexGrow: 1 }}>
@@ -64,17 +62,17 @@ export default function Section1(){
     return (
         <Grid container alignItems='center' justify='center' className='seccion-cards' pt='1.5%'>
             
-                <Grid sx={12} sm={6} md={6}>
+                <Grid item  xs={12} sm={6} md={6}>
                     <Stack alignItems='flex-end' margin='3%'>
                     {card_cont(pets, 'Mascotas', ' En este sitio web encontraras una lista de negocios cercanos a tu ubicación, y los mejores productos y servicios para tus mascotas.', '#uno', 'CÓMO FUNCIONA')}
                     </Stack>
                 </Grid>
-                <Grid sx={12} sm={6}  md={6} >
+                <Grid item  xs={12} sm={6}  md={6} >
                     <Stack alignItems='flex-start' margin='3%'>
                     {card_cont(empresas, 'Empresas', 'Somos un directorio especializado en productos y servicios para mascotas. Publíca tu negocio y capta nuevos clientes en tu localidad.', '#dos', 'AMPLIAR INFORMACIÓN')}
                     </Stack>
                 </Grid>
-                <Grid id='uno' sx={12} sm={12} md={12}>
+                <Grid item id='uno' xs={12} sm={12} md={12}>
                 <Typography color='#004F67' className='figma-headers' variant="h4" align="center" paddingTop="70px" component="div" mb='0px' >
                     Para Líderes de Manada
                 </Typography>

@@ -81,7 +81,7 @@ function PagProveedor() {
         window.localStorage.setItem('bizWeb', JSON.stringify(response.data.web))
         window.localStorage.setItem('bizOtro', JSON.stringify(response.data.otro))
         window.localStorage.setItem('bizLat', response.data.ubicacion_mapa.lat)
-        window.localStorage.setItem('bizLng', response.data.ubicacion_mapa.log)
+        window.localStorage.setItem('bizLng', response.data.ubicacion_mapa.lng)
         window.localStorage.setItem('bizPSEtype', JSON.stringify(response.data.productos[0].tipo))
         window.localStorage.setItem('bizPSEtitle', JSON.stringify(response.data.productos[0].titulo))
         window.localStorage.setItem('bizPSEdesc', JSON.stringify(response.data.productos[0].descripcion))
