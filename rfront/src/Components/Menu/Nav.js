@@ -12,45 +12,45 @@ import { useLocalStorage } from '../../Hooks/useLocalStorage';
 
 
 const ColorButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText('#00303F'),
-  backgroundColor: '#00303F',
-  '&:hover': {
-    backgroundColor: '#002935',
-    color:'#ffffff'
-
+  color: theme.palette.getContrastText("#00303F"),
+  backgroundColor: "#00303F",
+  "&:hover": {
+    backgroundColor: "#002935",
+    color: "#ffffff",
   },
 }));
 
-
 export default function ButtonAppBar() {
-
- 
   // const empresa_id = sessionStorage.getItem('empresa_id')
-  
-  const [user, setUser]= useState(true)
-  const [opcionIngresar, setOpcionIngresar]= useState(false)
-  const [nprov, setNprov]= useState(true)
-  const [aprov, setAprov]= useState(true)
-  
+
+  const [user, setUser] = useState(true);
+  const [opcionIngresar, setOpcionIngresar] = useState(false);
+  const [nprov, setNprov] = useState(true);
+  const [aprov, setAprov] = useState(true);
 
   useEffect(() => {
-
-    if (sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='proveedor' ) {
-      if (sessionStorage.getItem('empresa_id') && sessionStorage.getItem('empresa_id')!== 'undefined' ) { 
-        setOpcionIngresar(true)
-        setAprov(false)
-
+    if (
+      sessionStorage.getItem("token") &&
+      sessionStorage.getItem("rol") === "proveedor"
+    ) {
+      if (
+        sessionStorage.getItem("empresa_id") &&
+        sessionStorage.getItem("empresa_id") !== "undefined"
+      ) {
+        setOpcionIngresar(true);
+        setAprov(false);
       } else {
-        setOpcionIngresar(true)
-        setNprov(false)
+        setOpcionIngresar(true);
+        setNprov(false);
       }
-
-    }else if(sessionStorage.getItem('token') && sessionStorage.getItem('rol')==='usuario' ){
-      setUser(false)
-      setOpcionIngresar(true)
+    } else if (
+      sessionStorage.getItem("token") &&
+      sessionStorage.getItem("rol") === "usuario"
+    ) {
+      setUser(false);
+      setOpcionIngresar(true);
     }
-
-  }, [])
+  }, []);
 
   const [userLat, setUserLat] = useLocalStorage('userLat',4.6482837)
   const [userLng, setUserLng] = useLocalStorage('userLng',-74.247894)
@@ -79,11 +79,11 @@ export default function ButtonAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar  position='fixed'>
+      <AppBar position="fixed">
         <Toolbar className="pNav">
           <Typography mt variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <img src={logoheader} alt="HoneyPet +" />
-          </Typography >
+          </Typography>
           {/* <Typography mt variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {empresa_id}
           </Typography > */}
@@ -101,6 +101,81 @@ export default function ButtonAppBar() {
           <ColorButton hidden={nprov} className="btnNav"><NavLink to='/publicar' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Publicar</NavLink></ColorButton>
           <ColorButton hidden={user} className="btnNav"><NavLink to='/perfil' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mi Perfil</NavLink></ColorButton>
 
+          <ColorButton className="btnNav">
+            <NavLink
+              to="/inicio"
+              className={({ isActive }) =>
+                "btnin " + (isActive ? "active-nav" : "")
+              }
+            >
+              Inicio
+            </NavLink>
+          </ColorButton>
+
+          <ColorButton className="btnNav">
+            <NavLink
+              to="/mapa"
+              className={({ isActive }) =>
+                "btnin " + (isActive ? "active-nav" : "")
+              }
+            >
+              Mapa
+            </NavLink>
+          </ColorButton>
+
+          <ColorButton className="btnNav">
+            <NavLink
+              to="/proveedores"
+              className={({ isActive }) =>
+                "btnin " + (isActive ? "active-nav" : "")
+              }
+            >
+              Proveedores
+            </NavLink>
+          </ColorButton>
+
+          <ColorButton hidden={opcionIngresar} className="btnNav">
+            <NavLink
+              to="/ingresar"
+              className={({ isActive }) =>
+                "btnin " + (isActive ? "active-nav" : "")
+              }
+            >
+              Ingresar
+            </NavLink>
+          </ColorButton>
+
+          <ColorButton hidden={aprov} className="btnNav">
+            <NavLink
+              to={empresaURL}
+              className={({ isActive }) =>
+                "btnin " + (isActive ? "active-nav" : "")
+              }
+            >
+              Mi Página
+            </NavLink>
+          </ColorButton>
+
+          <ColorButton hidden={nprov} className="btnNav">
+            <NavLink
+              to="/publicar"
+              className={({ isActive }) =>
+                "btnin " + (isActive ? "active-nav" : "")
+              }
+            >
+              Publicar
+            </NavLink>
+          </ColorButton>
+          <ColorButton hidden={user} className="btnNav">
+            <NavLink
+              to="/perfil"
+              className={({ isActive }) =>
+                "btnin " + (isActive ? "active-nav" : "")
+              }
+            >
+              Mi Perfil
+            </NavLink>
+          </ColorButton>
         </Toolbar>
       </AppBar>
     </Box>

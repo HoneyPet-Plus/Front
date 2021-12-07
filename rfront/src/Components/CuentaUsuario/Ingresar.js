@@ -72,6 +72,7 @@ export default function Ingresar() {
       sessionStorage.setItem('correo',correo)
       sessionStorage.setItem('rol',rol)
       sessionStorage.setItem('empresa_id',empresa_id)
+      
 
       if (empresa_id) {
         
@@ -127,13 +128,16 @@ export default function Ingresar() {
       const idUser = respuesta.data.idUser
       const correo = respuesta.data.correo
       const rol = respuesta.data.rol
+      const favoritos = respuesta.data.favoritos
 
+      console.log(token)
 
       sessionStorage.setItem('token',token)
       sessionStorage.setItem('nombre',nombre)
       sessionStorage.setItem('idUsuario',idUser)
       sessionStorage.setItem('correo',correo)
       sessionStorage.setItem('rol',rol)
+      sessionStorage.setItem('favoritos', favoritos)
 
       Swal.fire({
         icon:'success',
