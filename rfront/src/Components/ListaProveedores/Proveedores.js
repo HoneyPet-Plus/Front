@@ -15,6 +15,8 @@ import { getAllProvs } from "../../services/NegocioService";
 import { useNavigate } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
 import InfoIcon from "@mui/icons-material/Info";
+import Swal from "sweetalert2";
+import { favProveedor } from "../../services/UsuarioService";
 // import ImgMediaCard from '../PerfilUsuario/cardperf';
 
 // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -43,6 +45,88 @@ export default function Proveedores() {
     console.log(idProv);
     navigate("/negocio/" + idProv);
   };
+
+  const añadirFavoritos = (lsprov) => (event) => {
+    const idNegocio = lsprov._id;
+    const idUsuario = window.sessionStorage.getItem("idUsuario");
+    const token = window.sessionStorage.getItem("token");
+    const rol = window.sessionStorage.getItem("rol");
+
+    if (idUsuario != null && token != null) {
+      if (rol === "usuario") {
+        Swal.fire({
+          title:
+            '¿Estas seguro de que quieres añadir a "' +
+            lsprov.nombre_empresa +
+            '" a tu lista de favoritos?',
+          text: "Elige una opcion",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#F7CC31",
+          cancelButtonColor: "#cfcfcf",
+          confirmButtonText: "Si, añadir a favoritos",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            console.log(token);
+            favProveedor(idUsuario, idNegocio)
+              .then((response) => {
+                console.log(response.data.mensaje);
+                if (
+                  response.data.mensaje ===
+                  "El proveedor se añadió la lista de favoritos"
+                ) {
+                  Swal.fire(
+                    "Añadido!",
+                    '"' +
+                      lsprov.nombre_empresa +
+                      '" se ha añadido a tu lista de favoritos',
+                    "success"
+                  );
+                } else {
+                  if (
+                    response.data.mensaje ===
+                    "El proveedor ya esta en tu lista de favoritos"
+                  ) {
+                    Swal.fire(
+                      "No añadido!",
+                      '"' +
+                        lsprov.nombre_empresa +
+                        '" ya se encuentra en tu lista da favoritos. sí deseas eliminarlo de esta, dirígete a tu perfil para poder realizar esta acción ',
+                      "warning"
+                    );
+                  }
+                }
+              })
+              .catch((e) => {
+                console.error("No funcionó la petición" + e);
+                Swal.fire({
+                  icon: "error",
+                  title: "Paila",
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              });
+          }
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Necesitas tener una cuenta de usuario con mascota si quieres añadir proveedores a tu lista de favoritos",
+          footer:
+            '<a href="/registrar">¿Quieres crear una cuenta como usuario?</a>',
+        });
+      }
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Necesitas iniciar sesion para poder añadir proveedores a tu lista de favoritos",
+        footer: '<a href="/Ingresar">¿Quieres iniciar sesion?</a>',
+      });
+    }
+  };
+
   return (
     <Grid style={{ backgroundColor: "#CAE4DB" }}>
       <ThemeProvider theme={theme}>
@@ -115,6 +199,7 @@ export default function Proveedores() {
                         {/* <BottomNavigationAction label="Favorite" icon={<StarIcon />} />
                         <BottomNavigationAction label="Visit Page" icon={<InfoIcon />} /> */}
                         <Button
+                          onClick={añadirFavoritos(card)}
                           size="small"
                           variant="contained"
                           style={{
