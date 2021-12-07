@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import "./Nav.css"
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logoheader from '../../assets/Home/logoheader.svg'
 import { styled } from '@mui/material/styles';
 
@@ -64,18 +64,18 @@ export default function ButtonAppBar() {
             {empresa_id}
           </Typography > */}
           
-          <ColorButton className="btnNav"><Link to='/inicio' className="btnin">Inicio</Link></ColorButton>
+          <ColorButton className="btnNav" ><NavLink  to='/inicio'  className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')} >Inicio</NavLink></ColorButton>
           
-          <ColorButton className="btnNav"><Link to='/mapa' className="btnin">Mapa</Link></ColorButton>
+          <ColorButton className="btnNav"><NavLink to='/mapa' activeClassName="selected"  className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mapa</NavLink></ColorButton>
           
-          <ColorButton className="btnNav"><Link to='/proveedores' className="btnin">Proveedores</Link></ColorButton>
+          <ColorButton className="btnNav"><NavLink to='/proveedores' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Proveedores</NavLink></ColorButton>
           
-          <ColorButton hidden={opcionIngresar} className="btnNav"><Link to='/ingresar' className="btnin">Ingresar</Link></ColorButton>
+          <ColorButton hidden={opcionIngresar} className="btnNav"><NavLink to='/ingresar' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Ingresar</NavLink></ColorButton>
           
-          <ColorButton hidden={aprov} className="btnNav"><Link to={empresaURL} className="btnin">Mi Página</Link></ColorButton>
+          <ColorButton hidden={aprov} className="btnNav"><NavLink to={empresaURL} className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mi Página</NavLink></ColorButton>
           
-          <ColorButton hidden={nprov} className="btnNav"><Link to='/publicar' className="btnin">Publicar</Link></ColorButton>
-          <ColorButton hidden={user} className="btnNav"><Link to='/perfil' className="btnin">Mi Perfil</Link></ColorButton>
+          <ColorButton hidden={nprov} className="btnNav"><NavLink to='/publicar' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Publicar</NavLink></ColorButton>
+          <ColorButton hidden={user} className="btnNav"><NavLink to='/perfil' className={({isActive}) => 'btnin '+(isActive? 'active-nav': '')}>Mi Perfil</NavLink></ColorButton>
 
         </Toolbar>
       </AppBar>

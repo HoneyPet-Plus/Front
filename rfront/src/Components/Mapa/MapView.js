@@ -18,7 +18,7 @@ const zoom = 18
 
 function DisplayPosition({ map }) {
     const [position, setPosition] = useState(map.getCenter())
-    console.log(position)
+    // console.log(position)
     const onClick = useCallback(() => {
       map.setView(center, zoom)
     }, [map])
@@ -80,7 +80,7 @@ function MapView(){
   const displayMap = useMemo(
     () => (
       <>
-          <MapContainer center={[centerLat,centerLng]} zoom={18} minZoom={10} whenCreated={setMap}>
+          <MapContainer center={[centerLat,centerLng]} zoom={18} minZoom={6} whenCreated={setMap}>
           <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
