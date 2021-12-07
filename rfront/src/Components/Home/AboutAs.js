@@ -68,7 +68,7 @@ const images = [
       label: 'Francisco Sánchez Toro',
       imgPath:
         francis,
-      descrip: 'Estudiante de cuarto semestre en Ingeniería de sistemas, con gran motivación para seguir obteniendo conocimientos y habilidades, para así crecer profesionalmente.',
+      descrip: 'Estudiante de Ingeniería de sistemas, con gran motivación para seguir obteniendo conocimientos y habilidades, para así crecer profesionalmente.',
       urlGithub: 'https://github.com/franciscoww',
       urlLin: 'https://www.linkedin.com/in/francisco-javier-sanchez-toro-b8564a221/',
       urlInterp: 'https://interacpedia.com/user/francisco-javier-sanchez-toro',
@@ -97,8 +97,8 @@ export default function  AboutAs() {
         enableMouseEvents
       > 
         {images.map((step, index) => (
-            <Stack className='img-nosotros'>
-                <div key={step.label}>
+            <Stack key={step.label} className='img-nosotros'>
+                <div >
                     {Math.abs(activeStep - index) <= 2 ? (
                         <Box
                             component="img"
@@ -156,11 +156,7 @@ export default function  AboutAs() {
 
           </Stack>
           
-          <Icon baseClassName="fas" className="fa-plus-circle" color="primary" />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          />
+          
 
         </Paper>
 

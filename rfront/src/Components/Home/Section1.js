@@ -7,7 +7,6 @@ import peopleandpet from '../../assets/Home/peopleandpet.svg';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
-import { borderColor } from '@mui/system';
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText('#004F67'),
@@ -26,7 +25,7 @@ export default function Section1(){
     return (
         <Grid container alignItems='center' justifyContent='center' className='seccion-lideres' paddingLeft='10%'  pb='5%'>
       
-                    <Grid sx={12} sm={12} md={6}>
+                    <Grid item xs={12} sm={12} md={6}>
                         <Typography color='#004F67' fontWeight="bold" fontSize='20px' align="left" component="div" mb>
                             Encontrar proveedores cercanos
                         </Typography>
@@ -63,7 +62,7 @@ export default function Section1(){
 
                     </Grid>
 
-                    <Grid sx={12} sm={12} md={6} justifyContent='center' className='imagen-people-pet'>
+                    <Grid item xs={12} sm={12} md={6} justifyContent='center' className='imagen-people-pet'>
                         <img className='img-people-pet' src={peopleandpet} alt="peopleandpet" />
                     </Grid>
 
