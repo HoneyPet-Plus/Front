@@ -7,13 +7,14 @@ import StarIcon from '@mui/icons-material/Star';
 import InfoIcon from '@mui/icons-material/Info';
 import './vistaperfil.css';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import { eliminarProvFavorito } from '../../services/UsuarioService';
 
-
-export default function SimpleBottomNavigation() {
+export default function SimpleBottomNavigation({prov}) {
   const [value, setValue] = React.useState(0);
+  const navigate = useNavigate()
 
   const eliminarFavorito = () => (event) =>{
-    console.log("Hola")
     Swal.fire({
       title: 'Está Seguro de eliminar el proveedor de tus favoritos?',
       icon: 'warning',
@@ -24,28 +25,43 @@ export default function SimpleBottomNavigation() {
       confirmButtonText: 'Si, eliminar de mis favoritos!'
     }).then((result) => {
       if (result.isConfirmed) {
+        
+        const userId = window.sessionStorage.getItem('idUsuario');
+        const userProv = prov._id;
+        const token = window.sessionStorage.getItem('token');
 
-        setValue(-1)
-
-        Swal.fire({
-          icon: 'success',
-          title: 'El proveedor se elimino correctamente',
-          showConfirmButton: false,
-          timer: 2000
+        eliminarProvFavorito(userId,userProv,token)
+        .then((response)=>{
+          setValue(-1)
+          console.log(response.mensaje)
+          Swal.fire({
+            icon: 'success',
+            title: 'El proveedor se elimino correctamente',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          window.location.href='/perfil'
+        })
+        .catch((e) => {
+          console.error('No funcionó la petición');
+          console.error(e);
         })
 
+        
       }
     })
   }
 
   const verEnMapa = () => (event) =>{
-    console.log("Viendo en el mapa")
-    
+
+    window.localStorage.setItem('centerLat',prov.ubicacion_mapa.lat)
+    window.localStorage.setItem('centerLng',prov.ubicacion_mapa.lng)
+    navigate('/mapa')
   }
 
   const visitarPagina = () => (event) =>{
     console.log("Visitando pagina")
-    
+    navigate('/negocio/'+prov._id)
   }
 
   return (

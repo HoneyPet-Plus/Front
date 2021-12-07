@@ -10,6 +10,9 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import Tooltip from '@mui/material/Tooltip';
 import Swal from 'sweetalert2';
+import { deleteUsuarioById } from '../../services/UsuarioService';
+
+
 
 function Userbar() {
   const salir=()=>{
@@ -20,26 +23,37 @@ function Userbar() {
   }
 
   const eliminarUsuario = () => (event) =>{
-    console.log("Hola")
+
     Swal.fire({
-      title: 'Está Seguro de Cerrar Sessión?',
-      text: "Para administrar su página deberá iniciar sessión nuevamente!",
+      title: 'Está Seguro de que desea eliminar su cuenta',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#004F67',
       cancelButtonColor: '#666',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Si, cerrar sesión!'
+      confirmButtonText: 'Si, eliminar cuenta !'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Se cerró su sesión exitosamente',
-          showConfirmButton: false,
-          timer: 2000
+
+        const userId = window.sessionStorage.getItem('idUsuario');
+        const token = window.sessionStorage.getItem('token');
+
+        deleteUsuarioById(userId,token)
+        .then((response)=>{
+          Swal.fire({
+            icon: 'success',
+            title: 'Su usuario se elimino correctamente',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          sessionStorage.clear()
+          window.location.href='/'
+        })
+        .catch((e) => {
+          console.error('No funcionó la petición');
+          console.error(e);
         })
 
-        window.location.href='/'
       }
     })
   }
