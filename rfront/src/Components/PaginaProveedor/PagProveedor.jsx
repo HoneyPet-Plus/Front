@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './PagProveedor.css';
 import ProvAdminBar from './ProvAdminBar';
 import ProvImg from './ProvImg';
@@ -8,35 +8,114 @@ import ProvInfo from './ProvInfo';
 import ProvDescription from './ProvDescription';
 import ProvOffer from './ProvOffer';
 import Box from '@mui/material/Box';
-import hpdcImg from "../../assets/proveedor/hpdc-min.png";
 import mapImg from "../../assets/proveedor/map.png";
 import Button from 'react-bootstrap/Button'
 import StarsIcon from '@mui/icons-material/Stars';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getProvById } from '../../services/NegocioService';
 
 // referencia para la logica de negocio: https://youtu.be/0Q7LA6jRdA4?t=9251
 
 function PagProveedor() {
 
-  const [bgColor, setBgColor] = useState('#333')
-  const [txtColor, setTxtColor] = useState('#ddd')
+  const { myPageIdSS } = useParams();
+  const [pageData, setPageData] = useState({
+    contacto_id: null,
+    nombre_empresa: '',
+    eslogan: '',
+    descripcion_corta : '',
+    descripcion_empresa : '',
+    imagen_destacada : '',
+    color_tema: '#333',
+    horario_atencion : '',
+    telefono : 0,
+    direccion : '',
+    email : '',
+    web: '',
+    otro: '',
+    ubicacion_mapa: {} ,
+    productos: [ 
+      {
+        tipo: '',
+        titulo: '',
+        descripcion: ''
+      },
+      {
+        tipo: '',
+        titulo: '',
+        descripcion: ''
+      }, 
+      {
+        tipo: '',
+        titulo: '',
+        descripcion: ''
+      }
+    ]
+  })
 
+  const navigate = useNavigate()
+
+  const txtColor = '#ddd'
+  
   const userEmailSS = window.sessionStorage.getItem('correo') 
+  const empresaIdSS = window.sessionStorage.getItem('empresa_id')
+  
+  useEffect(() => {
+    getProvById(myPageIdSS)
+      .then((response) => {
+        setPageData(response.data)
+        // PREGUNTAR POR QUE???
+        console.log('Funka respuesta de la peticion: ');
+        console.log(response.data)
+        console.log(pageData);
+        window.localStorage.setItem('bizName', JSON.stringify(response.data.nombre_empresa))
+        window.localStorage.setItem('bizSlogan', JSON.stringify(response.data.eslogan))
+        window.localStorage.setItem('bizDesc', JSON.stringify(response.data.descripcion_corta))
+        window.localStorage.setItem('bizDescription', JSON.stringify(response.data.descripcion_empresa))
+        window.localStorage.setItem('bizHour', JSON.stringify(response.data.horario_atencion))
+        window.localStorage.setItem('bizTel', response.data.telefono)
+        window.localStorage.setItem('bizDir', JSON.stringify(response.data.direccion))
+        window.localStorage.setItem('bizEmail', JSON.stringify(response.data.email))
+        window.localStorage.setItem('bizWeb', JSON.stringify(response.data.web))
+        window.localStorage.setItem('bizOtro', JSON.stringify(response.data.otro))
+        window.localStorage.setItem('bizLat', response.data.ubicacion_mapa.lat)
+        window.localStorage.setItem('bizLng', response.data.ubicacion_mapa.log)
+        window.localStorage.setItem('bizPSEtype', JSON.stringify(response.data.productos[0].tipo))
+        window.localStorage.setItem('bizPSEtitle', JSON.stringify(response.data.productos[0].titulo))
+        window.localStorage.setItem('bizPSEdesc', JSON.stringify(response.data.productos[0].descripcion))
+        window.localStorage.setItem('bizPS2type', JSON.stringify(response.data.productos[1].tipo))
+        window.localStorage.setItem('bizPS2title', JSON.stringify(response.data.productos[1].titulo))
+        window.localStorage.setItem('bizPS2desc', JSON.stringify(response.data.productos[1].descripcion))
+        window.localStorage.setItem('bizPS3type', JSON.stringify(response.data.productos[2].tipo))
+        window.localStorage.setItem('bizPS3title', JSON.stringify(response.data.productos[2].titulo))
+        window.localStorage.setItem('bizPS3desc', JSON.stringify(response.data.productos[2].descripcion))
 
+      })
+      .catch((e) => {
+        console.error('La petición no se completó: ')
+        console.error(e);
+      });
+
+  }, [])
+
+  const handleToMap = () => {
+    window.localStorage.setItem('centerLat', pageData.ubicacion_mapa.lat)
+    window.localStorage.setItem('centerLng', pageData.ubicacion_mapa.log)
+    navigate('/mapa')
+  }
 
   return (
     <div className="pag-container">
       <header>
-        <ProvAdminBar email={userEmailSS} />
-        <FavBtn />
-        {/* <div className="img-cont"> */}
-        <ProvImg src={hpdcImg} />
-        {/* </div>
-        <div className="hero-container">  */}
+        {
+          window.sessionStorage.getItem('rol')==='proveedor'&&myPageIdSS===empresaIdSS ? <ProvAdminBar email={userEmailSS} /> : <FavBtn />
+        }
+        <ProvImg src={pageData.imagen_destacada} />
         <Box className="hero-container" sx={{
           maxWidth: 900,
-          backgroundColor: `${bgColor}`,
+          backgroundColor: pageData.color_tema,
           marginX: 'auto',
           textAlign: 'center',
           paddingY:5,
@@ -44,9 +123,9 @@ function PagProveedor() {
           color: `${txtColor}`
         }}>
           <ProvInfo 
-          provName="HoneyPet DC"
-          provSlogan="Adopta o Publica Mascotas que Necesitan Amor y Hogar"
-          provDesc="Sumamos amor a las familias, dandole una segunda oportunidad a una mascota que necesita un hogar. En este sitio podrás publicar o adoptar una mascota en cualquier lugar de Colombia."
+          provName={pageData.nombre_empresa}
+          provSlogan={pageData.eslogan}
+          provDesc={pageData.descripcion_corta}
           />
         </Box>
         {/* </div> */}
@@ -55,7 +134,7 @@ function PagProveedor() {
         <aside className="aside-bizp">
           <Box sx={{
             // maxWidth: 400,
-            backgroundColor: `${bgColor}`,
+            backgroundColor: pageData.color_tema,
             borderRadius:5,
             mb: 4,
             paddingY: 3,
@@ -71,104 +150,103 @@ function PagProveedor() {
             <dl>
               <ProvContactData 
               type="Horario de Atención:"
-              data="L-S de 10:00am a 9:00pm"
+              data={pageData.horario_atencion}
               />
               <ProvContactData 
               type="Teléfono:"
-              data="300 455 6677"
+              data={pageData.telefono}
               />
               <ProvContactData 
               type="Dirección:"
-              data="Calle 10 # 12 - 13"
+              data={pageData.direccion}
               />
               <ProvContactData 
               type="Email:"
-              data="hola@honeypetdc.com"
+              data={pageData.email}
               />
               <ProvContactData 
               type="Sitio Web:"
-              data="honeypetdc.com"
+              data={pageData.web}
               />
               <ProvContactData 
               type="Otro:"
-              data="Esta Página es Demostrativa"
+              data={pageData.otro}
               />
             </dl>
             <div className="map-img-container">
               <img className="map-img" src={mapImg} alt="Mapa Representativo" />
-              <Button className="map-btn" variant="warning">Ver en Mapa</Button>
+              <Button 
+                onClick={handleToMap}
+                className="map-btn" 
+                variant="warning"
+              >
+                Ver en Mapa
+              </Button>
             </div>
           </Box>
         </aside>
         <main className="main-bizp">
           <section className="prov-description">
-            <Box sx={{ mb: 4, color: `${bgColor}`}}>
+            <Box sx={{ mb: 4, color: pageData.color_tema}}>
               <h3>Descripción de la Empresa</h3>
               <Box sx={{
                 height: 2,
-                bgcolor: `${bgColor}`
+                bgcolor: pageData.color_tema
               }} />
             </Box>
             <ProvDescription 
-            description="Es un proyecto que nace como ejercicio y muestra de las habilidades adquiridas durante el tercer ciclo del diplomado en programación MisionTIC2022, impartido por la Universidad Tecnológica de Pereira UTP y el Ministerio de Tecnologías de la Información y las Comunicaciones de Colombia (MinTIC).
-
-            El proyecto fue desarrollado con tecnologías de Javascript stack MENV (Vue.JS, Node.Js, Express y MongoDB).
-            
-            El código fuente, los diseños y logotipos fueron desarrollados por el equipo de trabajo, los datos de los usuarios y mascotas son ficticios, las fotografías que se usaron están bajo licencia de uso libre."
+            description={pageData.descripcion_empresa}
             />
           </section>
           <section className="prov-services">
-            <Box sx={{ my: 4, color: `${bgColor}`}}>
+            <Box sx={{ my: 4, color: pageData.color_tema}}>
               <h3>Productos / Servicios</h3>
               <Box sx={{
                 height: 2,
-                bgcolor: `${bgColor}`
+                bgcolor: pageData.color_tema
               }} />
             </Box>
 
             <Box sx={{
-              backgroundColor: `${bgColor}`,
+              backgroundColor: pageData.color_tema,
               borderRadius:5,
               textAlign: 'center',
               padding: 3,
               color: `${txtColor}`,
               mb: 3
             }}>
-              <h4><StarsIcon /> Servicio</h4>
+              <h4><StarsIcon /> {pageData.productos[0].tipo}</h4>
               <ProvOffer 
-              offerType="Servicio" 
-              title="Desarrollo de Software a Medida" 
-              description="Servicio integral con el cual construimos las soluciones digitales que requiera su empresa brindando consultoría, acompañamiento y soporte en todas las etapas de su proyecto, ofreciendo la mejor solución posible ajustada a su situación y presupuesto." 
+              title={pageData.productos[0].titulo}
+              description={pageData.productos[0].descripcion}
               />
             </Box>
 
             <div className="offer-container">
               <Box className="rps-card" sx={{
                 border: 1,
-                borderColor: `${bgColor}`,
+                borderColor: pageData.color_tema,
                 borderRadius:4,
                 padding: 3,
-                color: `${bgColor}`
+                color: pageData.color_tema
               }}>
-                <h4><AddShoppingCartIcon /> Producto</h4>
+                <h4>{pageData.productos[1].tipo==="Producto"?<AddShoppingCartIcon />:<BusinessCenterIcon />} {pageData.productos[1].tipo}</h4>
                 <ProvOffer 
-                offerType="producto" 
-                title="Aplicación Estandar" 
-                description="Usamos las mejores técnicas para ofrecerle una aplicación corporativa estandar que le ayudará a promocionar su empresa o marca." 
+                title={pageData.productos[1].titulo}
+                description={pageData.productos[1].descripcion}
                 />
               </Box>
               <Box className="rps-card" sx={{
                 border: 1,
-                borderColor: `${bgColor}`,
+                borderColor: pageData.color_tema,
                 borderRadius:4,
                 padding: 3,
-                color: `${bgColor}`
+                color: pageData.color_tema
               }}>
-                <h4><BusinessCenterIcon /> Servicio</h4>
+                <h4>{pageData.productos[2].tipo==="Producto"?<AddShoppingCartIcon />:<BusinessCenterIcon />} {pageData.productos[2].tipo}</h4>
                 <ProvOffer 
-                offerType="servicio" 
-                title="Consultoría TIC" 
-                description="Contamos con los profesionales, la experiencia y el respaldo para estudiar y estructurar su proyecto desde un enfoque profesional y efectivo." 
+                title={pageData.productos[2].titulo}
+                description={pageData.productos[2].descripcion}
                 />
               </Box>
             </div>

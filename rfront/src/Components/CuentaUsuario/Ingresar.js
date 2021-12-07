@@ -3,9 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -16,7 +13,7 @@ import './logform.css'
 import React, { useState } from 'react';
 import Axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // function Copyright(props) {
 //   return (
@@ -35,7 +32,7 @@ const theme = createTheme();
 
 export default function Ingresar() {
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   
   const [correo,setCorreo]= useState('')
@@ -84,7 +81,10 @@ export default function Ingresar() {
           showConfirmButton: false,
           timer:3000
         })
-        window.location.href='/mi_pagina/:myPageIdSS'
+        // navigate(`/mi_pagina/${empresa_id}`, { replace:true })
+        // window.location.href='/mi_pagina/:myPageIdSS'
+        window.location.href="/mi_pagina/"+empresa_id
+
       } else {
 
         sessionStorage.setItem('empresa_id','')
@@ -193,7 +193,7 @@ export default function Ingresar() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="/registrar" variant="body2">
+                <Link to="/registrar" variant="body2">
                   {"¿No tienes una cuenta? Registrate"}
                 </Link>
               </Grid>

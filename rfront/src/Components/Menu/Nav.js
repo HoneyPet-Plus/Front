@@ -15,7 +15,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
   backgroundColor: '#00303F',
   '&:hover': {
     backgroundColor: '#002935',
-    color:'#fff'
+    color:'#ffffff'
 
   },
 }));
@@ -51,61 +51,7 @@ export default function ButtonAppBar() {
 
   }, [])
 
-
-
-  // useEffect(()=>{
-  //   navigator.geolocation.getCurrentPosition(
-        
-  //     function(position){
-
-  //           window.localStorage.setItem('userLng', position.coords.longitude);
-  //           window.localStorage.setItem('userLat', position.coords.latitude);
-  //           window.localStorage.setItem('centerLat',position.coords.latitude);
-  //           window.localStorage.setItem('centerLng',position.coords.longitude);
-  //       },
-  //       function(error){
-  //           console.log(error)
-  //       },
-  //       {
-  //           enableHighAccuracy: true
-  //       }
-  //   );
-  // },[])
-
-
-  // function enviarProveedores(e) {
-    
-  //   navigator.geolocation.getCurrentPosition(
-        
-  //     function(position){
-
-  //           window.localStorage.setItem('userLng', position.coords.longitude);
-  //           window.localStorage.setItem('userLat', position.coords.latitude);
-  //           window.localStorage.setItem('centerLat',position.coords.latitude);
-  //           window.localStorage.setItem('centerLng',position.coords.longitude);
-  //       },
-  //       function(error){
-  //           console.log(error)
-  //       },
-  //       {
-  //           enableHighAccuracy: true
-  //       }
-  //   );
-
-  //   e.preventDefault();
-
-  //   getAllProvs().then((response)=>{
-
-  //     window.localStorage.setItem('proveedores', JSON.stringify(response.data));
-  //     window.location.href='/mapa'
-
-  //   }).catch((e) => {
-  //     console.error('No funcionó la petición' + e);
-  //   })
-
-    
-  // }
-
+  const empresaURL = "/mi_pagina/" + sessionStorage.getItem('empresa_id')
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -126,7 +72,7 @@ export default function ButtonAppBar() {
           
           <ColorButton hidden={opcionIngresar} className="btnNav"><Link to='/ingresar' className="btnin">Ingresar</Link></ColorButton>
           
-          <ColorButton hidden={aprov} className="btnNav"><Link to='/mi_pagina/:myPageIdSS' className="btnin">Mi Página</Link></ColorButton>
+          <ColorButton hidden={aprov} className="btnNav"><Link to={empresaURL} className="btnin">Mi Página</Link></ColorButton>
           
           <ColorButton hidden={nprov} className="btnNav"><Link to='/publicar' className="btnin">Publicar</Link></ColorButton>
           <ColorButton hidden={user} className="btnNav"><Link to='/perfil' className="btnin">Mi Perfil</Link></ColorButton>

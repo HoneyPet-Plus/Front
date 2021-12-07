@@ -3,7 +3,6 @@ import { InputGroup, FormControl } from 'react-bootstrap';
 import { useLocalStorage } from '../../Hooks/useLocalStorage';
 
 
-
 function InfoForm() {
     // binding del form
     const [bizName, setBizName] = useLocalStorage('bizName', '')
