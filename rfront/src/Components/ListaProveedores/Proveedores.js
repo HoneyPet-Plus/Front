@@ -132,11 +132,17 @@ export default function Proveedores() {
     
   };
 
-  const favoritosSS = window.sessionStorage.getItem("favoritos");
-  // const favoritos = "Hola favoritos";
-  const favoritos = favoritosSS.split(",");
-  console.log("Favoritos: ");
-  console.log(favoritos);
+  const [favoritos, setFavoritos] = useState([])
+
+  useEffect(() => {
+    if (window.sessionStorage.getItem("favoritos")) {
+      const favoritosSS = window.sessionStorage.getItem("favoritos");
+      setFavoritos(favoritosSS.split(","));
+      // console.log("Favoritos: ");
+      // console.log(favoritos);
+    }
+  }, [])
+  
 
   return (
     <Grid style={{ backgroundColor: "#CAE4DB" }}>
