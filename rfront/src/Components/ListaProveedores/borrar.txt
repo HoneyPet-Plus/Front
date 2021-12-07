@@ -1,9 +1,0 @@
-    <div>
-        <ul>
-            {
-                proved.map(negocios => {
-                    return (<li key={negocios.id}> {negocios.nombre_empresa} </li>)
-                });
-            }
-        </ul>
-    </div>

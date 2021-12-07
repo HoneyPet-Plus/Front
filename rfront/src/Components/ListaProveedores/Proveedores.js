@@ -39,7 +39,10 @@ export default function Proveedores() {
   }, []);
 
   const navigate = useNavigate();
-
+  const visitarPagina = (idProv) => (event) => {
+    console.log(idProv);
+    navigate("/negocio/" + idProv);
+  };
   return (
     <Grid style={{ backgroundColor: "#CAE4DB" }}>
       <ThemeProvider theme={theme}>
@@ -122,6 +125,7 @@ export default function Proveedores() {
                           Añadir a favoritos <StarIcon />
                         </Button>
                         <Button
+                          onClick={visitarPagina(card._id)}
                           size="small"
                           variant="contained"
                           style={{
