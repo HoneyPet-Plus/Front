@@ -16,7 +16,7 @@ import AboutAs from './AboutAs';
 
 import { Box } from '@mui/system';
 
-const descripHeader = "Ayudamos a nuestros usuarios a encontrar los mejores proveedores de servicios para mascotas desde cualquier parte del país."
+const descripHeader = "Encuentra o Publica los Mejores Productos y Servicios para las Mascotas"
 
 // const ColorButton = styled(Button)(({ theme }) => ({
 //   color: theme.palette.getContrastText('#00303F'),
@@ -48,11 +48,11 @@ export default function Home() {
                   variant="body1"
                   align="center"
                   color="#CAE4DB"
-                  fontSize="12px"
+                  fontSize="15px"
                   marginLeft="10%"
                   marginRight="10%"
                   gutterBottom
-                  mt
+                  
                 >
                   {descripHeader}
                 </Typography>
@@ -72,13 +72,13 @@ export default function Home() {
         <Section2/>
 
         <Stack className='seccion-about-as' justifyContent='center'>
-          <Typography variant="h4" align="center" paddingTop="50px" component="div" mb='0px'>
+          <Typography className='figma-headers' color='#004F67' variant="h4" align="center" paddingTop="50px" component="div" mb='0px'>
             Sobre el Proyecto
           </Typography>
-          <Typography variant="h5" align="center" mt='-20px'>
-            __________________________
+          <Typography variant="h5"  color='#004F67' align="center" mt='-20px'>
+            __________________
           </Typography>
-          <Typography variant="h6" align="center" component="div" mb='40px'>
+          <Typography color='#004F67' variant="h6" align="center" component="div" mb='40px'>
             Equipo de Trabajo
           </Typography>
 
