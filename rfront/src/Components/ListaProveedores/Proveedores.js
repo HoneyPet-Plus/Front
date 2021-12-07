@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 // import * as React from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -7,15 +7,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { getAllProvs } from '../../services/NegocioService';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import StarIcon from '@mui/icons-material/Star';
-import InfoIcon from '@mui/icons-material/Info';
+import { getAllProvs } from "../../services/NegocioService";
+import { useNavigate } from "react-router-dom";
+import StarIcon from "@mui/icons-material/Star";
+import InfoIcon from "@mui/icons-material/Info";
 // import ImgMediaCard from '../PerfilUsuario/cardperf';
 
 // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -23,26 +22,25 @@ import InfoIcon from '@mui/icons-material/Info';
 const theme = createTheme();
 
 export default function Proveedores() {
-
-  const [bizData, setBizData] = useState([])
+  const [bizData, setBizData] = useState([]);
 
   useEffect(() => {
     getAllProvs()
       .then((response) => {
-        setBizData(response.data)
-        console.log('peticion: ');
-        console.log(response.data)
+        setBizData(response.data);
+        console.log("peticion: ");
+        console.log(response.data);
         console.log(bizData);
       })
       .catch((er) => {
-        console.error('La petición no se completó: ')
+        console.error("La petición no se completó: ");
         console.error(er);
       });
-  }, [])
+  }, []);
 
+  const navigate = useNavigate();
 
   return (
-
     <Grid style={{ backgroundColor: "#CAE4DB" }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -67,12 +65,10 @@ export default function Proveedores() {
               >
                 Lista de Proveedores
               </Typography>
-
             </Container>
           </Box>
           <Container sx={{ py: 2 }} maxWidth="md">
             <Grid container spacing={4}>
-
               {/* <Grid item md={4} sm={5} xs={12}>
                 {
                   bizData.map(infoprov => (
@@ -87,11 +83,14 @@ export default function Proveedores() {
                 <ImgMediaCard nombre="maximascotas" descripcion="Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe maiores dignissimos aperiam sed harum, sit amet quisquam quasi ratione, consectetur culpa nisi velit quibusdam accusamus ea numquam deserunt doloribus debitis!" imagen="https://loremflickr.com/389/183/dog" />
               </Grid> */}
 
-
               {bizData.map((card) => (
                 <Grid item key={card._id} xs={12} sm={6} md={4}>
                   <Card
-                    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                    sx={{
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
                   >
                     <CardMedia
                       component="img"
@@ -106,9 +105,7 @@ export default function Proveedores() {
                       <Typography gutterBottom variant="h5" component="h2">
                         {card.nombre_empresa}
                       </Typography>
-                      <Typography>
-                        {card.descripcion_corta}
-                      </Typography>
+                      <Typography>{card.descripcion_corta}</Typography>
                     </CardContent>
                     <Grid alignItems="center" mb>
                       <CardActions>
@@ -117,14 +114,20 @@ export default function Proveedores() {
                         <Button
                           size="small"
                           variant="contained"
-                          style={{ backgroundColor: "#F7CC31", color: "#00303F" }}
+                          style={{
+                            backgroundColor: "#F7CC31",
+                            color: "#00303F",
+                          }}
                         >
                           Añadir a favoritos <StarIcon />
                         </Button>
                         <Button
                           size="small"
                           variant="contained"
-                          style={{ backgroundColor: "#F7CC31", color: "#00303F" }}
+                          style={{
+                            backgroundColor: "#F7CC31",
+                            color: "#00303F",
+                          }}
                         >
                           Ver más información <InfoIcon />
                         </Button>
