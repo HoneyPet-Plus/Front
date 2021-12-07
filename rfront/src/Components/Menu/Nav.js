@@ -8,7 +8,6 @@ import "./Nav.css"
 import { Link } from 'react-router-dom';
 import logoheader from '../../assets/Home/logoheader.svg'
 import { styled } from '@mui/material/styles';
-import { getAllProvs } from '../../services/NegocioService';
 
 
 const ColorButton = styled(Button)(({ theme }) => ({
@@ -54,58 +53,58 @@ export default function ButtonAppBar() {
 
 
 
-  useEffect(()=>{
-    navigator.geolocation.getCurrentPosition(
+  // useEffect(()=>{
+  //   navigator.geolocation.getCurrentPosition(
         
-      function(position){
+  //     function(position){
 
-            window.localStorage.setItem('userLng', position.coords.longitude);
-            window.localStorage.setItem('userLat', position.coords.latitude);
-            window.localStorage.setItem('centerLat',position.coords.latitude);
-            window.localStorage.setItem('centerLng',position.coords.longitude);
-        },
-        function(error){
-            console.log(error)
-        },
-        {
-            enableHighAccuracy: true
-        }
-    );
-  },[])
+  //           window.localStorage.setItem('userLng', position.coords.longitude);
+  //           window.localStorage.setItem('userLat', position.coords.latitude);
+  //           window.localStorage.setItem('centerLat',position.coords.latitude);
+  //           window.localStorage.setItem('centerLng',position.coords.longitude);
+  //       },
+  //       function(error){
+  //           console.log(error)
+  //       },
+  //       {
+  //           enableHighAccuracy: true
+  //       }
+  //   );
+  // },[])
 
 
-  function enviarProveedores(e) {
+  // function enviarProveedores(e) {
     
-    navigator.geolocation.getCurrentPosition(
+  //   navigator.geolocation.getCurrentPosition(
         
-      function(position){
+  //     function(position){
 
-            window.localStorage.setItem('userLng', position.coords.longitude);
-            window.localStorage.setItem('userLat', position.coords.latitude);
-            window.localStorage.setItem('centerLat',position.coords.latitude);
-            window.localStorage.setItem('centerLng',position.coords.longitude);
-        },
-        function(error){
-            console.log(error)
-        },
-        {
-            enableHighAccuracy: true
-        }
-    );
+  //           window.localStorage.setItem('userLng', position.coords.longitude);
+  //           window.localStorage.setItem('userLat', position.coords.latitude);
+  //           window.localStorage.setItem('centerLat',position.coords.latitude);
+  //           window.localStorage.setItem('centerLng',position.coords.longitude);
+  //       },
+  //       function(error){
+  //           console.log(error)
+  //       },
+  //       {
+  //           enableHighAccuracy: true
+  //       }
+  //   );
 
-    e.preventDefault();
+  //   e.preventDefault();
 
-    getAllProvs().then((response)=>{
+  //   getAllProvs().then((response)=>{
 
-      window.localStorage.setItem('proveedores', JSON.stringify(response.data));
-      window.location.href='/mapa'
+  //     window.localStorage.setItem('proveedores', JSON.stringify(response.data));
+  //     window.location.href='/mapa'
 
-    }).catch((e) => {
-      console.error('No funcionó la petición' + e);
-    })
+  //   }).catch((e) => {
+  //     console.error('No funcionó la petición' + e);
+  //   })
 
     
-  }
+  // }
 
 
   return (
@@ -121,7 +120,7 @@ export default function ButtonAppBar() {
           
           <ColorButton className="btnNav"><Link to='/inicio' className="btnin">Inicio</Link></ColorButton>
           
-          <ColorButton onClick={enviarProveedores} className="btnNav"><Link to='/mapa' className="btnin">Mapa</Link></ColorButton>
+          <ColorButton className="btnNav"><Link to='/mapa' className="btnin">Mapa</Link></ColorButton>
           
           <ColorButton className="btnNav"><Link to='/proveedores' className="btnin">Proveedores</Link></ColorButton>
           

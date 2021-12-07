@@ -7,7 +7,7 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import {Marker, Popup} from 'react-leaflet'
 import {IconShop} from "./IconShop";
 import Swal from 'sweetalert2';
-import { favProveedor } from '../../services/NegocioService';
+import { favProveedor } from '../../services/UsuarioService';
 
 const MarkerShop = (place) => {
     
@@ -67,10 +67,10 @@ const MarkerShop = (place) => {
             if (result.isConfirmed) {
               
               console.log(token)
-              favProveedor(idUsuario,idNegocio,token)
+              favProveedor(idUsuario,idNegocio)
                 .then((response) => {
                   console.log(response.data.mensaje)
-                  if(response.data.mensaje === 'El proveedor se añadió a la lista de favoritos'){
+                  if(response.data.mensaje === 'El proveedor se añadió la lista de favoritos'){
                     Swal.fire(
                       'Añadido!',
                       '"'+place.place.nombre_empresa+'" se ha añadido a tu lista de favoritos',
