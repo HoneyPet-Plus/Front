@@ -24,7 +24,7 @@ function App(){
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/proveedores' element={<Proveedores />}/>
-        <Route path='/inicio' element={<Home />}/>
+        {/* <Route path='/inicio' element={<Home />}/> */}
         <Route path='/mapa' element={<Mapa />}/>
         <Route path='/perfil' element={<VistaPerfil />}/>
         <Route path='/registrar' element={<Registrar />}/>
