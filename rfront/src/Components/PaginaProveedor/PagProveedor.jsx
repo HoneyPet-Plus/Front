@@ -15,6 +15,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getProvById } from '../../services/NegocioService';
+import { useLocalStorage } from '../../Hooks/useLocalStorage';
 
 // referencia para la logica de negocio: https://youtu.be/0Q7LA6jRdA4?t=9251
 
@@ -57,9 +58,14 @@ function PagProveedor() {
 
   const navigate = useNavigate()
 
+  // const [currentColor, setCurrentColor] = useState('#00f')
+  // const [inputColor, setInputColor] = useLocalStorage('bizColor', '')
+  // const [currentColor, setCurrentColor] = useLocalStorage('currentColor', '#0000ff')
+  const [currentColor, setCurrentColor] = useLocalStorage('bizColorInput', '#333333')
+
   const txtColor = '#ddd'
   
-  const userEmailSS = window.sessionStorage.getItem('correo') 
+  const userEmailSS = window.sessionStorage.getItem('correo')
   const empresaIdSS = window.sessionStorage.getItem('empresa_id')
   
   useEffect(() => {
@@ -91,6 +97,8 @@ function PagProveedor() {
         window.localStorage.setItem('bizPS3type', JSON.stringify(response.data.productos[2].tipo))
         window.localStorage.setItem('bizPS3title', JSON.stringify(response.data.productos[2].titulo))
         window.localStorage.setItem('bizPS3desc', JSON.stringify(response.data.productos[2].descripcion))
+        // window.localStorage.setItem('bizColor', JSON.stringify(response.data.color_tema))
+        setCurrentColor(response.data.color_tema)
 
       })
       .catch((e) => {
@@ -110,12 +118,14 @@ function PagProveedor() {
     <div className="pag-container">
       <header>
         {
-          window.sessionStorage.getItem('rol')==='proveedor'&&negocioId===empresaIdSS ? <ProvAdminBar email={userEmailSS} /> : <FavBtn />
+          window.sessionStorage.getItem('rol')==='proveedor'&&negocioId===empresaIdSS 
+          ? <ProvAdminBar email={userEmailSS} currentColor={currentColor} setCurrentColor={setCurrentColor} /> 
+          : <FavBtn />
         }
         <ProvImg src={pageData.imagen_destacada} />
         <Box className="hero-container" sx={{
           maxWidth: 900,
-          backgroundColor: pageData.color_tema,
+          backgroundColor: currentColor,
           marginX: 'auto',
           textAlign: 'center',
           paddingY:5,
@@ -134,7 +144,7 @@ function PagProveedor() {
         <aside className="aside-bizp">
           <Box sx={{
             // maxWidth: 400,
-            backgroundColor: pageData.color_tema,
+            backgroundColor: currentColor,
             borderRadius:5,
             mb: 4,
             paddingY: 3,
@@ -187,11 +197,11 @@ function PagProveedor() {
         </aside>
         <main className="main-bizp">
           <section className="prov-description">
-            <Box sx={{ mb: 4, color: pageData.color_tema}}>
+            <Box sx={{ mb: 4, color: currentColor}}>
               <h3>Descripción de la Empresa</h3>
               <Box sx={{
                 height: 2,
-                bgcolor: pageData.color_tema
+                bgcolor: currentColor
               }} />
             </Box>
             <ProvDescription 
@@ -199,16 +209,16 @@ function PagProveedor() {
             />
           </section>
           <section className="prov-services">
-            <Box sx={{ my: 4, color: pageData.color_tema}}>
+            <Box sx={{ my: 4, color: currentColor}}>
               <h3>Productos / Servicios</h3>
               <Box sx={{
                 height: 2,
-                bgcolor: pageData.color_tema
+                bgcolor: currentColor
               }} />
             </Box>
 
             <Box sx={{
-              backgroundColor: pageData.color_tema,
+              backgroundColor: currentColor,
               borderRadius:5,
               textAlign: 'center',
               padding: 3,
@@ -225,10 +235,10 @@ function PagProveedor() {
             <div className="offer-container">
               <Box className="rps-card" sx={{
                 border: 1,
-                borderColor: pageData.color_tema,
+                borderColor: currentColor,
                 borderRadius:4,
                 padding: 3,
-                color: pageData.color_tema
+                color: currentColor
               }}>
                 <h4>{pageData.productos[1].tipo==="Producto"?<AddShoppingCartIcon />:<BusinessCenterIcon />} {pageData.productos[1].tipo}</h4>
                 <ProvOffer 
@@ -238,10 +248,10 @@ function PagProveedor() {
               </Box>
               <Box className="rps-card" sx={{
                 border: 1,
-                borderColor: pageData.color_tema,
+                borderColor: currentColor,
                 borderRadius:4,
                 padding: 3,
-                color: pageData.color_tema
+                color: currentColor
               }}>
                 <h4>{pageData.productos[2].tipo==="Producto"?<AddShoppingCartIcon />:<BusinessCenterIcon />} {pageData.productos[2].tipo}</h4>
                 <ProvOffer 

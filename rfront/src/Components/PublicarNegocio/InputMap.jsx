@@ -8,6 +8,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { useLocalStorage } from '../../Hooks/useLocalStorage';
 
 
+
 const userLat = window.localStorage.getItem('userLat')
 const userLng = window.localStorage.getItem('userLng')
 
@@ -95,7 +96,7 @@ export const InputMap = () => {
             <div className="input-map-container">
                 <MapContainer
                     className="input-map"
-                    center={center}
+                    center={[userLat,userLng]}
                     zoom={zoom}
                     scrollWheelZoom={false}
                     whenCreated={setMap}>
