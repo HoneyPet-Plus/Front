@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import seccioempresas from '../../assets/Home/seccioempresas.svg';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import { color } from '@mui/system';
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText('#ffffff'),
