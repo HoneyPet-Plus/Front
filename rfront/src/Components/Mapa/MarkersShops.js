@@ -1,17 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import '../../Components/Mapa/Map.css'
-
+import { getAllProvs } from '../../services/NegocioService';
 import MarkerShop from "./MarkerShop";
-// import infoDrawer from "./drawer";
-
 
 function MarkersShop (){
 
-  const lugares = JSON.parse(window.localStorage.getItem('proveedores'))
+  const[provsData,setProvsData]= useState([])
+ 
+  useEffect(() => {
+    
+    getAllProvs().then((response)=>{
 
-  const markers = lugares.map((place) =>(
+      setProvsData(response.data)
+    }).catch((e) => {
+      console.error('No funcionó la petición' + e);
+    })
+    
+  }, [])
+
+  const markers = provsData.map((place) =>(
       
-      <MarkerShop key={place.id} place={place}></MarkerShop>
+      <MarkerShop key={place._id} place={place}></MarkerShop>
   ))
 
   return markers;

@@ -7,11 +7,15 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import {Marker, Popup} from 'react-leaflet'
 import {IconShop} from "./IconShop";
 import Swal from 'sweetalert2';
-import { favProveedor } from '../../services/NegocioService';
+import { favProveedor } from '../../services/UsuarioService';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const MarkerShop = (place) => {
     
     const anchor = 'right'
+    const navigate = useNavigate()
 
     const [state, setState] = React.useState({
         right: false,
@@ -28,21 +32,7 @@ const MarkerShop = (place) => {
 
     const visitarPagina = () => (event) =>{
       
-      
-      // Swal.fire({
-      //   title: '¿Estas seguro de que quieres visitar la pagina de "'+place.place.nombre_empresa+'" ahora mismo?',
-      //   text: "Elige una opcion",
-      //   icon: 'question',
-      //   showCancelButton: true,
-      //   confirmButtonColor: '#F7CC31',
-      //   cancelButtonColor: '#cfcfcf',
-      //   confirmButtonText: 'Si, visitar pagina'
-      // }).then((result) => {
-      //   if (result.isConfirmed) {
-          
-      //   }
-      // })
-        
+        navigate('/negocio/'+place.place._id)
     }
 
     const añadirFavoritos= () => (event) =>{
@@ -67,10 +57,10 @@ const MarkerShop = (place) => {
             if (result.isConfirmed) {
               
               console.log(token)
-              favProveedor(idUsuario,idNegocio,token)
+              favProveedor(idUsuario,idNegocio)
                 .then((response) => {
                   console.log(response.data.mensaje)
-                  if(response.data.mensaje === 'El proveedor se añadió a la lista de favoritos'){
+                  if(response.data.mensaje === 'El proveedor se añadió la lista de favoritos'){
                     Swal.fire(
                       'Añadido!',
                       '"'+place.place.nombre_empresa+'" se ha añadido a tu lista de favoritos',
