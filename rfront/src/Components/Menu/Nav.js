@@ -90,7 +90,7 @@ export default function ButtonAppBar() {
           
           <ColorButton className="btnNav">
             <NavLink
-              to="/inicio"
+              to="/"
               className={({ isActive }) =>
                 "btnin " + (isActive ? "active-nav" : "")
               }
