@@ -9,6 +9,7 @@ import Axios from 'axios'
 
 
 Axios.defaults.baseURL='http://localhost:4000'
+// Axios.defaults.baseURL='https://honeypet.imasdg.com'
 
 ReactDOM.render(
   <React.StrictMode>
